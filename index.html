@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equiprovet — The Equine Orthopaedic Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --ink:       #0D1117;
+    --ink-soft:  #2C3341;
+    --cream:     #F5F0E8;
+    --cream-2:   #EDE7D9;
+    --gold:      #B8924A;
+    --gold-light:#D4B06A;
+    --teal:      #0E5F6E;
+    --teal-light:#1A8BA0;
+    --teal-pale: #D6EFF3;
+    --white:     #FFFFFF;
+    --red-alert: #C0392B;
+    --border:    rgba(184,146,74,0.25);
+    --shadow:    0 4px 32px rgba(13,17,23,0.12);
+    --shadow-lg: 0 20px 80px rgba(13,17,23,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(13,17,23,0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(184,146,74,0.2);
+  }
+  .nav-logo {
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none;
+  }
+  .nav-logo-mark {
+    width:38px; height:38px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-weight:900; font-size:18px; color:#0D1117;
+  }
+  .nav-logo-text { font-family:'Playfair Display', serif; font-size:20px; font-weight:700; color:#fff; letter-spacing:0.02em; }
+  .nav-logo-sub { font-size:10px; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; font-weight:500; }
+  .nav-links { display:flex; align-items:center; gap:32px; }
+  .nav-links a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:14px; font-weight:500; letter-spacing:0.02em; transition:color 0.2s; }
+  .nav-links a:hover { color:#fff; }
+  .nav-cta {
+    background: var(--gold); color: var(--ink); padding:10px 22px;
+    border-radius:6px; font-size:14px; font-weight:600;
+    text-decoration:none; transition:all 0.2s; letter-spacing:0.02em;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform:translateY(-1px); }
+  .nav-tel { color:var(--gold); font-family:'DM Mono', monospace; font-size:13px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display:grid; grid-template-columns: 1fr 1fr;
+    position:relative; overflow:hidden;
+  }
+  .hero-bg-pattern {
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(14,95,110,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(184,146,74,0.08) 0%, transparent 60%);
+  }
+  .hero-grid-overlay {
+    position:absolute; inset:0; opacity:0.04;
+    background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-left {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center;
+    padding: 120px 64px 80px;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(184,146,74,0.12); border:1px solid rgba(184,146,74,0.3);
+    color:var(--gold-light); padding:6px 16px; border-radius:100px;
+    font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+    width:fit-content; margin-bottom:28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before { content:'●'; font-size:8px; color:var(--gold); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .hero-title {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight:900; line-height:1.05;
+    color:#fff; margin-bottom:24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title em { font-style:normal; color:var(--gold); }
+  .hero-title .line-teal { color:var(--teal-light); }
+
+  .hero-sub {
+    font-size:17px; line-height:1.7; color:rgba(255,255,255,0.65);
+    max-width:480px; margin-bottom:40px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-sub strong { color:rgba(255,255,255,0.9); font-weight:600; }
+
+  .hero-actions {
+    display:flex; gap:16px; flex-wrap:wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--ink);
+    padding:14px 32px; border-radius:8px;
+    font-weight:700; font-size:15px; text-decoration:none;
+    transition:all 0.25s; letter-spacing:0.02em;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(184,146,74,0.35); }
+  .btn-secondary {
+    background:transparent; color:#fff;
+    border:1.5px solid rgba(255,255,255,0.25);
+    padding:13px 28px; border-radius:8px;
+    font-weight:500; font-size:15px; text-decoration:none;
+    transition:all 0.25s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-secondary:hover { border-color:rgba(255,255,255,0.6); background:rgba(255,255,255,0.06); }
+
+  .hero-stats {
+    display:flex; gap:40px; margin-top:56px; padding-top:40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family:'Playfair Display', serif;
+    font-size:36px; font-weight:900; color:#fff; line-height:1;
+    margin-bottom:4px;
+  }
+  .stat-num span { color:var(--gold); }
+  .stat-label { font-size:12px; color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; font-weight:500; }
+
+  /* ── HERO RIGHT: 3D PRODUCT SHOWCASE ── */
+  .hero-right {
+    position:relative; z-index:2;
+    display:flex; align-items:center; justify-content:center;
+    padding:120px 40px 80px;
+  }
+  .hero-showcase {
+    position:relative; width:100%; max-width:420px;
+  }
+  .showcase-card {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(184,146,74,0.2);
+    border-radius:20px; padding:32px;
+    backdrop-filter:blur(12px);
+    transition:all 0.4s;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .showcase-card:hover { transform:translateY(-4px); border-color:rgba(184,146,74,0.4); box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+  .showcase-tag {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(14,95,110,0.3); border:1px solid rgba(26,139,160,0.3);
+    color:var(--teal-light); padding:4px 12px; border-radius:100px;
+    font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .showcase-product-name {
+    font-family:'Playfair Display', serif; font-size:28px; font-weight:900;
+    color:#fff; margin-bottom:8px;
+  }
+  .showcase-product-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:24px; }
+  .showcase-divider { height:1px; background:rgba(255,255,255,0.08); margin:20px 0; }
+  .showcase-detail-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .showcase-detail-label { font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; font-weight:500; }
+  .showcase-detail-val { font-family:'DM Mono', monospace; font-size:13px; color:rgba(255,255,255,0.85); font-weight:500; }
+  .showcase-badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+  .showcase-badge {
+    background:rgba(184,146,74,0.1); border:1px solid rgba(184,146,74,0.2);
+    color:var(--gold-light); padding:4px 10px; border-radius:100px;
+    font-size:10px; font-weight:600; letter-spacing:0.05em;
+  }
+  .showcase-badge.teal { background:rgba(14,95,110,0.2); border-color:rgba(26,139,160,0.3); color:var(--teal-light); }
+
+  .floating-card {
+    position:absolute;
+    background:rgba(13,17,23,0.85); border:1px solid rgba(184,146,74,0.25);
+    border-radius:14px; padding:16px 20px; backdrop-filter:blur(16px);
+    animation:float 4s ease-in-out infinite;
+  }
+  .floating-card.card-1 { top:-24px; right:-32px; animation-delay:0s; }
+  .floating-card.card-2 { bottom:20px; left:-40px; animation-delay:2s; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .fc-label { font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px; }
+  .fc-val { font-family:'Playfair Display', serif; font-size:22px; font-weight:900; color:#fff; }
+  .fc-val span { color:var(--gold); }
+  .fc-sub { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background:var(--teal); color:#fff;
+    padding:16px 0; overflow:hidden; position:relative;
+  }
+  .trust-bar-inner {
+    display:flex; gap:64px; align-items:center;
+    animation:scrollTicker 30s linear infinite;
+    white-space:nowrap; width:max-content;
+  }
+  @keyframes scrollTicker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .trust-item {
+    display:flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:500; letter-spacing:0.04em;
+  }
+  .trust-item .icon { font-size:16px; }
+
+  /* ── SECTION STYLES ── */
+  section { position:relative; }
+  .section-label {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:16px;
+  }
+  .section-label::before { content:''; width:24px; height:2px; background:var(--gold); display:block; }
+
+  /* ── PRODUCTS SECTION ── */
+  .products-section { background:var(--cream); padding:100px 0; }
+  .container { max-width:1200px; margin:0 auto; padding:0 48px; }
+  .section-header { margin-bottom:60px; }
+  .section-title {
+    font-family:'Playfair Display', serif; font-size:clamp(36px,4vw,52px);
+    font-weight:900; line-height:1.1; color:var(--ink); margin-bottom:16px;
+  }
+  .section-title em { font-style:normal; color:var(--teal); }
+  .section-desc { font-size:17px; line-height:1.7; color:var(--ink-soft); max-width:560px; }
+
+  .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .product-card {
+    background:#fff; border-radius:16px; overflow:hidden;
+    border:1px solid rgba(0,0,0,0.07);
+    transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+    box-shadow:0 2px 12px rgba(0,0,0,0.05);
+    cursor:pointer;
+  }
+  .product-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:var(--teal-pale); }
+  .product-card-top {
+    background:var(--ink); padding:32px 28px 24px;
+    position:relative; overflow:hidden;
+  }
+  .product-card-top.gold-card { background:linear-gradient(135deg, #1a1206 0%, #2d1f08 100%); }
+  .product-card-top.teal-card { background:linear-gradient(135deg, #061318 0%, #0a2e36 100%); }
+  .product-card-glow {
+    position:absolute; inset:0; opacity:0.3;
+    background:radial-gradient(circle at top right, var(--gold) 0%, transparent 60%);
+    transition:opacity 0.3s;
+  }
+  .product-card.teal-variant .product-card-glow { background:radial-gradient(circle at top right, var(--teal-light) 0%, transparent 60%); }
+  .product-card:hover .product-card-glow { opacity:0.5; }
+  .pc-category {
+    font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+    color:var(--gold-light); margin-bottom:12px;
+  }
+  .teal-variant .pc-category { color:var(--teal-light); }
+  .pc-name {
+    font-family:'Playfair Display', serif; font-size:26px; font-weight:900;
+    color:#fff; line-height:1.15; margin-bottom:8px; position:relative;
+  }
+  .pc-molecule { font-family:'DM Mono', monospace; font-size:11px; color:rgba(255,255,255,0.4); position:relative; }
+  .product-card-body { padding:24px 28px; }
+  .pc-indication { font-size:14px; line-height:1.6; color:var(--ink-soft); margin-bottom:20px; }
+  .pc-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+  .pc-tag {
+    background:var(--cream-2); color:var(--ink-soft);
+    padding:4px 10px; border-radius:100px;
+    font-size:10px; font-weight:600; letter-spacing:0.05em;
+  }
+  .pc-tag.highlight { background:var(--teal-pale); color:var(--teal); }
+  .pc-cta {
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; border-top:1px solid rgba(0,0,0,0.06);
+  }
+  .pc-cta-link { font-size:13px; font-weight:600; color:var(--teal); text-decoration:none; letter-spacing:0.02em; }
+  .pc-arrow { font-size:18px; color:var(--teal); transition:transform 0.2s; }
+  .product-card:hover .pc-arrow { transform:translateX(4px); }
+  .pc-exclusive {
+    background:rgba(184,146,74,0.1); border:1px solid rgba(184,146,74,0.3);
+    color:var(--gold); padding:3px 8px; border-radius:4px;
+    font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  }
+
+  /* ── SCIENCE/HA SECTION ── */
+  .science-section { background:var(--ink); padding:100px 0; }
+  .science-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .science-label { color:var(--gold); }
+  .science-title {
+    font-family:'Playfair Display', serif; font-size:clamp(36px,3.5vw,48px);
+    font-weight:900; color:#fff; line-height:1.15; margin-bottom:20px;
+  }
+  .science-title em { font-style:normal; color:var(--teal-light); }
+  .science-desc { font-size:16px; line-height:1.8; color:rgba(255,255,255,0.6); margin-bottom:32px; }
+  .science-features { display:flex; flex-direction:column; gap:20px; margin-bottom:36px; }
+  .science-feat {
+    display:flex; gap:16px; align-items:flex-start;
+    padding:20px; background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07); border-radius:12px;
+    transition:all 0.3s;
+  }
+  .science-feat:hover { border-color:rgba(184,146,74,0.2); background:rgba(184,146,74,0.04); }
+  .sf-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+  .sf-title { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+  .sf-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+  /* HA comparison visual */
+  .ha-comparison {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(184,146,74,0.2);
+    border-radius:20px; padding:36px;
+  }
+  .hac-title { font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; }
+  .hac-row { margin-bottom:24px; }
+  .hac-label { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:8px; display:flex; justify-content:space-between; }
+  .hac-label span { font-family:'DM Mono', monospace; font-size:12px; color:rgba(255,255,255,0.35); }
+  .hac-bar-bg { background:rgba(255,255,255,0.06); border-radius:100px; height:10px; overflow:hidden; }
+  .hac-bar-fill { height:100%; border-radius:100px; transition:width 1.5s ease; }
+  .hac-bar-fill.linear  { background:rgba(255,255,255,0.25); width:35%; }
+  .hac-bar-fill.crosslink { background:var(--teal-light); width:70%; }
+  .hac-bar-fill.stabilised { background:linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); width:100%; }
+  .hac-verdict {
+    margin-top:28px; padding:16px 20px;
+    background:rgba(184,146,74,0.08); border:1px solid rgba(184,146,74,0.2);
+    border-radius:10px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;
+  }
+  .hac-verdict strong { color:var(--gold-light); }
+
+  /* ── USP SECTION ── */
+  .usp-section { background:var(--cream-2); padding:100px 0; }
+  .usp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); }
+  .usp-item {
+    background:#fff; padding:48px 40px;
+    transition:all 0.3s; cursor:default;
+    position:relative; overflow:hidden;
+  }
+  .usp-item::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background:var(--teal); transform:scaleX(0); transition:transform 0.3s; transform-origin:left;
+  }
+  .usp-item:hover::before { transform:scaleX(1); }
+  .usp-item:hover { background:var(--ink); }
+  .usp-num {
+    font-family:'Playfair Display', serif; font-size:72px; font-weight:900;
+    color:rgba(0,0,0,0.05); line-height:1; margin-bottom:16px;
+    transition:color 0.3s;
+  }
+  .usp-item:hover .usp-num { color:rgba(255,255,255,0.05); }
+  .usp-icon { font-size:36px; margin-bottom:20px; display:block; }
+  .usp-title { font-family:'Playfair Display', serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:12px; transition:color 0.3s; }
+  .usp-item:hover .usp-title { color:#fff; }
+  .usp-desc { font-size:14px; line-height:1.7; color:var(--ink-soft); transition:color 0.3s; }
+  .usp-item:hover .usp-desc { color:rgba(255,255,255,0.6); }
+
+  /* ── COMPARISON SECTION ── */
+  .comparison-section { background:#fff; padding:100px 0; }
+  .comparison-table {
+    border-radius:16px; overflow:hidden;
+    border:1px solid rgba(0,0,0,0.08); box-shadow:var(--shadow);
+  }
+  .ct-header {
+    display:grid; grid-template-columns:2fr 1fr 1fr;
+    background:var(--ink); color:#fff;
+  }
+  .ct-header-cell { padding:24px 28px; font-size:14px; font-weight:700; }
+  .ct-header-cell.highlight { background:var(--teal); position:relative; }
+  .ct-header-cell.highlight::after { content:'← u bent hier'; font-size:10px; font-weight:400; opacity:0.7; display:block; letter-spacing:0.05em; margin-top:2px; }
+  .ct-row { display:grid; grid-template-columns:2fr 1fr 1fr; border-top:1px solid rgba(0,0,0,0.06); }
+  .ct-row:nth-child(even) { background:rgba(0,0,0,0.015); }
+  .ct-cell { padding:18px 28px; font-size:14px; display:flex; align-items:center; }
+  .ct-cell.feature { font-weight:600; color:var(--ink); }
+  .ct-cell.ours { color:var(--teal); font-weight:600; }
+  .ct-cell.theirs { color:rgba(0,0,0,0.4); }
+  .check { color:var(--teal); font-size:18px; font-weight:700; }
+  .cross { color:rgba(0,0,0,0.2); font-size:18px; }
+  .partial { color:var(--gold); font-size:14px; font-weight:600; }
+
+  /* ── CONTACT SECTION ── */
+  .contact-section { background:var(--teal); padding:100px 0; }
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .contact-title {
+    font-family:'Playfair Display', serif; font-size:clamp(36px,3.5vw,52px);
+    font-weight:900; color:#fff; line-height:1.1; margin-bottom:16px;
+  }
+  .contact-desc { font-size:16px; line-height:1.8; color:rgba(255,255,255,0.7); margin-bottom:40px; }
+  .contact-info-row { display:flex; gap:12px; align-items:flex-start; margin-bottom:20px; }
+  .ci-icon { font-size:20px; margin-top:2px; }
+  .ci-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:3px; }
+  .ci-val { font-size:16px; font-weight:600; color:#fff; }
+  .contact-form-card {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px; padding:40px;
+  }
+  .form-title { font-family:'Playfair Display', serif; font-size:24px; font-weight:700; color:#fff; margin-bottom:28px; }
+  .form-group { margin-bottom:20px; }
+  .form-group label { display:block; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:8px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; padding:13px 16px;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+    border-radius:8px; color:#fff; font-family:'DM Sans', sans-serif; font-size:14px;
+    outline:none; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--gold-light); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(255,255,255,0.3); }
+  .form-group select option { background:var(--teal); color:#fff; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-submit {
+    width:100%; padding:16px; background:var(--gold); color:var(--ink);
+    border:none; border-radius:8px; font-family:'DM Sans', sans-serif;
+    font-size:15px; font-weight:700; cursor:pointer; transition:all 0.25s;
+    letter-spacing:0.02em; margin-top:8px;
+  }
+  .form-submit:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--ink); padding:60px 0 32px; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+  .footer-brand-desc { font-size:14px; color:rgba(255,255,255,0.4); line-height:1.7; margin-top:16px; max-width:280px; }
+  .footer-col-title { font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:20px; }
+  .footer-links { list-style:none; }
+  .footer-links li { margin-bottom:12px; }
+  .footer-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:14px; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--gold-light); }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.07); padding-top:28px; display:flex; justify-content:space-between; align-items:center; }
+  .footer-copyright { font-size:13px; color:rgba(255,255,255,0.3); }
+  .footer-vet-only {
+    background:rgba(184,146,74,0.1); border:1px solid rgba(184,146,74,0.2);
+    color:var(--gold-light); padding:6px 14px; border-radius:100px;
+    font-size:11px; font-weight:600; letter-spacing:0.08em;
+  }
+
+  /* ── ALPHA2EQ SPOTLIGHT ── */
+  .spotlight-section { background:var(--cream); padding:100px 0; }
+  .spotlight-inner {
+    background:var(--ink); border-radius:24px; padding:64px;
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .spotlight-glow {
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(14,95,110,0.25) 0%, transparent 60%);
+  }
+  .spotlight-label { color:var(--teal-light); }
+  .spotlight-title {
+    font-family:'Playfair Display', serif; font-size:clamp(36px,3.5vw,52px);
+    font-weight:900; color:#fff; line-height:1.1; margin-bottom:16px;
+    position:relative;
+  }
+  .spotlight-sub { font-size:16px; color:rgba(255,255,255,0.6); line-height:1.8; margin-bottom:28px; position:relative; }
+  .spotlight-vs {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px; padding:24px; position:relative;
+  }
+  .vs-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .vs-row:last-child { border-bottom:none; }
+  .vs-label { font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; }
+  .vs-ours { font-size:13px; font-weight:700; color:var(--teal-light); }
+  .vs-theirs { font-size:13px; color:rgba(255,255,255,0.35); text-decoration:line-through; }
+  .vs-header { display:grid; grid-template-columns:1fr 1fr 1fr; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); }
+
+  /* ── MOBILE GUARD ── */
+  .preview-notice {
+    background:var(--gold); color:var(--ink); text-align:center;
+    padding:10px; font-size:13px; font-weight:600; letter-spacing:0.04em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.reveal-left { transform: translateX(-32px); }
+  .reveal.reveal-right { transform: translateX(32px); }
+  .reveal.is-visible { opacity: 1; transform: translate(0, 0); }
+  .reveal-group > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-group.is-visible > *:nth-child(1) { transition-delay: 0s;   opacity:1; transform:none; }
+  .reveal-group.is-visible > *:nth-child(2) { transition-delay:.1s;   opacity:1; transform:none; }
+  .reveal-group.is-visible > *:nth-child(3) { transition-delay:.2s;   opacity:1; transform:none; }
+  .reveal-group.is-visible > *:nth-child(4) { transition-delay:.3s;   opacity:1; transform:none; }
+  .reveal-group.is-visible > *:nth-child(5) { transition-delay:.4s;   opacity:1; transform:none; }
+  .reveal-group.is-visible > *:nth-child(6) { transition-delay:.5s;   opacity:1; transform:none; }
+
+  /* ── INTRO OVERLAY ── */
+  #intro-overlay {
+    position:fixed; inset:0; z-index:9999;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px;
+    animation: overlayExit 0.7s 1.8s cubic-bezier(0.76,0,0.24,1) forwards;
+    pointer-events:none;
+  }
+  @keyframes overlayExit { to { opacity:0; visibility:hidden; } }
+  #intro-overlay .intro-logo-mark {
+    width:72px; height:72px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-light));
+    border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif;
+    font-weight:900; font-size:36px; color:var(--ink);
+    animation:fadeUp 0.5s 0.3s ease both;
+  }
+  #intro-overlay .intro-wordmark {
+    font-family:'Playfair Display',serif;
+    font-size:32px; font-weight:700; color:#fff; letter-spacing:0.04em;
+    animation:fadeUp 0.5s 0.5s ease both;
+  }
+  #intro-overlay .intro-tagline {
+    font-size:11px; color:var(--gold); letter-spacing:0.2em;
+    text-transform:uppercase; font-weight:600;
+    animation:fadeUp 0.5s 0.7s ease both;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background:var(--ink); padding:100px 0; }
+  .testimonials-header { text-align:center; margin-bottom:60px; }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .testimonial-card {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(184,146,74,0.18);
+    border-radius:18px; padding:36px 32px;
+    display:flex; flex-direction:column;
+    transition:border-color 0.3s, transform 0.3s;
+  }
+  .testimonial-card:hover { border-color:rgba(184,146,74,0.4); transform:translateY(-6px); }
+  .testimonial-stars { color:var(--gold); font-size:15px; letter-spacing:2px; margin-bottom:18px; }
+  .testimonial-quote {
+    font-size:14px; line-height:1.8; color:rgba(255,255,255,0.68);
+    flex:1; margin-bottom:28px; font-style:italic;
+  }
+  .testimonial-quote::before {
+    content:'\201C'; color:var(--gold); font-size:32px;
+    line-height:0; vertical-align:-12px; margin-right:4px; font-style:normal;
+  }
+  .testimonial-author { border-top:1px solid rgba(255,255,255,0.07); padding-top:20px; }
+  .ta-name { font-size:15px; font-weight:700; color:#fff; margin-bottom:3px; }
+  .ta-role { font-size:12px; color:var(--gold-light); letter-spacing:0.04em; }
+  .ta-location { font-size:12px; color:rgba(255,255,255,0.35); margin-top:2px; }
+  .ta-product {
+    display:inline-block; margin-top:10px;
+    background:rgba(14,95,110,0.25); border:1px solid rgba(26,139,160,0.3);
+    color:var(--teal-light); padding:3px 10px; border-radius:100px;
+    font-size:10px; font-weight:600; letter-spacing:0.06em;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { background:var(--cream-2); padding:100px 0; }
+  .faq-header { text-align:center; margin-bottom:60px; }
+  .faq-list { max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+  .faq-item {
+    background:#fff; border:1px solid rgba(0,0,0,0.07);
+    border-radius:12px; overflow:hidden; transition:box-shadow 0.25s;
+  }
+  .faq-item.open { box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+  .faq-question {
+    width:100%; background:none; border:none; padding:22px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+    cursor:pointer; text-align:left;
+    font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--ink);
+    transition:color 0.2s;
+  }
+  .faq-question:hover { color:var(--teal); }
+  .faq-item.open .faq-question { color:var(--teal); }
+  .faq-icon {
+    width:28px; height:28px; flex-shrink:0; border-radius:50%;
+    background:var(--cream-2); display:flex; align-items:center; justify-content:center;
+    font-size:20px; color:var(--teal); font-weight:700; line-height:1;
+    transition:transform 0.3s, background 0.2s;
+  }
+  .faq-item.open .faq-icon { transform:rotate(45deg); background:rgba(14,95,110,0.1); }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+  .faq-answer-inner {
+    padding:20px 28px 24px;
+    font-size:14px; line-height:1.75; color:var(--ink-soft);
+    border-top:1px solid rgba(0,0,0,0.05);
+  }
+
+  /* ── COOKIE BANNER ── */
+  #cookie-banner {
+    position:fixed; bottom:0; left:0; right:0; z-index:8000;
+    background:var(--ink); border-top:1px solid rgba(184,146,74,0.25);
+    padding:20px 48px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    transform:translateY(100%);
+    transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  #cookie-banner.visible { transform:translateY(0); }
+  .cookie-text { font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6; flex:1; min-width:280px; }
+  .cookie-text a { color:var(--gold-light); text-decoration:underline; cursor:pointer; }
+  .cookie-actions { display:flex; gap:12px; flex-shrink:0; }
+  .cookie-btn {
+    padding:10px 22px; border-radius:6px;
+    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600;
+    cursor:pointer; border:none; transition:all 0.2s;
+  }
+  .cookie-btn.accept { background:var(--gold); color:var(--ink); }
+  .cookie-btn.accept:hover { background:var(--gold-light); }
+  .cookie-btn.decline { background:transparent; color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.15); }
+  .cookie-btn.decline:hover { color:#fff; border-color:rgba(255,255,255,0.4); }
+
+  /* ── PRIVACY MODAL ── */
+  #privacy-modal {
+    display:none; position:fixed; inset:0; z-index:9000;
+    background:rgba(13,17,23,0.88);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  #privacy-modal.open { display:flex; }
+  .privacy-modal-inner {
+    background:var(--cream); border-radius:20px;
+    max-width:680px; width:100%; max-height:80vh; overflow-y:auto;
+    padding:48px; position:relative;
+    animation:fadeUp 0.3s ease both;
+  }
+  .privacy-modal-close {
+    position:absolute; top:20px; right:20px;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.08); border:none; cursor:pointer;
+    font-size:18px; color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    transition:background 0.2s;
+  }
+  .privacy-modal-close:hover { background:rgba(0,0,0,0.15); }
+  .privacy-modal-inner h2 {
+    font-family:'Playfair Display',serif; font-size:28px; font-weight:900;
+    color:var(--ink); margin-bottom:8px;
+  }
+  .privacy-modal-inner .privacy-date { font-size:12px; color:var(--ink-soft); margin-bottom:32px; }
+  .privacy-modal-inner h3 { font-size:15px; font-weight:700; color:var(--ink); margin:24px 0 8px; }
+  .privacy-modal-inner p { font-size:14px; line-height:1.75; color:var(--ink-soft); margin-bottom:12px; }
+</style>
+</head>
+<body>
+
+<!-- ── INTRO OVERLAY ── -->
+<div id="intro-overlay" aria-hidden="true">
+  <div class="intro-logo-mark">E</div>
+  <div class="intro-wordmark">Equiprovet</div>
+  <div class="intro-tagline">The Equine Orthopaedic Specialist</div>
+</div>
+
+<!-- Preview notice -->
+<div class="preview-notice">
+  🎨 WEBSITE PREVIEW — Conceptversie voor Equiprovet B.V. | Maart 2026 | Niet voor publicatie
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">E</div>
+    <div>
+      <div class="nav-logo-text">Equiprovet</div>
+      <div class="nav-logo-sub">Equine Specialist</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#products">Producten</a>
+    <a href="#science">Wetenschap</a>
+    <a href="#alpha2eq">Alpha2EQ</a>
+    <a href="#comparison">Vs. concurrentie</a>
+    <a href="#ervaringen">Ervaringen</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <span class="nav-tel">+31 (0)74 — — — —</span>
+    <a href="#contact" class="nav-cta">Inloggen / Bestellen</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-overlay"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span>Exclusief voor dierenartsen</span>
+    </div>
+    <h1 class="hero-title">
+      De <em>orthopaedische</em><br>
+      specialist voor<br>
+      <span class="line-teal">equine vets</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>500+ moeilijk verkrijgbare specialiteiten</strong> altijd op voorraad.
+      Gepatenteerde gestabiliseerde hyaluronzuur-technologie.
+      Alpha2EQ regeneratieve therapie. 40 jaar expertise.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Bekijk ons assortiment →</a>
+      <a href="#contact" class="btn-secondary">Registreer als dierenarts</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" data-target="500">500<span>+</span></div>
+        <div class="stat-label">Unieke producten</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="40">40<span>+</span></div>
+        <div class="stat-label">Jaar expertise</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">EU<span>+</span></div>
+        <div class="stat-label">Mondiale levering</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-showcase">
+      <!-- Floating card 1 -->
+      <div class="floating-card card-1">
+        <div class="fc-label">Patent Mapatruto</div>
+        <div class="fc-val">HA<span>³</span></div>
+        <div class="fc-sub">Gestabiliseerd · Uniek in wereld</div>
+      </div>
+
+      <!-- Main showcase card -->
+      <div class="showcase-card">
+        <div class="showcase-tag">⭐ Uitgelicht product</div>
+        <div class="showcase-product-name">Alpha2EQ</div>
+        <div class="showcase-product-sub">Autologe Alpha-2 Macroglobuline Therapie</div>
+        <div class="showcase-divider"></div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Werkzame stof</span>
+          <span class="showcase-detail-val">α2-Macroglobulin</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Werking</span>
+          <span class="showcase-detail-val">Remt alle 4 proteaseklassen</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Duur</span>
+          <span class="showcase-detail-val">6–12 maanden</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Invriesbaar</span>
+          <span class="showcase-detail-val">Tot 12 maanden</span>
+        </div>
+        <div class="showcase-badge-row">
+          <span class="showcase-badge">Steroidvrij</span>
+          <span class="showcase-badge">FEI-veilig</span>
+          <span class="showcase-badge teal">Patented proces</span>
+          <span class="showcase-badge teal">Drachtige merries</span>
+        </div>
+      </div>
+
+      <!-- Floating card 2 -->
+      <div class="floating-card card-2">
+        <div class="fc-label">Beschikbaar via</div>
+        <div class="fc-val" style="font-size:16px;color:#fff;">Equiprovet</div>
+        <div class="fc-sub">EU distributeur</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="icon">🧬</span>Gepatenteerde Mapatruto HA-technologie</div>
+    <div class="trust-item"><span class="icon">🌍</span>Leverancier aan vets wereldwijd</div>
+    <div class="trust-item"><span class="icon">🏛️</span>Samenwerking Europese universiteiten</div>
+    <div class="trust-item"><span class="icon">⚡</span>Altijd op voorraad</div>
+    <div class="trust-item"><span class="icon">🔒</span>Exclusief voor geregistreerde dierenartsen</div>
+    <div class="trust-item"><span class="icon">🏆</span>40+ jaar equine expertise</div>
+    <div class="trust-item"><span class="icon">🧬</span>Gepatenteerde Mapatruto HA-technologie</div>
+    <div class="trust-item"><span class="icon">🌍</span>Leverancier aan vets wereldwijd</div>
+    <div class="trust-item"><span class="icon">🏛️</span>Samenwerking Europese universiteiten</div>
+    <div class="trust-item"><span class="icon">⚡</span>Altijd op voorraad</div>
+    <div class="trust-item"><span class="icon">🔒</span>Exclusief voor geregistreerde dierenartsen</div>
+    <div class="trust-item"><span class="icon">🏆</span>40+ jaar equine expertise</div>
+  </div>
+</div>
+
+<!-- ── PRODUCTS ── -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Ons assortiment</div>
+      <h2 class="section-title">Producten die anderen<br><em>niet kunnen leveren</em></h2>
+      <p class="section-desc">Van gepatenteerde hyaluronzuur-formuleringen tot geavanceerde orthobiologics — Equiprovet biedt wat je nergens anders vindt.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Card 1: Alpha2EQ -->
+      <div class="product-card">
+        <div class="product-card-top teal-card">
+          <div class="product-card-glow"></div>
+          <div class="pc-category teal-variant">Regeneratieve therapie</div>
+          <div class="pc-name">Alpha2EQ</div>
+          <div class="pc-molecule">Alpha-2 Macroglobulin (α2M)</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Autologe therapie die α2M concentreert uit het eigen bloed van het paard. Remt alle vier proteaseklassen die kraakbeen afbreken. Resultaat zichtbaar binnen dagen.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Steroidvrij</span>
+            <span class="pc-tag highlight">6–12 mnd werking</span>
+            <span class="pc-tag">Osteoartritis</span>
+            <span class="pc-tag">Peesbeschadiging</span>
+          </div>
+          <div class="pc-cta">
+            <a href="#contact" class="pc-cta-link">Meer informatie</a>
+            <span class="pc-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Gestabiliseerd HA -->
+      <div class="product-card">
+        <div class="product-card-top gold-card">
+          <div class="product-card-glow"></div>
+          <div class="pc-category">Mapatruto Patent</div>
+          <div class="pc-name">Gestabiliseerd HA</div>
+          <div class="pc-molecule">DVS Cross-linked Sodium Hyaluronate</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Uniek ter wereld. Gestabiliseerde hyaluronzuur met superieure verblijftijd in gewricht, hoger molecuulgewicht en bewezen betere klinische uitkomsten.</p>
+          <div class="pc-tags">
+            <span class="pc-tag" style="background:#FFF8E8;color:#8B6914;">Mapatruto Patent</span>
+            <span class="pc-tag">Lineair &amp; cross-linked</span>
+            <span class="pc-tag">Intra-articulair</span>
+          </div>
+          <div class="pc-cta">
+            <a href="#science" class="pc-cta-link">Lees de wetenschap</a>
+            <span class="pc-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Noltrex Vet -->
+      <div class="product-card">
+        <div class="product-card-top">
+          <div class="product-card-glow" style="opacity:0.15;"></div>
+          <div class="pc-category">3D Gewrichtsgel</div>
+          <div class="pc-name">Noltrex Vet</div>
+          <div class="pc-molecule">Polyacrylamide 4% — 3-dimensional</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Permanente 3D-matrix die het gewricht mechanisch ondersteunt. Alternatief voor Arthramid. Moeilijk verkrijgbaar — wij hebben het altijd op voorraad.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Permanent</span>
+            <span class="pc-tag">Arthramid-alternatief</span>
+            <span class="pc-tag">Op voorraad</span>
+          </div>
+          <div class="pc-cta">
+            <a href="#contact" class="pc-cta-link">Bestellen</a>
+            <span class="pc-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Bisfosfonaten -->
+      <div class="product-card">
+        <div class="product-card-top teal-card">
+          <div class="product-card-glow"></div>
+          <div class="pc-category teal-variant">Bisfosfonaten</div>
+          <div class="pc-name">Tildren + Osphos</div>
+          <div class="pc-molecule">Tiludronate · Clodronate Acid</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Beide bisfosfonaten beschikbaar. Tildren (tiludronaat 5mg/ml) en Osphos (clodronaat 51mg/ml) voor navicular en degeneratieve gewrichtsaandoeningen.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Navicular</span>
+            <span class="pc-tag">Beide op voorraad</span>
+            <span class="pc-tag">I.V. protocol</span>
+          </div>
+          <div class="pc-cta">
+            <a href="#contact" class="pc-cta-link">Meer informatie</a>
+            <span class="pc-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Pentosan -->
+      <div class="product-card">
+        <div class="product-card-top">
+          <div class="product-card-glow" style="opacity:0.12;"></div>
+          <div class="pc-category">DMOAD / SMOAD</div>
+          <div class="pc-name">Pentosan Evolution</div>
+          <div class="pc-molecule">Pentosan Polysulfate + Glucosamine + HA</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Drievoudige combinatie: pentosan polysulfaat, acetylglucosamine en natriumhyaluronaat in één preparaat. Ziektemodulerend én symptoomverbeterend.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Combinatiepreparaat</span>
+            <span class="pc-tag">DMOAD + SMOAD</span>
+            <span class="pc-tag">I.M. injectie</span>
+          </div>
+          <div class="pc-cta">
+            <a href="#contact" class="pc-cta-link">Bestellen</a>
+            <span class="pc-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Grondstoffen / Custom -->
+      <div class="product-card" style="background:var(--ink);">
+        <div class="product-card-top" style="background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.07);">
+          <div class="pc-category" style="color:var(--gold-light);">Moeilijk verkrijgbaar</div>
+          <div class="pc-name" style="color:#fff;">500+ Specialiteiten</div>
+          <div class="pc-molecule" style="color:rgba(255,255,255,0.35);">Snake venom · Grondstoffen · Exotisch</div>
+        </div>
+        <div class="product-card-body" style="background:transparent;">
+          <p class="pc-indication" style="color:rgba(255,255,255,0.55);">Van snake venom pijnmanagement tot pure actieve bestanddelen als grondstoffen. Als het nergens verkrijgbaar is, vraag het ons.</p>
+          <div class="pc-tags">
+            <span class="pc-tag" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);">Mokassin Forte</span>
+            <span class="pc-tag" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);">Naja Mite</span>
+            <span class="pc-tag" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);">Zoledronic Acid</span>
+          </div>
+          <div class="pc-cta" style="border-top-color:rgba(255,255,255,0.07);">
+            <a href="#contact" class="pc-cta-link" style="color:var(--gold-light);">Stel een vraag</a>
+            <span class="pc-arrow" style="color:var(--gold-light);">→</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SCIENCE SECTION ── -->
+<section class="science-section" id="science">
+  <div class="container">
+    <div class="science-grid">
+      <div class="reveal reveal-left">
+        <div class="section-label science-label">Wetenschappelijke basis</div>
+        <h2 class="science-title">Hyaluronzuur:<br><em>niet alle HA is</em><br>gelijk</h2>
+        <p class="science-desc">Equiprovet biedt als enige in de wereld gestabiliseerde HA-formuleringen op basis van het Mapatruto-patent — met bewezen superieure verblijftijd en mechanische eigenschappen.</p>
+
+        <div class="science-features">
+          <div class="science-feat">
+            <span class="sf-icon">🔬</span>
+            <div>
+              <div class="sf-title">Lineair HA</div>
+              <div class="sf-desc">Snel afgebroken door hyaluronidases. Verblijftijd 24 uur in huid, enkele weken in kraakbeen. Geschikt voor wondverzorging en oogheelkunde.</div>
+            </div>
+          </div>
+          <div class="science-feat">
+            <span class="sf-icon">🧪</span>
+            <div>
+              <div class="sf-title">Cross-linked HA</div>
+              <div class="sf-desc">Minder gevoelig voor enzymatische afbraak. Verblijftijd maanden tot jaren. Superieure mechanische eigenschappen voor intra-articulaire toepassingen.</div>
+            </div>
+          </div>
+          <div class="science-feat" style="border-color:rgba(184,146,74,0.25);background:rgba(184,146,74,0.05);">
+            <span class="sf-icon">⭐</span>
+            <div>
+              <div class="sf-title" style="color:var(--gold-light);">Gestabiliseerd HA (Mapatruto Patent)</div>
+              <div class="sf-desc" style="color:rgba(255,255,255,0.6);">DVS cross-linking met uniek molecuulgewicht. Bewezen in humane artritis én equine gewrichtstherapie. Uitsluitend via Equiprovet verkrijgbaar.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary" style="background:var(--gold);color:var(--ink);">Download wetenschappelijk artikel →</a>
+      </div>
+
+      <!-- HA Comparison Visual -->
+      <div class="ha-comparison reveal reveal-right">
+        <div class="hac-title">⚗️ Vergelijking HA-formuleringen</div>
+
+        <div class="hac-row">
+          <div class="hac-label">Lineair HA <span>24u–weken</span></div>
+          <div class="hac-bar-bg"><div class="hac-bar-fill linear"></div></div>
+        </div>
+        <div class="hac-row">
+          <div class="hac-label">Cross-linked HA <span>maanden</span></div>
+          <div class="hac-bar-bg"><div class="hac-bar-fill crosslink"></div></div>
+        </div>
+        <div class="hac-row">
+          <div class="hac-label" style="color:var(--gold-light);">Gestabiliseerd HA (Mapatruto) <span style="color:var(--gold);">maanden–jaren</span></div>
+          <div class="hac-bar-bg"><div class="hac-bar-fill stabilised"></div></div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <div class="hac-row" style="margin-top:20px;">
+            <div class="hac-label">Enzymatische resistentie</div>
+            <div class="hac-bar-bg"><div class="hac-bar-fill stabilised"></div></div>
+          </div>
+          <div class="hac-row">
+            <div class="hac-label">Mechanische sterkte</div>
+            <div class="hac-bar-bg"><div class="hac-bar-fill stabilised" style="width:95%;"></div></div>
+          </div>
+          <div class="hac-row">
+            <div class="hac-label">Injectabiliteit</div>
+            <div class="hac-bar-bg"><div class="hac-bar-fill crosslink" style="width:85%;"></div></div>
+          </div>
+        </div>
+
+        <div class="hac-verdict">
+          <strong>Conclusie:</strong> Gestabiliseerd HA combineert de voordelen van cross-linking met verbeterde enzymatische resistentie. Mapatruto's DVS-technologie is <strong>uniek ter wereld</strong> — uitsluitend leverbaar via Equiprovet.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALPHA2EQ SPOTLIGHT ── -->
+<section class="spotlight-section" id="alpha2eq">
+  <div class="container">
+    <div class="spotlight-inner">
+      <div class="spotlight-glow"></div>
+      <div class="reveal reveal-left" style="position:relative;">
+        <div class="section-label spotlight-label">Regeneratieve geneeskunde</div>
+        <h2 class="spotlight-title">Alpha2EQ — het alternatief<br>voor steroïden</h2>
+        <p class="spotlight-sub">Alpha-2 Macroglobuline (α2M) is een groot eiwit dat van nature in synoviaalvloeistof aanwezig is. Het remt via een "val-mechanisme" alle 4 klassen van proteases die gewrichtskraakbeen afbreken bij artritis. Alpha2EQ concentreert dit eiwit uit het eigen bloed van het paard en injecteert het direct in het aangedane gewricht.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;">
+          <span class="showcase-badge">Osteoartritis</span>
+          <span class="showcase-badge">Synovitis</span>
+          <span class="showcase-badge">Bursitis</span>
+          <span class="showcase-badge">Peesbeschadiging</span>
+          <span class="showcase-badge teal">SI-gewricht</span>
+          <span class="showcase-badge teal">Cervicale facetten</span>
+          <span class="showcase-badge teal">Hoefgewricht</span>
+        </div>
+        <a href="#contact" class="btn-primary">Vraag een demo-kit aan →</a>
+      </div>
+
+      <div class="spotlight-vs reveal reveal-right" style="position:relative;">
+        <div class="vs-header">
+          <span>Eigenschap</span>
+          <span style="color:var(--teal-light);">Alpha2EQ</span>
+          <span>Pro-Stride APS</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Werkzame stof</span>
+          <span class="vs-ours">α2M (uniek)</span>
+          <span class="vs-theirs">IL-1ra + PRP</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Protease-remming</span>
+          <span class="vs-ours">Alle 4 klassen</span>
+          <span class="vs-theirs">Indirect</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Invriesbaar</span>
+          <span class="vs-ours">✓ Tot 12 mnd</span>
+          <span class="vs-theirs">✗</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Drachtige merries</span>
+          <span class="vs-ours">✓ Veilig</span>
+          <span class="vs-theirs">Voorzichtigheid</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">PPID / insuline</span>
+          <span class="vs-ours">✓ Veilig</span>
+          <span class="vs-theirs">Niet aanbevolen</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Werking zichtbaar</span>
+          <span class="vs-ours">Binnen dagen</span>
+          <span class="vs-theirs">1–2 weken</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Patented proces</span>
+          <span class="vs-ours">✓ AlphaActive</span>
+          <span class="vs-theirs">Owl Manor / Zoetis</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-label">Beschikbaarheid EU</span>
+          <span class="vs-ours" style="color:var(--gold-light);">Equiprovet</span>
+          <span class="vs-theirs">Grovet exclusief</span>
+        </div>
+        <div style="margin-top:20px;padding:14px;background:rgba(14,95,110,0.2);border:1px solid rgba(26,139,160,0.25);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">
+          <strong style="color:var(--teal-light);">Let op:</strong> Alpha2EQ en Pro-Stride zijn beiden orthobiologics op basis van eigen bloed maar gebruiken fundamenteel verschillende werkzame eiwitten. Klinische keuze hangt af van indicatie.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── USP SECTION ── -->
+<section class="usp-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:60px;">
+      <div class="section-label" style="justify-content:center;">Waarom Equiprovet</div>
+      <h2 class="section-title" style="text-align:center;">Drie dingen die<br>niemand anders heeft</h2>
+    </div>
+    <div class="usp-grid reveal-group">
+      <div class="usp-item">
+        <div class="usp-num">01</div>
+        <span class="usp-icon">🧬</span>
+        <div class="usp-title">Eigen patenten via Mapatruto</div>
+        <p class="usp-desc">Gestabiliseerde hyaluronzuur-formuleringen co-ontwikkeld door Mapatruto Holding B.V. Uniek ter wereld qua molecuulgewicht, efficiëntie en prijs-kwaliteit. Dit kan geen concurrent kopiëren.</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">02</div>
+        <span class="usp-icon">📦</span>
+        <div class="usp-title">500+ moeilijk verkrijgbare producten</div>
+        <p class="usp-desc">Snake venom analgetica, polyacrylamide gewrichtsgels, bisfosfonaten, grondstoffen op aanvraag. Als je ons het stelt dat het nergens te vinden is — vraag het ons. We vinden het.</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-num">03</div>
+        <span class="usp-icon">🏛️</span>
+        <div class="usp-title">Universitaire R&D-samenwerking</div>
+        <p class="usp-desc">Equiprovet werkt intensief samen met toonaangevende Europese universiteiten en instituten. Ons advies is bewijs-gebaseerd, ons assortiment is wetenschappelijk onderbouwd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="ervaringen">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label" style="justify-content:center;">Ervaringen</div>
+      <h2 class="section-title" style="color:#fff;text-align:center;">Wat dierenartsen<br><em style="color:var(--gold);">zeggen</em></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);margin:16px auto 0;text-align:center;max-width:520px;">Equiprovet wordt vertrouwd door equine dierenartsen van Utrecht tot Warschau.</p>
+    </div>
+    <div class="testimonials-grid reveal-group">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Alpha2EQ heeft mijn behandelpraktijk fundamenteel veranderd. Bij paarden met chronische osteoartritis die niet meer reageerden op corticosteroïden, zie ik nu consistent verbetering binnen drie tot vijf dagen. De mogelijkheid om het materiaal in te vriezen maakt logistieke planning ook veel eenvoudiger.</p>
+        <div class="testimonial-author">
+          <div class="ta-name">Dr. Mariëlle van Dijk</div>
+          <div class="ta-role">Equine internist, Universiteitskliniek voor Gezelschapsdieren</div>
+          <div class="ta-location">Utrecht, Nederland</div>
+          <span class="ta-product">Alpha2EQ</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">De gestabiliseerde hyaluronzuur-formuleringen van Equiprovet zijn in mijn handen duidelijk superieur aan de lineaire producten die ik eerder gebruikte. Minder herbehandelingen, langere werkingsduur en een beter klinisch beeld bij follow-up. Ik bestel inmiddels niets anders meer voor intra-articulaire injecties.</p>
+        <div class="testimonial-author">
+          <div class="ta-name">Dr. Tomasz Wiśniewski</div>
+          <div class="ta-role">Equine chirurg, Privékliniek voor Paardenziekten</div>
+          <div class="ta-location">Warschau, Polen</div>
+          <span class="ta-product">Gestabiliseerd HA (Mapatruto)</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Wat Equiprovet onderscheidt is de combinatie van beschikbaarheid en kennis. Noltrex Vet is bij andere leveranciers chronisch uitverkocht — bij Equiprovet staat het altijd op voorraad. Bovendien krijg ik bij vragen inhoudelijk advies van iemand die de farmacologie werkelijk begrijpt.</p>
+        <div class="testimonial-author">
+          <div class="ta-name">Dr. Sophie Braun</div>
+          <div class="ta-role">Equine practitioner, Pferdepraxis am Niederrhein</div>
+          <div class="ta-location">Krefeld, Duitsland</div>
+          <span class="ta-product">Noltrex Vet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARISON TABLE ── -->
+<section class="comparison-section" id="comparison">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div class="section-label" style="justify-content:center;">Marktpositie</div>
+      <h2 class="section-title" style="text-align:center;">Equiprovet vs.<br><em>de markt</em></h2>
+    </div>
+    <div class="comparison-table">
+      <div class="ct-header">
+        <div class="ct-header-cell">Eigenschap</div>
+        <div class="ct-header-cell highlight" style="background:var(--teal);">Equiprovet ←</div>
+        <div class="ct-header-cell" style="color:rgba(255,255,255,0.4);">Andere distributeurs</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Eigen gepatenteerde producten</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Mapatruto HA-patent</div>
+        <div class="ct-cell theirs"><span class="cross">✗</span> &nbsp;Uitsluitend derden</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Moeilijk vindbare specialiteiten</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;500+ op voorraad</div>
+        <div class="ct-cell theirs"><span class="partial">~</span> &nbsp;Beperkt assortiment</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Alpha2EQ regeneratieve therapie</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;EU distributeur</div>
+        <div class="ct-cell theirs"><span class="cross">✗</span> &nbsp;Niet beschikbaar</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Wetenschappelijk onderbouwd advies</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Universiteitspartners</div>
+        <div class="ct-cell theirs"><span class="partial">~</span> &nbsp;Commercieel gefocust</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Grondstoffen op aanvraag</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Breed portfolio</div>
+        <div class="ct-cell theirs"><span class="cross">✗</span> &nbsp;Niet aangeboden</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Noltrex Vet / Polyacrylamide gel</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Altijd op voorraad</div>
+        <div class="ct-cell theirs"><span class="partial">~</span> &nbsp;Onregelmatig</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">Onafhankelijk van externe contracten</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Eigen IP structureel</div>
+        <div class="ct-cell theirs"><span class="cross">✗</span> &nbsp;Contractafhankelijk</div>
+      </div>
+      <div class="ct-row reveal">
+        <div class="ct-cell feature">40+ jaar equine expertise</div>
+        <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Gecombineerd team</div>
+        <div class="ct-cell theirs"><span class="partial">~</span> &nbsp;Variabel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label" style="justify-content:center;">Veelgestelde vragen</div>
+      <h2 class="section-title" style="text-align:center;">Alles wat u wilt<br><em>weten</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Mag ik als dierenarts producten bestellen via Equiprovet?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Ja. Equiprovet levert uitsluitend aan geregistreerde dierenartsen en erkende veterinaire apotheken. Na het invullen van het registratieformulier verificeert ons team uw BIG- of equivalent registratienummer doorgaans binnen één werkdag. Na goedkeuring heeft u direct toegang tot het volledige assortiment en onze prijslijst.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Wat is het verschil tussen lineair, cross-linked en gestabiliseerd hyaluronzuur?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Lineair HA wordt snel afgebroken door hyaluronidases en heeft een verblijftijd van 24 uur tot enkele weken. Cross-linked HA is enzymatisch resistenter en blijft maanden tot jaren actief. Gestabiliseerd HA (Mapatruto-patent) combineert DVS cross-linking met een uniek hoog molecuulgewicht — superieure enzymatische resistentie en bewezen langere werkingsduur bij intra-articulaire toepassingen bij paarden.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Hoe werkt Alpha2EQ en voor welke indicaties is het geschikt?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Alpha2EQ concentreert Alpha-2 Macroglobuline (α2M) uit het eigen bloed van het paard via een gepatenteerd proces (AlphaActive). Het eiwit remt via een "val-mechanisme" alle vier klassen van proteases die gewrichtskraakbeen afbreken bij artritis. Geschikt voor osteoartritis, synovitis, bursitis, peesbeschadiging, SI-gewricht, cervicale facetten en het hoefgewricht. Steroidvrij, FEI-veilig en geschikt voor drachtige merries en paarden met PPID.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Kan ik een product aanvragen dat niet in uw standaard assortiment staat?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Absoluut. Equiprovet heeft 40 jaar ervaring in het lokaliseren van moeilijk verkrijgbare veterinaire specialiteiten. Ons portfolio van 500+ producten omvat onder meer snake venom-analgetica, pure actieve grondstoffen en zeldzame farmaceutische preparaten. Neem contact op — als het ergens in Europa leverbaar is, vinden wij het.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Levert Equiprovet ook buiten Nederland?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Ja. Equiprovet is actief EU-distributeur voor diverse producten en levert aan dierenartsen en veterinaire apotheken in heel Europa en daarbuiten. Afhankelijk van het product en het bestemmingsland kunnen importregels van toepassing zijn. Ons team adviseert u hierover vóór de bestelling zodat er geen vertragingen optreden.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Hoe worden producten opgeslagen en verzonden?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Alle producten worden opgeslagen onder de door de fabrikant voorgeschreven condities. Koudeketen-producten worden verzonden in gecertificeerde koelboxen met temperatuurloggers. Alpha2EQ is invriesbaar tot 12 maanden en wordt verzonden als gevroren product met droog-ijs. Voor urgente bestellingen bieden wij express-levering aan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal reveal-left">
+        <div class="section-label" style="color:rgba(255,255,255,0.6);">Contact & Registratie</div>
+        <h2 class="contact-title">Registreer als<br>dierenarts</h2>
+        <p class="contact-desc">Equiprovet levert uitsluitend aan geregistreerde dierenartsen en veterinaire apotheken. Na verificatie krijgt u direct toegang tot ons volledige assortiment en prijslijst.</p>
+
+        <div class="contact-info-row">
+          <span class="ci-icon">📍</span>
+          <div>
+            <div class="ci-label">Adres</div>
+            <div class="ci-val">Jan Tinbergenstraat 138, 7559 SP Hengelo</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <span class="ci-icon">📞</span>
+          <div>
+            <div class="ci-label">Telefoon</div>
+            <div class="ci-val">+31 (0)74 — — — —</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <span class="ci-icon">✉️</span>
+          <div>
+            <div class="ci-label">E-mail</div>
+            <div class="ci-val">info@equiprovet.com</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <span class="ci-icon">🕐</span>
+          <div>
+            <div class="ci-label">Openingstijden</div>
+            <div class="ci-val">Ma–Vr, 08:30–17:30</div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding:20px;background:rgba(255,255,255,0.07);border-radius:12px;border:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px;">Na registratie ontvangt u:</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.8;">
+            ✓ Toegang tot volledige prijslijst<br>
+            ✓ Direct online bestellen<br>
+            ✓ Persoonlijk advies van ons team<br>
+            ✓ Kwantumkortingen en aanbiedingen
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal reveal-right">
+        <div class="form-title">Registratieformulier</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Voornaam</label>
+            <input type="text" placeholder="Dr. Anna">
+          </div>
+          <div class="form-group">
+            <label>Achternaam</label>
+            <input type="text" placeholder="van der Berg">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Praktijknaam</label>
+          <input type="text" placeholder="Equine Kliniek Nederland">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Land</label>
+            <select>
+              <option>Nederland</option>
+              <option>België</option>
+              <option>Duitsland</option>
+              <option>Verenigd Koninkrijk</option>
+              <option>Polen</option>
+              <option>Anders</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>BIG / Vet registratienr.</label>
+            <input type="text" placeholder="NL-DI-XXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="anna@equinekliniek.nl">
+        </div>
+        <div class="form-group">
+          <label>Interesse in (optioneel)</label>
+          <select>
+            <option>Volledig assortiment</option>
+            <option>Alpha2EQ</option>
+            <option>Hyaluronzuur producten</option>
+            <option>Noltrex Vet / Polyacrylamide</option>
+            <option>Bisfosfonaten</option>
+            <option>Moeilijk verkrijgbare producten</option>
+          </select>
+        </div>
+        <button class="form-submit">Registreer als dierenarts →</button>
+        <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;text-align:center;line-height:1.6;">Uw registratie wordt binnen 1 werkdag geverifieerd. Uitsluitend voor dierenartsen en veterinaire apotheken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid reveal-group">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#B8924A,#D4B06A);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px;color:#0D1117;">E</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;">Equiprovet</div>
+            <div style="font-size:10px;color:#B8924A;letter-spacing:0.15em;text-transform:uppercase;">Equine Specialist</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Veterinaire farmaceutische groothandel gespecialiseerd in equine orthopedische producten. Uitsluitend voor dierenartsen en veterinaire apotheken.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Producten</div>
+        <ul class="footer-links">
+          <li><a href="#alpha2eq">Alpha2EQ</a></li>
+          <li><a href="#science">Hyaluronzuur</a></li>
+          <li><a href="#products">Noltrex Vet</a></li>
+          <li><a href="#products">Bisfosfonaten</a></li>
+          <li><a href="#products">Alle producten A-Z</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kennis</div>
+        <ul class="footer-links">
+          <li><a href="#science">HA wetenschap</a></li>
+          <li><a href="#alpha2eq">Orthobiologics</a></li>
+          <li><a href="#contact">Protocollen</a></li>
+          <li><a href="#contact">Casusoverzicht</a></li>
+          <li><a href="#contact">Congressen</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Bedrijf</div>
+        <ul class="footer-links">
+          <li><a href="#contact">Over ons</a></li>
+          <li><a href="#science">Mapatruto R&D</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Registratie</a></li>
+          <li><a href="#" onclick="openPrivacy(); return false;">Privacybeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom reveal">
+      <div class="footer-copyright">© 2026 Equiprovet B.V. — Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland</div>
+      <div class="footer-vet-only">🔒 Exclusief voor dierenartsen</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── PRIVACY MODAL ── -->
+<div id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacybeleid">
+  <div class="privacy-modal-inner">
+    <button class="privacy-modal-close" onclick="closePrivacy()" aria-label="Sluiten">✕</button>
+    <h2>Privacybeleid</h2>
+    <p class="privacy-date">Versie 1.0 — maart 2026</p>
+    <h3>1. Verwerkingsverantwoordelijke</h3>
+    <p>Equiprovet B.V., Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland. E-mail: info@equiprovet.com</p>
+    <h3>2. Welke gegevens verzamelen wij?</h3>
+    <p>Wij verwerken persoonsgegevens die u zelf invult via het registratieformulier: naam, praktijknaam, e-mailadres, land en veterinair registratienummer. Daarnaast verzamelen wij anonieme bezoekersstatistieken via analytische cookies (alleen na uw toestemming).</p>
+    <h3>3. Doel van verwerking</h3>
+    <p>Uw gegevens worden gebruikt voor verificatie van uw veterinaire registratie, het aanmaken van een klantaccount en het versturen van productinformatie en prijslijsten die u heeft aangevraagd. Wij verkopen uw gegevens niet aan derden.</p>
+    <h3>4. Rechtsgrondslag</h3>
+    <p>Verwerking vindt plaats op basis van uw toestemming (art. 6 lid 1 sub a AVG) en op basis van uitvoering van een overeenkomst (art. 6 lid 1 sub b AVG).</p>
+    <h3>5. Bewaartermijn</h3>
+    <p>Uw gegevens worden bewaard zolang u klant bent of tot u een verwijderverzoek indient. Minimaal wettelijk vereiste termijnen worden in acht genomen.</p>
+    <h3>6. Uw rechten</h3>
+    <p>U heeft recht op inzage, rectificatie, gegevenswissing en overdraagbaarheid van uw persoonsgegevens. U kunt uw rechten uitoefenen door een e-mail te sturen naar info@equiprovet.com. U heeft ook het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens.</p>
+    <h3>7. Cookies</h3>
+    <p>Equiprovet gebruikt uitsluitend functioneel noodzakelijke cookies en, na uw expliciete toestemming, analytische cookies voor het verbeteren van de website. U kunt uw toestemming te allen tijde intrekken via de cookiebanner.</p>
+  </div>
+</div>
+
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p class="cookie-text">
+    Equiprovet gebruikt functionele en analytische cookies om de website te verbeteren.
+    Lees ons <a onclick="openPrivacy()">privacybeleid</a> voor meer informatie.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="handleCookie('declined')">Alleen noodzakelijk</button>
+    <button class="cookie-btn accept" onclick="handleCookie('accepted')">Akkoord</button>
+  </div>
+</div>
+
+<script>
+// Animate bar fills on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.hac-bar-fill').forEach(bar => {
+        bar.style.transition = 'width 1.4s cubic-bezier(0.25,0.46,0.45,0.94)';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.ha-comparison').forEach(el => observer.observe(el));
+
+// Smooth nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute('href') === '#' + current
+      ? '#fff' : 'rgba(255,255,255,0.75)';
+  });
+});
+
+// Stagger product cards
+const cards = document.querySelectorAll('.product-card');
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+cards.forEach(card => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.35s ease';
+  cardObserver.observe(card);
+});
+
+// ── SCROLL REVEAL OBSERVER ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObserver.observe(el));
+
+// ── PARALLAX ──
+(function() {
+  const heroBgPattern   = document.querySelector('.hero-bg-pattern');
+  const heroGridOverlay = document.querySelector('.hero-grid-overlay');
+  const heroShowcase    = document.querySelector('.hero-showcase');
+  function onParallaxScroll() {
+    const y = window.scrollY;
+    if (y > window.innerHeight) return;
+    if (heroBgPattern)   heroBgPattern.style.transform   = 'translateY(' + (y * 0.35) + 'px)';
+    if (heroGridOverlay) heroGridOverlay.style.transform = 'translateY(' + (y * 0.15) + 'px)';
+    if (heroShowcase)    heroShowcase.style.transform    = 'translateY(' + (y * 0.1) + 'px)';
+  }
+  window.addEventListener('scroll', onParallaxScroll, { passive: true });
+})();
+
+// ── COUNTER ANIMATION ──
+function animateCounter(el, target, duration) {
+  const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+  let start = null;
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * target);
+    el.innerHTML = current + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      if (!isNaN(target)) animateCounter(el, target, 1800);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+
+// ── INTRO OVERLAY SAFETY FALLBACK ──
+window.addEventListener('load', () => {
+  const overlay = document.getElementById('intro-overlay');
+  if (overlay) setTimeout(() => { overlay.style.display = 'none'; }, 2600);
+});
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item   = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-answer').style.maxHeight = '0';
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// ── COOKIE CONSENT ──
+(function() {
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+  try {
+    if (!localStorage.getItem('cookie-consent')) {
+      setTimeout(() => banner.classList.add('visible'), 2900);
+    }
+  } catch(e) {
+    setTimeout(() => banner.classList.add('visible'), 2900);
+  }
+})();
+function handleCookie(decision) {
+  try { localStorage.setItem('cookie-consent', decision); } catch(e) {}
+  const banner = document.getElementById('cookie-banner');
+  if (banner) banner.classList.remove('visible');
+}
+
+// ── PRIVACY MODAL ──
+function openPrivacy() {
+  const modal = document.getElementById('privacy-modal');
+  if (modal) modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePrivacy() {
+  const modal = document.getElementById('privacy-modal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('privacy-modal');
+  if (modal && modal.classList.contains('open') && e.target === modal) closePrivacy();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePrivacy();
+});
+</script>
+</body>
+</html>

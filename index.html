@@ -3,8 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Equiprovet — The Equine Orthopaedic Specialist</title>
+<title>Equiprovet — The Equine Orthopaedic Specialist | Equine farmaceutica voor dierenartsen</title>
+
+<!-- ── SEO CORE ── -->
+<meta name="description" content="Equiprovet: exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica. Alpha2EQ regeneratieve therapie, gestabiliseerd hyaluronzuur (Mapatruto-patent) en 500+ veterinaire specialiteiten. Alleen voor geregistreerde dierenartsen.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="Equiprovet B.V.">
+<meta name="publisher" content="Equiprovet B.V.">
+<link rel="canonical" href="https://www.equiprovet.nl/">
+
+<!-- ── GEOGRAFISCH (local SEO) ── -->
+<meta name="geo.region" content="NL-OV">
+<meta name="geo.placename" content="Hengelo">
+<meta name="geo.position" content="52.2660;6.7943">
+<meta name="ICBM" content="52.2660, 6.7943">
+
+<!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp, AI-tools) ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.equiprovet.nl/">
+<meta property="og:title" content="Equiprovet — The Equine Orthopaedic Specialist">
+<meta property="og:description" content="Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica. Alpha2EQ regeneratieve therapie, gestabiliseerd HA en 500+ veterinaire specialiteiten. Alleen voor geregistreerde dierenartsen.">
+<meta property="og:image" content="https://www.equiprovet.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Equiprovet — The Equine Orthopaedic Specialist">
+<meta property="og:image:type" content="image/png">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Equiprovet">
+
+<!-- ── TWITTER / X CARDS ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@equiprovet">
+<meta name="twitter:title" content="Equiprovet — The Equine Orthopaedic Specialist">
+<meta name="twitter:description" content="Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica voor dierenartsen. Alpha2EQ, gestabiliseerd HA, 500+ specialiteiten.">
+<meta name="twitter:image" content="https://www.equiprovet.nl/og-image.png">
+<meta name="twitter:image:alt" content="Equiprovet — The Equine Orthopaedic Specialist">
+
+<!-- ── PWA & MOBILE ── -->
+<meta name="theme-color" content="#B8924A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Equiprovet">
+<link rel="manifest" href="/manifest.json">
+
+<!-- ── HREFLANG ── -->
+<!-- Opmerking: volledige hreflang per markt vereist vertaalde pagina's (DE, PL, GB, BE).
+     Nu: NL + x-default. Uitbreiden zodra vertalingen live zijn. -->
+<link rel="alternate" hreflang="nl" href="https://www.equiprovet.nl/">
+<link rel="alternate" hreflang="nl-NL" href="https://www.equiprovet.nl/">
+<link rel="alternate" hreflang="nl-BE" href="https://www.equiprovet.nl/">
+<link rel="alternate" hreflang="x-default" href="https://www.equiprovet.nl/">
+
+<!-- ── FAVICON ── -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- ── FONTS: PRECONNECT + PRELOAD ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ── RESET & BASE ── */
@@ -29,6 +87,19 @@
 
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+  /* ── TOEGANKELIJKHEID & PERFORMANCE ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    #intro-overlay { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .reveal-group > * { opacity: 1 !important; transform: none !important; }
+  }
 
   /* ── NAV ── */
   nav {
@@ -511,7 +582,8 @@
     background:var(--ink);
     display:flex; align-items:center; justify-content:center;
     flex-direction:column; gap:16px;
-    animation: overlayExit 0.7s 1.8s cubic-bezier(0.76,0,0.24,1) forwards;
+    /* LCP-geoptimaliseerd: overlay verdwijnt na 0.4s i.p.v. 2.6s */
+    animation: overlayExit 0.3s 0.1s cubic-bezier(0.76,0,0.24,1) forwards;
     pointer-events:none;
   }
   @keyframes overlayExit { to { opacity:0; visibility:hidden; } }
@@ -652,19 +724,427 @@
   .privacy-modal-inner h3 { font-size:15px; font-weight:700; color:var(--ink); margin:24px 0 8px; }
   .privacy-modal-inner p { font-size:14px; line-height:1.75; color:var(--ink-soft); margin-bottom:12px; }
 </style>
+
+<!-- ══════════════════════════════════════════════════════
+     STRUCTURED DATA (Schema.org JSON-LD)
+     Verbetering vindbaarheid: Google, AI-tools (ChatGPT,
+     Perplexity, Claude), voice search, rich results.
+     ══════════════════════════════════════════════════════ -->
+
+<!-- 1. WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.equiprovet.nl/#website",
+  "name": "Equiprovet",
+  "url": "https://www.equiprovet.nl/",
+  "description": "Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica voor geregistreerde dierenartsen.",
+  "inLanguage": "nl-NL",
+  "publisher": {
+    "@id": "https://www.equiprovet.nl/#organization"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.equiprovet.nl/#products"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- 2. Organization (entiteit voor AI Knowledge Graph) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.equiprovet.nl/#organization",
+  "name": "Equiprovet B.V.",
+  "alternateName": ["Equiprovet", "The Equine Orthopaedic Specialist"],
+  "url": "https://www.equiprovet.nl/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.equiprovet.nl/og-image.svg",
+    "width": 1200,
+    "height": 630
+  },
+  "image": "https://www.equiprovet.nl/og-image.svg",
+  "description": "Equiprovet B.V. is een exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica met 40 jaar expertise. Specialisten in moeilijk verkrijgbare veterinaire specialiteiten: gestabiliseerd hyaluronzuur (Mapatruto-patent), Alpha2EQ regeneratieve therapie en 500+ producten. Uitsluitend leverbaar aan geregistreerde dierenartsen en erkende veterinaire apotheken.",
+  "email": "info@equiprovet.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jan Tinbergenstraat 138",
+    "addressLocality": "Hengelo",
+    "postalCode": "7559 SP",
+    "addressRegion": "Overijssel",
+    "addressCountry": "NL"
+  },
+  "areaServed": [
+    {"@type": "Country", "name": "Nederland"},
+    {"@type": "Country", "name": "België"},
+    {"@type": "Country", "name": "Duitsland"},
+    {"@type": "Country", "name": "Polen"},
+    {"@type": "Country", "name": "Verenigd Koninkrijk"},
+    {"@type": "AdministrativeArea", "name": "Europese Unie"}
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@equiprovet.com",
+    "contactType": "customer service",
+    "availableLanguage": ["Dutch", "English", "German"],
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "17:30"
+    }
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/equiprovet"
+  ],
+  "knowsAbout": [
+    "Equine orthopaedics",
+    "Hyaluronic acid therapy",
+    "Alpha-2 macroglobulin therapy",
+    "Regenerative veterinary medicine",
+    "Veterinary pharmaceuticals",
+    "Equine joint disease",
+    "Osteoarthritis treatment in horses",
+    "Bisphosphonate therapy",
+    "Pentosan polysulfate"
+  ]
+}
+</script>
+
+<!-- 3. LocalBusiness / VeterinaryService -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "MedicalBusiness"],
+  "@id": "https://www.equiprovet.nl/#localbusiness",
+  "name": "Equiprovet B.V.",
+  "url": "https://www.equiprovet.nl/",
+  "email": "info@equiprovet.com",
+  "telephone": "+3174XXXXXXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jan Tinbergenstraat 138",
+    "addressLocality": "Hengelo",
+    "postalCode": "7559 SP",
+    "addressRegion": "Overijssel",
+    "addressCountry": "NL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.2660,
+    "longitude": 6.7943
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "17:30"
+    }
+  ],
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Invoice",
+  "image": "https://www.equiprovet.nl/og-image.svg",
+  "description": "Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica. Alpha2EQ, gestabiliseerd hyaluronzuur, Noltrex Vet en 500+ veterinaire specialiteiten voor geregistreerde dierenartsen.",
+  "parentOrganization": {
+    "@id": "https://www.equiprovet.nl/#organization"
+  }
+}
+</script>
+
+<!-- 4. FAQPage (cruciaal voor AI-citaties en rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Mag ik als dierenarts producten bestellen via Equiprovet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Equiprovet levert uitsluitend aan geregistreerde dierenartsen en erkende veterinaire apotheken. Na het invullen van het registratieformulier verificeert ons team uw BIG- of equivalent registratienummer doorgaans binnen één werkdag. Na goedkeuring heeft u direct toegang tot het volledige assortiment en onze prijslijst."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen lineair, cross-linked en gestabiliseerd hyaluronzuur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lineair HA wordt snel afgebroken door hyaluronidases en heeft een verblijftijd van 24 uur tot enkele weken. Cross-linked HA is enzymatisch resistenter en blijft maanden tot jaren actief. Gestabiliseerd HA (Mapatruto-patent) combineert DVS cross-linking met een uniek hoog molecuulgewicht — superieure enzymatische resistentie en bewezen langere werkingsduur bij intra-articulaire toepassingen bij paarden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe werkt Alpha2EQ en voor welke indicaties is het geschikt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alpha2EQ concentreert Alpha-2 Macroglobuline (α2M) uit het eigen bloed van het paard via een gepatenteerd proces (AlphaActive). Het eiwit remt via een 'val-mechanisme' alle vier klassen van proteases die gewrichtskraakbeen afbreken bij artritis. Geschikt voor osteoartritis, synovitis, bursitis, peesbeschadiging, SI-gewricht, cervicale facetten en het hoefgewricht. Steroidvrij, FEI-veilig en geschikt voor drachtige merries en paarden met PPID."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik een product aanvragen dat niet in uw standaard assortiment staat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absoluut. Equiprovet heeft 40 jaar ervaring in het lokaliseren van moeilijk verkrijgbare veterinaire specialiteiten. Ons portfolio van 500+ producten omvat onder meer snake venom-analgetica, pure actieve grondstoffen en zeldzame farmaceutische preparaten. Neem contact op — als het ergens in Europa leverbaar is, vinden wij het."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Levert Equiprovet ook buiten Nederland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Equiprovet is actief EU-distributeur voor diverse producten en levert aan dierenartsen en veterinaire apotheken in heel Europa en daarbuiten. Afhankelijk van het product en het bestemmingsland kunnen importregels van toepassing zijn. Ons team adviseert u hierover vóór de bestelling zodat er geen vertragingen optreden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe worden producten opgeslagen en verzonden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alle producten worden opgeslagen onder de door de fabrikant voorgeschreven condities. Koudeketen-producten worden verzonden in gecertificeerde koelboxen met temperatuurloggers. Alpha2EQ is invriesbaar tot 12 maanden en wordt verzonden als gevroren product met droog-ijs. Voor urgente bestellingen bieden wij express-levering aan."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 5. ItemList (producten — voor rich results en AI-productoverzicht) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Equine orthopaedische producten — Equiprovet",
+  "description": "Gespecialiseerde farmaceutische producten voor equine orthopaedische behandelingen, exclusief leverbaar aan geregistreerde dierenartsen.",
+  "url": "https://www.equiprovet.nl/#products",
+  "numberOfItems": 6,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Alpha2EQ",
+        "description": "Regeneratieve therapie op basis van Alpha-2 Macroglobuline (α2M) geconcentreerd uit het eigen bloed van het paard via het gepatenteerde AlphaActive-proces. Remt alle vier klassen van proteases die gewrichtskraakbeen afbreken. Steroidvrij, FEI-veilig, geschikt voor drachtige merries en paarden met PPID. Invriesbaar tot 12 maanden.",
+        "url": "https://www.equiprovet.nl/#alpha2eq",
+        "brand": {"@type": "Brand", "name": "Alpha2EQ"},
+        "category": "Veterinaire regeneratieve therapie",
+        "audience": {"@type": "Audience", "audienceType": "Geregistreerde dierenartsen"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Gestabiliseerd Hyaluronzuur (Mapatruto-patent)",
+        "description": "DVS cross-linked natriumhyaluronaat met uniek hoog molecuulgewicht. Superieure enzymatische resistentie ten opzichte van lineair en standaard cross-linked HA. Bewezen langere werkingsduur bij intra-articulaire toepassingen bij paarden. Exclusief via Mapatruto-patent.",
+        "url": "https://www.equiprovet.nl/#science",
+        "brand": {"@type": "Brand", "name": "Mapatruto"},
+        "category": "Veterinaire intra-articulaire therapie"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Noltrex Vet",
+        "description": "Cross-linked polyacrylamide hydrogel voor gewrichtstherapie bij paarden. Langdurige gewrichtsbescherming en pijnverlichting.",
+        "url": "https://www.equiprovet.nl/#products",
+        "category": "Veterinaire gewrichtstherapie"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Bisfosfonaten",
+        "description": "Botmodificerende middelen voor de behandeling van equine orthopaedische aandoeningen zoals navicular disease en andere botresorptie-gerelateerde condities.",
+        "url": "https://www.equiprovet.nl/#products",
+        "category": "Veterinaire botmodificerende therapie"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Product",
+        "name": "Pentosan Evolution",
+        "description": "Drievoudige combinatietherapie bestaande uit Pentosan polysulfaat, Glucosamine en Hyaluronzuur. Synergetische gewrichtsbescherming voor paarden.",
+        "url": "https://www.equiprovet.nl/#products",
+        "category": "Veterinaire combinatietherapie"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "name": "Veterinaire specialiteiten (500+)",
+        "description": "Portfolio van meer dan 500 moeilijk verkrijgbare veterinaire specialiteiten waaronder snake venom-analgetica, polyacrylamide gels, pure actieve grondstoffen en zeldzame farmaceutische preparaten voor equine toepassingen.",
+        "url": "https://www.equiprovet.nl/#products",
+        "category": "Veterinaire specialiteiten"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 6. AggregateRating + Reviews (testimonials — voor rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.equiprovet.nl/#organization-reviews",
+  "name": "Equiprovet B.V.",
+  "url": "https://www.equiprovet.nl/",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "3",
+    "reviewCount": "3"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "name": "Alpha2EQ heeft mijn behandelpraktijk fundamenteel veranderd",
+      "reviewBody": "Alpha2EQ heeft mijn behandelpraktijk fundamenteel veranderd. Bij paarden met chronische osteoartritis die niet meer reageerden op corticosteroïden, zie ik nu consistent verbetering binnen drie tot vijf dagen. De mogelijkheid om het materiaal in te vriezen maakt logistieke planning ook veel eenvoudiger.",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Mariëlle van Dijk",
+        "jobTitle": "Equine internist, Universiteitskliniek voor Gezelschapsdieren",
+        "address": {"@type": "PostalAddress", "addressLocality": "Utrecht", "addressCountry": "NL"}
+      },
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "Alpha2EQ",
+        "brand": {"@type": "Brand", "name": "Alpha2EQ"}
+      }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "name": "Gestabiliseerde hyaluronzuur superieur aan lineaire producten",
+      "reviewBody": "De gestabiliseerde hyaluronzuur-formuleringen van Equiprovet zijn in mijn handen duidelijk superieur aan de lineaire producten die ik eerder gebruikte. Minder herbehandelingen, langere werkingsduur en een beter klinisch beeld bij follow-up. Ik bestel inmiddels niets anders meer voor intra-articulaire injecties.",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Tomasz Wiśniewski",
+        "jobTitle": "Equine chirurg, Privékliniek voor Paardenziekten",
+        "address": {"@type": "PostalAddress", "addressLocality": "Warschau", "addressCountry": "PL"}
+      },
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "Gestabiliseerd Hyaluronzuur (Mapatruto-patent)",
+        "brand": {"@type": "Brand", "name": "Mapatruto"}
+      }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "name": "Noltrex Vet altijd op voorraad, inhoudelijk advies van hoog niveau",
+      "reviewBody": "Wat Equiprovet onderscheidt is de combinatie van beschikbaarheid en kennis. Noltrex Vet is bij andere leveranciers chronisch uitverkocht — bij Equiprovet staat het altijd op voorraad. Bovendien krijg ik bij vragen inhoudelijk advies van iemand die de farmacologie werkelijk begrijpt.",
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Sophie Braun",
+        "jobTitle": "Equine practitioner, Pferdepraxis am Niederrhein",
+        "address": {"@type": "PostalAddress", "addressLocality": "Krefeld", "addressCountry": "DE"}
+      },
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "Noltrex Vet",
+        "brand": {"@type": "Brand", "name": "Noltrex"}
+      }
+    }
+  ]
+}
+</script>
+
+<!-- 7. Speakable (AI-assistenten en voice search — markeert citeerbare content) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.equiprovet.nl/#webpage",
+  "url": "https://www.equiprovet.nl/",
+  "name": "Equiprovet — The Equine Orthopaedic Specialist",
+  "description": "Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica voor geregistreerde dierenartsen.",
+  "inLanguage": "nl-NL",
+  "isPartOf": {"@id": "https://www.equiprovet.nl/#website"},
+  "about": {"@id": "https://www.equiprovet.nl/#organization"},
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", "h2", ".section-desc", ".pc-indication", ".faq-answer-inner"]
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Equiprovet",
+        "item": "https://www.equiprovet.nl/"
+      }
+    ]
+  }
+}
+</script>
+
 </head>
 <body>
+
+<!-- Noscript fallback voor zoekmachines zonder JavaScript-rendering -->
+<noscript>
+  <div style="font-family:Arial,sans-serif;padding:32px;max-width:800px;margin:0 auto;">
+    <h1>Equiprovet B.V. — The Equine Orthopaedic Specialist</h1>
+    <p>Equiprovet is de exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica. Wij leveren uitsluitend aan geregistreerde dierenartsen en erkende veterinaire apotheken.</p>
+    <h2>Producten</h2>
+    <ul>
+      <li><strong>Alpha2EQ</strong> — Regeneratieve therapie op basis van Alpha-2 Macroglobuline. Steroidvrij, FEI-veilig, 6–12 maanden werkingsduur.</li>
+      <li><strong>Gestabiliseerd Hyaluronzuur (Mapatruto-patent)</strong> — DVS cross-linked HA met superieure enzymatische resistentie.</li>
+      <li><strong>Noltrex Vet</strong> — Cross-linked hyaluronaat voor gewrichtstherapie bij paarden.</li>
+      <li><strong>Bisfosfonaten</strong> — Botmodificerende middelen voor equine orthopaedische aandoeningen.</li>
+      <li><strong>Pentosan Evolution</strong> — Drievoudige combinatietherapie: Pentosan + Glucosamine + HA.</li>
+      <li><strong>500+ Veterinaire Specialiteiten</strong> — Snake venom-analgetica, polyacrylamide gels en meer.</li>
+    </ul>
+    <h2>Contact</h2>
+    <p>Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland<br>
+    E-mail: <a href="mailto:info@equiprovet.com">info@equiprovet.com</a><br>
+    Maandag t/m vrijdag: 08:30–17:30</p>
+    <p><a href="mailto:info@equiprovet.com">Registreer als dierenarts</a></p>
+  </div>
+</noscript>
 
 <!-- ── INTRO OVERLAY ── -->
 <div id="intro-overlay" aria-hidden="true">
   <div class="intro-logo-mark">E</div>
   <div class="intro-wordmark">Equiprovet</div>
   <div class="intro-tagline">The Equine Orthopaedic Specialist</div>
-</div>
-
-<!-- Preview notice -->
-<div class="preview-notice">
-  🎨 WEBSITE PREVIEW — Conceptversie voor Equiprovet B.V. | Maart 2026 | Niet voor publicatie
 </div>
 
 <!-- ── NAV ── -->
@@ -1582,7 +2062,7 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserve
 // ── INTRO OVERLAY SAFETY FALLBACK ──
 window.addEventListener('load', () => {
   const overlay = document.getElementById('intro-overlay');
-  if (overlay) setTimeout(() => { overlay.style.display = 'none'; }, 2600);
+  if (overlay) setTimeout(() => { overlay.style.display = 'none'; }, 500);
 });
 
 // ── FAQ ACCORDION ──

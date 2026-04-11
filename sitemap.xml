@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Hoofdpagina -->
+  <url>
+    <loc>https://www.equiprovet.nl/</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.equiprovet.nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.equiprovet.nl/"/>
+  </url>
+
+  <!-- Secties (voor crawlers die anchor-links volgen) -->
+  <url>
+    <loc>https://www.equiprovet.nl/#products</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.equiprovet.nl/#science</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.equiprovet.nl/#alpha2eq</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.equiprovet.nl/#ervaringen</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.equiprovet.nl/#faq</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.equiprovet.nl/#contact</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>

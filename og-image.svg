@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1A2233;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#B8924A;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#D4B06A;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8924A;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#D4B06A;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0E5F6E;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Achtergrond -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtiel grid patroon -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(184,146,74,0.06)" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Gouden accent lijn links -->
+  <rect x="0" y="0" width="6" height="630" fill="url(#gold)"/>
+
+  <!-- Logo blok -->
+  <rect x="80" y="200" width="80" height="80" rx="12" fill="url(#gold)"/>
+  <text x="120" y="257" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#0D1117" text-anchor="middle">E</text>
+
+  <!-- Bedrijfsnaam -->
+  <text x="80" y="340" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#FFFFFF" letter-spacing="2">Equiprovet</text>
+
+  <!-- Tagline -->
+  <text x="80" y="395" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#B8924A" letter-spacing="4">THE EQUINE ORTHOPAEDIC SPECIALIST</text>
+
+  <!-- Scheidingslijn -->
+  <rect x="80" y="420" width="520" height="1" fill="rgba(184,146,74,0.4)"/>
+
+  <!-- Beschrijving -->
+  <text x="80" y="455" font-family="Arial, sans-serif" font-size="20" fill="rgba(245,240,232,0.75)">500+ equine farmaceutische specialiteiten  ·  EU-distributeur</text>
+  <text x="80" y="485" font-family="Arial, sans-serif" font-size="20" fill="rgba(245,240,232,0.75)">Alpha2EQ  ·  Gestabiliseerd HA  ·  Noltrex Vet</text>
+
+  <!-- Badge exclusief -->
+  <rect x="80" y="520" width="300" height="40" rx="20" fill="rgba(14,95,110,0.4)" stroke="rgba(26,139,160,0.6)" stroke-width="1"/>
+  <text x="230" y="545" font-family="Arial, sans-serif" font-size="15" fill="#1A8BA0" text-anchor="middle" letter-spacing="1">EXCLUSIEF VOOR DIERENARTSEN</text>
+
+  <!-- Decoratief element rechts -->
+  <circle cx="980" cy="315" r="220" fill="none" stroke="rgba(184,146,74,0.08)" stroke-width="1"/>
+  <circle cx="980" cy="315" r="160" fill="none" stroke="rgba(184,146,74,0.06)" stroke-width="1"/>
+  <circle cx="980" cy="315" r="100" fill="none" stroke="rgba(184,146,74,0.05)" stroke-width="1"/>
+
+  <!-- Groot E rechts als watermark -->
+  <text x="980" y="370" font-family="Georgia, serif" font-size="200" font-weight="900" fill="rgba(184,146,74,0.07)" text-anchor="middle">E</text>
+
+  <!-- Onderbalk -->
+  <rect x="0" y="610" width="1200" height="20" fill="url(#accent-bar)"/>
+
+  <!-- URL -->
+  <text x="1120" y="600" font-family="Arial, sans-serif" font-size="16" fill="rgba(245,240,232,0.4)" text-anchor="end">www.equiprovet.nl</text>
+</svg>

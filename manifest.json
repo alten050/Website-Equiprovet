@@ -1,0 +1,14 @@
+{
+  "name": "Equiprovet — The Equine Orthopaedic Specialist",
+  "short_name": "Equiprovet",
+  "description": "Exclusieve EU-distributeur van gepatenteerde equine orthopaedische farmaceutica voor geregistreerde dierenartsen. Alpha2EQ, gestabiliseerd hyaluronzuur en 500+ veterinaire specialiteiten.",
+  "start_url": "/",
+  "display": "browser",
+  "orientation": "any",
+  "theme_color": "#B8924A",
+  "background_color": "#0D1117",
+  "lang": "nl-NL",
+  "dir": "ltr",
+  "categories": ["medical", "business", "health"],
+  "icons": []
+}

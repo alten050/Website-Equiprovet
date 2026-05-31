@@ -303,3 +303,150 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePrivacy
     cta.classList.toggle('visible', window.scrollY > 400);
   }, {passive: true});
 })();
+
+// ── Service Worker registratie ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+}
+
+// ── View Transitions API (native pagina-overgangen) ──
+if (!document.startViewTransition) {
+  // Fallback voor browsers zonder View Transitions
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel')) return;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.style.transition = 'opacity .25s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 250);
+    });
+  });
+}
+
+// ── Social proof toasts ──
+(function() {
+  const proofs = [
+    { nl: 'Dr. van den Berg — Utrecht', de: 'Dr. Müller — München', prod: 'Alpha2EQ', time: 3 },
+    { nl: 'Dr. Jansen — Groningen', de: 'Dr. Wagner — Hamburg', prod: 'Gestabiliseerd HA', time: 8 },
+    { nl: 'Dr. Bakker — Den Haag', de: 'Dr. Becker — Köln', prod: 'Noltrex Vet', time: 14 },
+    { nl: 'Dr. de Vries — Eindhoven', de: 'Dr. Schäfer — Stuttgart', prod: 'Tildren', time: 22 },
+    { nl: 'Dr. Vermeer — Arnhem', de: 'Dr. Koch — Düsseldorf', prod: 'Pentosan Evolution', time: 31 },
+  ];
+  const isDE = location.pathname.startsWith('/de');
+  const toast = document.createElement('div');
+  toast.id = 'proof-toast';
+  toast.style.cssText = 'position:fixed;bottom:90px;left:24px;background:rgba(9,21,38,.96);backdrop-filter:blur(16px);border:1px solid rgba(21,96,189,.3);border-radius:12px;padding:14px 18px;z-index:800;max-width:280px;transform:translateX(-120%);transition:transform .4s cubic-bezier(.23,1,.32,1);font-size:13px;line-height:1.5;';
+  document.body.appendChild(toast);
+
+  let idx = 0;
+  function showToast() {
+    const p = proofs[idx % proofs.length];
+    const name = isDE ? p.de : p.nl;
+    const label = isDE ? 'hat gerade bestellt:' : 'bestelde zojuist:';
+    toast.innerHTML = `<div style="color:rgba(255,255,255,.5);font-size:11px;margin-bottom:4px;">🟢 ${p.time} min geleden</div><div style="color:#fff;font-weight:600;">${name}</div><div style="color:rgba(255,255,255,.6);">${label} <span style="color:var(--teal-light);">${p.prod}</span></div>`;
+    toast.style.transform = 'translateX(0)';
+    setTimeout(() => { toast.style.transform = 'translateX(-120%)'; }, 4500);
+    idx++;
+  }
+  setTimeout(() => { showToast(); setInterval(showToast, 18000); }, 8000);
+})();
+
+// ── Doseringsberekening modal ──
+(function() {
+  const isDE = location.pathname.startsWith('/de');
+  const t = isDE ? {
+    btn: '💊 Dosierungsrechner',
+    title: 'Dosierungsberechnung Pferd',
+    weight: 'Körpergewicht (kg)',
+    product: 'Produkt wählen',
+    calc: 'Berechnen',
+    note: '⚠️ Indikativ. Tierärztliche Diagnose und Verordnung erforderlich.',
+    close: 'Schließen',
+    products: ['Alpha2EQ','Stabilisierte HA (Optivisc)','Noltrex Vet','Tildren (Tiludronsäure)','Osphos (Clodronsäure)','Pentosan Evolution'],
+  } : {
+    btn: '💊 Doseringsberekening',
+    title: 'Doseringsberekening paard',
+    weight: 'Lichaamsgewicht (kg)',
+    product: 'Product selecteren',
+    calc: 'Berekenen',
+    note: '⚠️ Indicatief. Veterinaire diagnose en voorschrift vereist.',
+    close: 'Sluiten',
+    products: ['Alpha2EQ','Gestabiliseerd HA (Optivisc)','Noltrex Vet','Tildren (Tiludronate)','Osphos (Clodronate)','Pentosan Evolution'],
+  };
+
+  // Trigger knop
+  const btn = document.createElement('button');
+  btn.id = 'dose-trigger';
+  btn.textContent = t.btn;
+  btn.style.cssText = 'position:fixed;right:24px;bottom:90px;background:var(--teal);color:#fff;border:none;border-radius:10px;padding:12px 18px;font-size:13px;font-weight:700;cursor:pointer;z-index:800;box-shadow:0 4px 20px rgba(14,95,110,.4);transition:transform .2s,box-shadow .2s;white-space:nowrap;';
+  btn.onmouseover = () => { btn.style.transform = 'translateY(-2px)'; btn.style.boxShadow = '0 8px 28px rgba(14,95,110,.5)'; };
+  btn.onmouseleave = () => { btn.style.transform = ''; btn.style.boxShadow = '0 4px 20px rgba(14,95,110,.4)'; };
+  document.body.appendChild(btn);
+
+  // Modal
+  const modal = document.createElement('div');
+  modal.id = 'dose-modal';
+  modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(6,15,30,.85);backdrop-filter:blur(12px);z-index:9999;align-items:center;justify-content:center;padding:24px;';
+  modal.innerHTML = `
+  <div style="background:#0d1b2a;border:1px solid rgba(21,96,189,.3);border-radius:20px;padding:40px;max-width:480px;width:100%;position:relative;">
+    <button onclick="document.getElementById('dose-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;">✕</button>
+    <h3 style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:24px;">${t.title}</h3>
+    <label style="display:block;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">${t.weight}</label>
+    <input id="horse-weight" type="number" min="50" max="900" placeholder="500" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;color:#fff;font-size:16px;margin-bottom:20px;outline:none;box-sizing:border-box;">
+    <label style="display:block;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">${t.product}</label>
+    <select id="horse-product" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;color:#fff;font-size:15px;margin-bottom:24px;outline:none;box-sizing:border-box;">
+      ${t.products.map(p => `<option value="${p}">${p}</option>`).join('')}
+    </select>
+    <button onclick="calcDose()" style="width:100%;background:var(--gold);color:#fff;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;">${t.calc} →</button>
+    <div id="dose-result" style="margin-top:20px;display:none;"></div>
+    <p style="margin-top:20px;font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;">${t.note}</p>
+  </div>`;
+  document.body.appendChild(modal);
+
+  btn.onclick = () => { modal.style.display = 'flex'; };
+  modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+  window.calcDose = function() {
+    const w = parseFloat(document.getElementById('horse-weight').value) || 500;
+    const prod = document.getElementById('horse-product').value;
+    const res = document.getElementById('dose-result');
+    const isDE = location.pathname.startsWith('/de');
+    let html = '';
+
+    if (prod.includes('Alpha2EQ')) {
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Alpha2EQ</b><br>1 Kit pro Behandlung (nicht gewichtsabhängig)<br>Konzentrat in das betroffene Gelenk injizieren.<br>Einfrierbar: bis 12 Monate bei −20°C.`
+        : `<b style="color:var(--teal-light)">Alpha2EQ</b><br>1 kit per behandeling (niet gewichtsafhankelijk)<br>Concentraat intra-articulair injecteren.<br>Invriesbaar: tot 12 maanden bij −20°C.`;
+    } else if (prod.includes('HA') || prod.includes('Optivisc')) {
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Stabilisierte HA (Optivisc)</b><br>2 ml intraartikulär pro Gelenk.<br>Bei großen Gelenken (Hüfte, Hock): 2–3 ml.<br>Wiederholung nach 3–6 Monaten je nach Ansprechen.`
+        : `<b style="color:var(--teal-light)">Gestabiliseerd HA</b><br>2 ml intra-articulair per gewricht.<br>Grote gewrichten (heup, sprong): 2–3 ml.<br>Herhaling na 3–6 maanden afhankelijk van respons.`;
+    } else if (prod.includes('Noltrex')) {
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Noltrex Vet</b><br>Fesselgelenk: 1–2 ml<br>Sprunggelenk (tarsometacarpal): 2–3 ml<br>Großes Sprunggelenk: 3–5 ml<br>Einmalige Behandlung (dauerhaft).`
+        : `<b style="color:var(--teal-light)">Noltrex Vet</b><br>Kogel: 1–2 ml<br>Spronggewricht (distaal): 2–3 ml<br>Groot spronggewricht: 3–5 ml<br>Eenmalige behandeling (permanent).`;
+    } else if (prod.includes('Tildren') || prod.includes('Tiludronate') || prod.includes('Tiludronsäure')) {
+      const dose_mg = Math.round(w * 1);
+      const vol_ml = Math.round(dose_mg / 5);
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Tildren — ${w} kg</b><br>Dosis: 1 mg/kg IV = <b style="color:#fff">${dose_mg} mg</b><br>Volumen (5 mg/ml): <b style="color:#fff">${vol_ml} ml</b><br>Infusion über 90 min in 1L NaCl 0,9%.<br>Einzelgabe oder 2× mit 2 Wochen Abstand.`
+        : `<b style="color:var(--teal-light)">Tildren — ${w} kg</b><br>Dosering: 1 mg/kg IV = <b style="color:#fff">${dose_mg} mg</b><br>Volume (5 mg/ml): <b style="color:#fff">${vol_ml} ml</b><br>Infusie over 90 min in 1L NaCl 0,9%.<br>Eenmalig of 2× met 2 weken tussentijd.`;
+    } else if (prod.includes('Osphos') || prod.includes('Clodronate') || prod.includes('Clodronsäure')) {
+      const dose_mg = Math.round(w * 1.8);
+      const vol_ml = (dose_mg / 51).toFixed(1);
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Osphos — ${w} kg</b><br>Dosis: 1,8 mg/kg IM = <b style="color:#fff">${dose_mg} mg</b><br>Volumen (51 mg/ml): <b style="color:#fff">${vol_ml} ml</b><br>Intramuskulär, aufgeteilt auf 2 Injektionsstellen.<br>Wiederholung nach 6 Monaten möglich.`
+        : `<b style="color:var(--teal-light)">Osphos — ${w} kg</b><br>Dosering: 1,8 mg/kg IM = <b style="color:#fff">${dose_mg} mg</b><br>Volume (51 mg/ml): <b style="color:#fff">${vol_ml} ml</b><br>Intramusculair, verdeel over 2 injectieplaatsen.<br>Herhaling na 6 maanden mogelijk.`;
+    } else if (prod.includes('Pentosan')) {
+      const dose_mg = Math.round(w * 3);
+      html = isDE
+        ? `<b style="color:var(--teal-light)">Pentosan Evolution — ${w} kg</b><br>Dosis: 3 mg/kg IM = <b style="color:#fff">${dose_mg} mg</b><br>1× per Woche für 4 Wochen (Induktionskur).<br>Danach monatliche Erhaltungsdosis.`
+        : `<b style="color:var(--teal-light)">Pentosan Evolution — ${w} kg</b><br>Dosering: 3 mg/kg IM = <b style="color:#fff">${dose_mg} mg</b><br>1× per week gedurende 4 weken (inductiekuur).<br>Daarna maandelijkse onderhoudsdosis.`;
+    }
+
+    res.style.display = 'block';
+    res.style.cssText = 'margin-top:20px;background:rgba(14,95,110,.1);border:1px solid rgba(14,95,110,.3);border-radius:10px;padding:16px;font-size:14px;color:rgba(255,255,255,.8);line-height:1.8;display:block;';
+    res.innerHTML = html;
+  };
+})();

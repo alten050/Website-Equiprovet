@@ -11,3 +11,10 @@
 .sticky-cta-close{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:18px;padding:4px 8px;transition:color .2s}
 .sticky-cta-close:hover{color:#fff}
 @media(max-width:768px){#sticky-cta{padding:12px 16px;flex-wrap:wrap;gap:8px}.sticky-cta-text{font-size:12px;width:100%}}
+
+/* ── View Transitions API ── */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 180ms ease-out vt-fade-out; }
+::view-transition-new(root) { animation: 280ms ease-in vt-fade-in; }
+@keyframes vt-fade-out { to { opacity: 0; transform: translateY(8px); } }
+@keyframes vt-fade-in { from { opacity: 0; transform: translateY(-8px); } }

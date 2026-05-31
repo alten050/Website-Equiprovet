@@ -2512,17 +2512,28 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     );
   });
 
+  // DOM-safe word-by-word split: text nodes → split per word, HTML elements → wrap as unit
+  function splitIntoWords(el) {
+    if (el.querySelector('.word-wrap')) return;
+    const parts = [];
+    el.childNodes.forEach(node => {
+      if (node.nodeType === 3) { // text node
+        node.textContent.split(/(\s+)/).forEach(chunk => {
+          if (/^\s+$/.test(chunk) || chunk === '') { parts.push(chunk); }
+          else { parts.push('<span class="word-wrap"><span class="word">' + chunk + '</span></span>'); }
+        });
+      } else if (node.nodeType === 1 && node.tagName !== 'BR') { // element node, skip <br>
+        parts.push('<span class="word-wrap"><span class="word">' + node.outerHTML + '</span></span>');
+      } else if (node.nodeType === 1) {
+        parts.push(node.outerHTML); // keep <br> as-is
+      }
+    });
+    el.innerHTML = parts.join('');
+  }
+
   // Word-by-word reveal on section titles
   document.querySelectorAll('.section-title, .science-title, .spotlight-title').forEach(el => {
-    // Only split if not already split
-    if (el.querySelector('.word-wrap')) return;
-    const original = el.innerHTML;
-    // Split by words, preserving em/strong tags
-    const parts = original.split(/(\s+)/);
-    el.innerHTML = parts.map(part => {
-      if (/^\s+$/.test(part)) return part;
-      return '<span class="word-wrap"><span class="word">' + part + '</span></span>';
-    }).join('');
+    splitIntoWords(el);
     gsap.fromTo(el.querySelectorAll('.word'),
       { y: '105%', opacity: 0 },
       { y: '0%', opacity: 1, duration: 0.65, ease: 'power3.out', stagger: 0.06,
@@ -2533,11 +2544,8 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
   // Hero title word reveal
   const heroTitle = document.querySelector('.hero-title');
-  if (heroTitle && !heroTitle.querySelector('.word-wrap')) {
-    const parts = heroTitle.innerHTML.split(/(\s+)/);
-    heroTitle.innerHTML = parts.map(p =>
-      /^\s+$/.test(p) ? p : '<span class="word-wrap"><span class="word">' + p + '</span></span>'
-    ).join('');
+  if (heroTitle) {
+    splitIntoWords(heroTitle);
     gsap.fromTo(heroTitle.querySelectorAll('.word'),
       { y: '110%', opacity: 0 },
       { y: '0%', opacity: 1, duration: 0.75, ease: 'power3.out', stagger: 0.055, delay: 0.2 }

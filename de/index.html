@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equine Orthopädie für Tierärzte | Equiprovet</title>
+  <meta name="description" content="Equiprovet liefert equine Arzneimittel an Tierärzte — spezialisiert auf Gelenkbehandlung beim Pferd. Über 500 Spezialitäten auf Lager.">
+  <meta name="theme-color" content="#1560BD">
+  <link rel="canonical" href="https://www.equiprovet.nl/de/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+<!-- ── SCROLL PROGRESS ── -->
+<div id="scroll-progress"></div>
+<!-- ── CUSTOM CURSOR ── -->
+<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
+<!-- ── NAV ── -->
+<nav>
+  <a href="/de/" class="nav-logo">
+    <img src="/images/logo.png" alt="Equiprovet" class="nav-logo-img">
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="/de/produkte.html">Produkte</a>
+    <a href="/de/wissenschaft.html">Wissenschaft</a>
+    <a href="/de/wissenschaft.html#alpha2eq">Alpha2EQ</a>
+    <a href="/de/ueber-uns.html#erfahrungen">Erfahrungen</a>
+    <a href="/de/produkte.html#katalog">Katalog</a>
+    <a href="/de/neuigkeiten.html">Neuigkeiten</a>
+    <a href="/de/ueber-uns.html">Über uns</a>
+    <a href="/de/kontakt.html">Kontakt</a>
+    <span class="nav-tel">+31 (0)74 259 15 47</span>
+    <div class="lang-switcher"><a href="/">NL</a><a href="/de/" class="lang-active">DE</a></div>
+    <a href="/de/kontakt.html" class="nav-cta">Anmelden / Bestellen</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-overlay"></div>
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-image-accent" style="background-image:url('/images/hero-horse-leg.jpg')"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><span>Ausschließlich für Tierärzte</span></div>
+    <h1 class="hero-title">Equine Orthopädie<br>für den <em>Pferdetierarzt</em><br><span class="line-teal">der den Unterschied macht</span></h1>
+    <p class="hero-sub">Wir liefern, was Ihre Praxis wirklich braucht — auch wenn andere Großhändler wochenlang warten lassen. Spezialisiert auf Gelenkbehandlung beim Pferd.</p>
+    <div class="hero-actions">
+      <a href="/de/produkte.html" class="btn-primary">Unser Sortiment →</a>
+      <a href="/de/kontakt.html" class="btn-secondary">Als Tierarzt registrieren</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" data-target="500">500<span>+</span></div>
+        <div class="stat-label">Einzigartige Produkte</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="40">40<span>+</span></div>
+        <div class="stat-label">Jahre Erfahrung</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">EU<span>+</span></div>
+        <div class="stat-label">Weltweite Lieferung</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-showcase">
+      <div class="floating-card card-1">
+        <div class="fc-label">Mapatruto-Patent</div>
+        <div class="fc-val">HA<span>³</span></div>
+        <div class="fc-sub">Stabilisiert · Einzigartig weltweit</div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-tag">⭐ Empfohlenes Produkt</div>
+        <div class="showcase-product-name">Alpha2EQ</div>
+        <div class="showcase-product-sub">Autologe Alpha-2-Makroglobulin-Therapie</div>
+        <div class="showcase-divider"></div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Wirkstoff</span>
+          <span class="showcase-detail-val">α2-Makroglobulin</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Wirkung</span>
+          <span class="showcase-detail-val">Hemmt alle 4 Proteaseklassen</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Dauer</span>
+          <span class="showcase-detail-val">6–12 Monate</span>
+        </div>
+        <div class="showcase-detail-row">
+          <span class="showcase-detail-label">Einfrierbar</span>
+          <span class="showcase-detail-val">Bis 12 Monate</span>
+        </div>
+        <div class="showcase-badge-row">
+          <span class="showcase-badge">Steroidfrei</span>
+          <span class="showcase-badge">FEI-sicher</span>
+          <span class="showcase-badge teal">Patentiertes Verfahren</span>
+          <span class="showcase-badge teal">Auch für tragende Stuten</span>
+        </div>
+      </div>
+      <div class="floating-card card-2">
+        <div class="fc-label">Erhältlich bei</div>
+        <div class="fc-val" style="font-size:16px;color:#fff;">Equiprovet</div>
+        <div class="fc-sub">EU-Distributor</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="icon">🧬</span>Patentierte Mapatruto HA-Technologie</div>
+    <div class="trust-item"><span class="icon">🌍</span>Lieferant für Tierärzte weltweit</div>
+    <div class="trust-item"><span class="icon">🏛️</span>Kooperation mit europäischen Universitäten</div>
+    <div class="trust-item"><span class="icon">⚡</span>Immer auf Lager</div>
+    <div class="trust-item"><span class="icon">🔒</span>Ausschließlich für registrierte Tierärzte</div>
+    <div class="trust-item"><span class="icon">🏆</span>Über 40 Jahre Erfahrung in der Pferdemedizin</div>
+    <div class="trust-item"><span class="icon">🧬</span>Patentierte Mapatruto HA-Technologie</div>
+    <div class="trust-item"><span class="icon">🌍</span>Lieferant für Tierärzte weltweit</div>
+    <div class="trust-item"><span class="icon">🏛️</span>Kooperation mit europäischen Universitäten</div>
+    <div class="trust-item"><span class="icon">⚡</span>Immer auf Lager</div>
+    <div class="trust-item"><span class="icon">🔒</span>Ausschließlich für registrierte Tierärzte</div>
+    <div class="trust-item"><span class="icon">🏆</span>Über 40 Jahre Erfahrung in der Pferdemedizin</div>
+  </div>
+</div>
+<!-- ── PRODUKTE VORSCHAU ── -->
+<section class="products-section" id="produkte">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Unser Sortiment</div>
+      <h2 class="section-title">Produkte, die andere<br><em>nicht liefern können</em></h2>
+      <p class="section-desc">Produkte, die bei anderen Großhändlern wochenlang auf sich warten lassen, halten wir einfach auf Lager. Haben Sie etwas Bestimmtes gesucht? Fragen Sie uns.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card-top teal-card img-card" style="background-image:url('/images/alpha2eq-centrifuge.jpg')">
+          <div class="product-card-glow"></div>
+          <div class="pc-category teal-variant">Regenerative Therapie</div>
+          <div class="pc-name">Alpha2EQ</div>
+          <div class="pc-molecule">Alpha-2-Makroglobulin (α2M)</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Das Blut des Pferdes als Therapie. α2-Makroglobulin wird über das AlphaActive-System konzentriert und in das Gelenk injiziert. Wirkt bei vielen Pferden, die nicht mehr auf Kortikosteroide ansprechen.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Steroidfrei</span>
+            <span class="pc-tag highlight">6–12 Mon. Wirkung</span>
+            <span class="pc-tag">Osteoarthritis</span>
+          </div>
+          <div class="pc-cta"><a href="/de/wissenschaft.html#alpha2eq" class="pc-cta-link">Mehr Informationen</a><span class="pc-arrow">→</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top gold-card img-card" style="background-image:url('/images/ha-injection.jpg')">
+          <div class="product-card-glow"></div>
+          <div class="pc-category">Mapatruto-Patent</div>
+          <div class="pc-name">Stabilisierte HA</div>
+          <div class="pc-molecule">DVS Cross-linked Natriumhyaluronat</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Stabilisierte Hyaluronsäure bleibt länger im Gelenk als lineares oder vernetztes HA. Mapatruto-Patent. Wir sind der einzige Lieferant dieses Produkts in Europa.</p>
+          <div class="pc-tags">
+            <span class="pc-tag" style="background:#EBF2FD;color:#1560BD;">Mapatruto-Patent</span>
+            <span class="pc-tag">Intraartikulär</span>
+          </div>
+          <div class="pc-cta"><a href="/de/wissenschaft.html" class="pc-cta-link">Wissenschaftliche Basis</a><span class="pc-arrow">→</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top img-card" style="background-image:url('/images/noltrex-joint.jpg')">
+          <div class="product-card-glow" style="opacity:0.15;"></div>
+          <div class="pc-category">3D-Gelenkgel</div>
+          <div class="pc-name">Noltrex Vet</div>
+          <div class="pc-molecule">Polyacrylamid 4% — dreidimensional</div>
+        </div>
+        <div class="product-card-body">
+          <p class="pc-indication">Polyacrylamid 4% als dauerhafte Gelenkfüllung. Gute Alternative, wenn Arthramid nicht verfügbar ist. Wir halten es standardmäßig auf Lager.</p>
+          <div class="pc-tags">
+            <span class="pc-tag highlight">Dauerhaft</span>
+            <span class="pc-tag">Arthramid-Alternative</span>
+            <span class="pc-tag">Auf Lager</span>
+          </div>
+          <div class="pc-cta"><a href="/de/kontakt.html" class="pc-cta-link">Bestellen</a><span class="pc-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="products-preview-cta reveal">
+      <a href="/de/produkte.html" class="btn-primary">Alle Produkte &amp; Katalog ansehen →</a>
+    </div>
+  </div>
+</section>
+<!-- ── USP ── -->
+<section class="usp-section"><div class="usp-bg-image" style="background-image:url('/images/horse-dressage.jpg')"></div>
+  <div class="container">
+    <div class="usp-grid">
+      <div class="usp-item reveal">
+        <div class="usp-num">01</div>
+        <h3 class="usp-title">Patentierte HA-Technologie</h3>
+        <p class="usp-desc">Unsere Muttergesellschaft Mapatruto Holding b.v. hat eine stabilisierte HA-Formulierung entwickelt, die nirgendwo anders erhältlich ist. Bessere molekulare Stabilität, längere Wirkungsdauer im Gelenk.</p>
+      </div>
+      <div class="usp-item reveal">
+        <div class="usp-num">02</div>
+        <h3 class="usp-title">500+ Spezialitäten auf Lager</h3>
+        <p class="usp-desc">Wir haben über 500 equine Arzneimittel vorrätig, darunter Produkte, die andere Großhändler gar nicht erst auf der Liste haben. Im Zweifel: Rufen Sie uns einfach an.</p>
+      </div>
+      <div class="usp-item reveal">
+        <div class="usp-num">03</div>
+        <h3 class="usp-title">Fachkundige Beratung</h3>
+        <p class="usp-desc">Wir arbeiten mit europäischen Universitätskliniken zusammen und verfolgen die Fachliteratur. Wenn Sie eine klinische Frage haben, geben wir eine konkrete Antwort — kein Verkaufsgespräch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── ERFAHRUNGEN ── -->
+<section class="testimonials-section" id="erfahrungen">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label" style="color:var(--teal-light);justify-content:center;">Erfahrungen</div>
+      <h2 class="section-title" style="color:#fff;text-align:center;">Was Tierärzte<br><em>über uns sagen</em></h2>
+    </div>
+    <div class="testimonials-grid reveal-group">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Ich verwende Alpha2EQ bei Pferden mit chronischer Arthritis, bei denen Steroide nicht mehr wirken. Ich war zunächst skeptisch, aber die meisten zeigen innerhalb einer Woche weniger Lahmheit. Dass man es einfrieren kann, spart enorm bei der Planung.</p>
+        <div class="testimonial-author">
+          <div class="ta-name">Dr. Markus Hoffmann</div>
+          <div class="ta-role">Pferdetierarzt, Pferdeklinik Rheinland</div>
+          <div class="ta-location">Köln, Deutschland</div>
+          <span class="ta-product">Alpha2EQ</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Ein Kollege hat mich auf die stabilisierte HA von Equiprovet aufmerksam gemacht. Ich bin umgestiegen und merke, dass die Abstände zwischen den Behandlungen länger geworden sind. Die Pferde kommen seltener zurück. Ich bestelle es seit einem Jahr ausschließlich dort.</p>
+        <div class="testimonial-author">
+          <div class="ta-name">Dr. Anna Bergmann</div>
+          <div class="ta-role">Equine Chirurgin, Tierklinik Münster</div>
+          <div class="ta-location">Münster, Deutschland</div>
+          <span class="ta-product">Stabilisierte HA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid reveal-group">
+      <div>
+        <div style="margin-bottom:16px;">
+          <img src="/images/logo.png" alt="Equiprovet" style="height:52px;width:auto;opacity:0.9;">
+        </div>
+        <p class="footer-brand-desc">Großhandel für equine Tierarzneimittel. Wir beliefern Tierärzte und Tierarztpraxen — nicht Privatpersonen.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Produkte</div>
+        <ul class="footer-links">
+          <li><a href="/de/wissenschaft.html#alpha2eq">Alpha2EQ</a></li>
+          <li><a href="/de/wissenschaft.html">Hyaluronsäure (HA)</a></li>
+          <li><a href="/de/produkte.html">Noltrex Vet</a></li>
+          <li><a href="/de/produkte.html">Bisphosphonate</a></li>
+          <li><a href="/de/produkte.html#katalog">HA &amp; Orthopädie-Katalog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Information</div>
+        <ul class="footer-links">
+          <li><a href="/de/wissenschaft.html">HA-Wissenschaft</a></li>
+          <li><a href="/de/wissenschaft.html#alpha2eq">Orthobiologics</a></li>
+          <li><a href="/de/neuigkeiten.html">Neuigkeiten &amp; Verfügbarkeit</a></li>
+          <li><a href="/de/kontakt.html#faq">Häufige Fragen</a></li>
+          <li><a href="/de/kontakt.html">Beratung &amp; Protokolle</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Unternehmen</div>
+        <ul class="footer-links">
+          <li><a href="/de/ueber-uns.html">Über uns</a></li>
+          <li><a href="/de/ueber-uns.html">Mapatruto R&amp;D</a></li>
+          <li><a href="/de/kontakt.html">Kontakt</a></li>
+          <li><a href="/de/kontakt.html">Registrierung</a></li>
+          <li><a href="#" onclick="openPrivacy(); return false;">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom reveal">
+      <div class="footer-copyright">© 2026 Equiprovet B.V. — Jan Tinbergenstraat 138, 7559 SP Hengelo, Niederlande</div>
+      <div class="footer-vet-only">🔒 Nur für Tierärzte</div>
+    </div>
+  </div>
+</footer>
+<!-- ── DATENSCHUTZ MODAL ── -->
+<div id="privacy-modal" role="dialog" aria-modal="true" aria-label="Datenschutzerklärung">
+  <div class="privacy-modal-inner">
+    <button class="privacy-modal-close" onclick="closePrivacy()" aria-label="Schließen">✕</button>
+    <h2>Datenschutzerklärung</h2>
+    <p class="privacy-date">Version 1.0 — März 2026</p>
+    <h3>1. Verantwortlicher</h3>
+    <p>Equiprovet B.V., Jan Tinbergenstraat 138, 7559 SP Hengelo, Niederlande. E-Mail: info@equiprovet.com</p>
+    <h3>2. Welche Daten erheben wir?</h3>
+    <p>Wir verarbeiten personenbezogene Daten, die Sie über das Registrierungsformular eingeben: Name, Praxisname, E-Mail, Land und tierärztliche Zulassungsnummer.</p>
+    <h3>3. Zweck der Verarbeitung</h3>
+    <p>Ihre Daten werden zur Verifizierung Ihrer tierärztlichen Zulassung und zur Erstellung eines Kundenkontos verwendet. Wir verkaufen Ihre Daten nicht an Dritte.</p>
+    <h3>4. Rechtsgrundlage</h3>
+    <p>Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und zur Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).</p>
+    <h3>5. Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten. Senden Sie eine E-Mail an info@equiprovet.com.</p>
+  </div>
+</div>
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie-Hinweis" aria-live="polite">
+  <p class="cookie-text">Equiprovet verwendet funktionale und analytische Cookies.
+    Lesen Sie unsere <a onclick="openPrivacy()">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="handleCookie('declined')">Nur notwendige</button>
+    <button class="cookie-btn accept" onclick="handleCookie('accepted')">Akzeptieren</button>
+  </div>
+</div>
+<script>
+document.getElementById('nav-hamburger')?.addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('nav-links')?.classList.toggle('open');
+});
+</script>
+</body>
+</html>

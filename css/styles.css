@@ -1077,3 +1077,22 @@ nav a.nav-active::after {
 }
 .page-hero-section.has-bg-image::before { z-index: 1; }
 .page-hero-section.has-bg-image .page-hero-content { z-index: 2; }
+
+/* ── Taalwisselaar ── */
+.lang-switcher {
+  display: flex; align-items: center; gap: 2px;
+  margin-left: 8px;
+}
+.lang-switcher a {
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  padding: 4px 9px; border-radius: 5px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.lang-switcher a:hover { color: rgba(255,255,255,0.8); }
+.lang-switcher a.lang-active {
+  color: #fff;
+  border-color: rgba(21,96,189,0.4);
+  background: rgba(21,96,189,0.2);
+}

@@ -295,3 +295,11 @@ document.addEventListener('click', e => {
   if (modal?.classList.contains('open') && e.target === modal) closePrivacy();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePrivacy(); });
+// Sticky CTA na 400px scrollen
+(function(){
+  var cta = document.getElementById('sticky-cta');
+  if(!cta) return;
+  window.addEventListener('scroll', function(){
+    cta.classList.toggle('visible', window.scrollY > 400);
+  }, {passive: true});
+})();

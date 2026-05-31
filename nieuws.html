@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nieuws & beschikbaarheid | Equiprovet</title>
-  <meta name="description" content="Actuele berichten over productbeschikbaarheid en updates van Equiprovet.">
+  <title>Productbeschikbaarheid & nieuws equine farmaceutica | Equiprovet</title>
+  <meta name="description" content="Actuele informatie over leveringsstatussen van equine geneesmiddelen bij Equiprovet. Kenacort, Anabolin en alternatieve producten.">
   <meta name="theme-color" content="#1560BD">
   <link rel="canonical" href="https://www.equiprovet.nl/nieuws.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -19,6 +19,67 @@
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
   <script src="/js/main.js" defer></script>
   <link rel="preload" as="image" href="/images/horse-dressage.jpg" fetchpriority="high">
+  <link rel="alternate" hreflang="nl" href="https://www.equiprovet.nl/nieuws">
+  <link rel="alternate" hreflang="de" href="https://www.equiprovet.nl/de/neuigkeiten">
+  <link rel="alternate" hreflang="x-default" href="https://www.equiprovet.nl/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Equiprovet">
+  <meta property="og:title" content="Nieuws & beschikbaarheid — Equiprovet">
+  <meta property="og:description" content="Actuele informatie over leveringsstatussen van equine geneesmiddelen bij Equiprovet. Kenacort, Anabolin en alternatieve producten.">
+  <meta property="og:image" content="https://www.equiprovet.nl/images/hero-horse-leg.jpg">
+  <meta property="og:locale" content="nl_NL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nieuws & beschikbaarheid — Equiprovet">
+  <meta name="twitter:description" content="Actuele informatie over leveringsstatussen van equine geneesmiddelen bij Equiprovet. Kenacort, Anabolin en alternatieve producten.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "@id": "https://www.equiprovet.nl/#organization",
+  "name": "Equiprovet B.V.",
+  "alternateName": "Equiprovet",
+  "url": "https://www.equiprovet.nl",
+  "logo": "https://www.equiprovet.nl/images/logo.png",
+  "description": "Veterinaire groothandel gespecialiseerd in equine orthopaedische farmaceutica. Exclusief leverancier van gestabiliseerd hyaluronzuur (Mapatruto-patent) en Alpha2EQ regeneratieve therapie voor geregistreerde dierenartsen.",
+  "medicalSpecialty": "Equine Orthopedics",
+  "availableService": [
+    {"@type": "MedicalTherapy", "name": "Alpha2EQ — Autologe Alpha-2 Macroglobuline therapie"},
+    {"@type": "MedicalTherapy", "name": "Gestabiliseerd Hyaluronzuur — Mapatruto-patent"},
+    {"@type": "MedicalTherapy", "name": "Noltrex Vet — Polyacrylamide gewrichtsgel"},
+    {"@type": "MedicalTherapy", "name": "Tildren & Osphos — Bisfosfonaten voor navicular"}
+  ],
+  "knowsAbout": [
+    "Equine osteoarthritis", "Intra-articular injection horses",
+    "Alpha-2 macroglobulin therapy", "Hyaluronic acid joint injection",
+    "Bisphosphonate therapy horses", "Navicular syndrome treatment",
+    "Joint disease horses", "Regenerative equine therapy"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jan Tinbergenstraat 138",
+    "addressLocality": "Hengelo",
+    "postalCode": "7559 SP",
+    "addressCountry": "NL"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-74-259-15-47",
+    "contactType": "customer service",
+    "availableLanguage": ["Dutch", "German", "English"],
+    "hoursAvailable": {"@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30", "closes": "17:30"}
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Mapatruto Holding B.V.",
+    "description": "Innovatieve oplossingen voor dierengezondheid, gespecialiseerd in equine gewrichts- en peesbehandeling en vruchtbaarheid."
+  },
+  "areaServed": {"@type": "GeoCircle", "geoMidpoint": {"@type":"GeoCoordinates","latitude":52.2666,"longitude":6.7942}, "geoRadius": "5000000"},
+  "hasCredential": "Veterinary pharmaceutical wholesaler license NL",
+  "slogan": "Wij leveren wat je praktijk echt nodig heeft"
+}
+</script>
 </head>
 <body>
 <!-- ── SCROLL PROGRESS ── -->
@@ -174,5 +235,16 @@ document.getElementById('nav-hamburger')?.addEventListener('click', function() {
   document.getElementById('nav-links')?.classList.toggle('open');
 });
 </script>
+<!-- ── STICKY CTA ── -->
+<div id="sticky-cta">
+  <div class="sticky-cta-text">
+    <strong>Dierenarts?</strong> Direct bestellen na registratie.
+  </div>
+  <div class="sticky-cta-actions">
+    <a href="tel:+31742591547" class="sticky-cta-tel">📞 +31 (0)74 259 15 47</a>
+    <a href="/contact.html" class="sticky-cta-btn">Registreer gratis →</a>
+    <button class="sticky-cta-close" onclick="document.getElementById('sticky-cta').remove()" aria-label="Sluiten">✕</button>
+  </div>
+</div>
 </body>
 </html>

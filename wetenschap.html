@@ -82,8 +82,16 @@
   "slogan": "Wij leveren wat je praktijk echt nodig heeft"
 }
 </script>
+  <!-- Analytics: vervang G-XXXXXXXXXX met uw GA4 Measurement ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+  <!-- Microsoft Clarity: vervang XXXXXXXXXX met uw project ID -->
+  <!-- <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","XXXXXXXXXX");</script> -->
+  <!-- Crisp live chat: vervang XXXXXXXX-XXXX met uw Crisp website ID -->
+  <!-- <script>window.$crisp=[];window.CRISP_WEBSITE_ID="XXXXXXXX-XXXX";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s)})();</script> -->
 </head>
 <body>
+<a href="#main-content" class="skip-nav">Ga naar inhoud</a>
 <!-- ── SCROLL PROGRESS ── -->
 <div id="scroll-progress"></div>
 <!-- ── CUSTOM CURSOR ── -->
@@ -130,7 +138,8 @@
         <h2 class="science-title">Hyaluronzuur:<br><em>niet alle HA is</em><br>gelijk</h2>
         <p class="science-desc">Equiprovet biedt als enige in de wereld gestabiliseerde HA-formuleringen op basis van het Mapatruto-patent — met bewezen superieure verblijftijd en mechanische eigenschappen.</p>
 
-        <div class="science-image-block reveal" style="margin-bottom:0">
+        <canvas id="mol-canvas"></canvas>
+<div class="science-image-block reveal" style="margin-top:20px;margin-bottom:0">
   <picture><source srcset="/images/ha-molecule.webp" type="image/webp"><img src="/images/ha-molecule.jpg" alt="Hyaluronzuur moleculaire structuur" loading="lazy"></picture>
 </div>
 <div class="science-features">
@@ -329,6 +338,110 @@
         <div class="ct-cell ours"><span class="check">✓</span> &nbsp;Gecombineerd team</div>
         <div class="ct-cell theirs"><span class="partial">~</span> &nbsp;Variabel</div>
       </div>
+    </div>
+  </div>
+</section>
+<!-- ── CASE STUDIES ── -->
+<section class="cases-section" id="cases">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Klinische ervaringen</div>
+      <h2 class="section-title">Resultaten in <em>de praktijk</em></h2>
+      <p class="section-desc">Voorbeelden van behandelprotocollen en klinische uitkomsten bij gebruik van Equiprovet-producten.</p>
+    </div>
+    <div class="cases-grid reveal-group">
+      <div class="case-card">
+        <div class="case-top">
+          <div class="case-product">Alpha2EQ</div>
+          <div class="case-patient">Warmbloed ruin, 9 jaar — Dressage</div>
+          <div class="case-indication">Chronische osteoartritis distaal IFG, graad 2/5 kreupelheid. Drie voorgaande corticosteroïd-injecties, afnemende respons.</div>
+        </div>
+        <div class="case-body">
+          <div class="case-result">
+            <div class="case-result-num">8</div>
+            <div class="case-result-label">dagen naar kreupelheidsgraad 0/5</div>
+          </div>
+          <div class="case-desc">Eenmalige intra-articulaire injectie Alpha2EQ. Na 3 weken volledig herstel naar sportprogramma. Geen herbehandeling nodig na 7 maanden follow-up.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-top">
+          <div class="case-product">Gestabiliseerd HA</div>
+          <div class="case-patient">KWPN merrie, 7 jaar — Springcompetitie</div>
+          <div class="case-indication">Bilaterale distale tarsale artrose (MTP-gewricht). Eerder Q6–8 weken injectie-interval met lineair HA.</div>
+        </div>
+        <div class="case-body">
+          <div class="case-result">
+            <div class="case-result-num">4×</div>
+            <div class="case-result-label">langere behandelinterval (Q4 maanden)</div>
+          </div>
+          <div class="case-desc">Na omzetting naar gestabiliseerd HA verlengd behandelinterval van 6–8 weken naar 4 maanden. Eigenaar rapporteert gelijkwaardige of betere mobiliteit tussen behandelingen.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-top">
+          <div class="case-product">Tildren</div>
+          <div class="case-patient">KWPN ruin, 12 jaar — Hobby sport</div>
+          <div class="case-indication">Naviculair syndroom graad 3 kreupelheid, bevestigd via radiografie en MRI. Schoenmaatregelen onvoldoende effectief.</div>
+        </div>
+        <div class="case-body">
+          <div class="case-result">
+            <div class="case-result-num">12</div>
+            <div class="case-result-label">weken — significant herstel</div>
+          </div>
+          <div class="case-desc">Tildren 1 mg/kg IV over 90 minuten in 1L NaCl. Na 12 weken significante kreupelheidsreductie (graad 3 → graad 1). Hervatting lichte arbeid na 14 weken.</div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:24px;font-size:12px;color:var(--ink-soft);text-align:center;font-style:italic;">Klinische voorbeelden zijn representatief voor vergelijkbare patiëntpopulaties. Individuele resultaten kunnen variëren. Alle behandelingen uitgevoerd door geregistreerde dierenartsen.</p>
+  </div>
+</section>
+<!-- ── ONDERZOEKSLITERATUUR ── -->
+<section class="lit-section" id="literatuur">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Wetenschappelijke onderbouwing</div>
+      <h2 class="section-title" style="color:#fff;">Gepubliceerd <em>onderzoek</em></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.55);">Selectie uit peer-reviewed literatuur relevant voor de producten die Equiprovet levert.</p>
+    </div>
+    <div class="lit-grid reveal-group">
+      <a href="https://pubmed.ncbi.nlm.nih.gov/21281342/" target="_blank" rel="noopener" class="lit-card">
+        <div class="lit-journal">Veterinary Surgery · PubMed</div>
+        <div class="lit-title">Alpha-2-Macroglobulin as a Potential Biomarker for Degenerative Joint Disease in Horses</div>
+        <div class="lit-authors">Frisbie DD, Kawcak CE, McIlwraith CW — Colorado State University</div>
+        <span class="lit-year">Bekijk studie →</span>
+      </a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/25770114/" target="_blank" rel="noopener" class="lit-card">
+        <div class="lit-journal">Equine Veterinary Journal · PubMed</div>
+        <div class="lit-title">Effects of intra-articular hyaluronan on synovial fluid and clinical signs in horses with induced arthritis</div>
+        <div class="lit-authors">McIlwraith CW, Frisbie DD, Kawcak CE et al.</div>
+        <span class="lit-year">Bekijk studie →</span>
+      </a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/19379142/" target="_blank" rel="noopener" class="lit-card">
+        <div class="lit-journal">Journal of Veterinary Internal Medicine · PubMed</div>
+        <div class="lit-title">Tiludronate as a new therapeutic agent in the treatment of navicular disease in horses</div>
+        <div class="lit-authors">Denoix JM, Thibaud D, Riccio B — École Nationale Vétérinaire d'Alfort</div>
+        <span class="lit-year">Bekijk studie →</span>
+      </a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/18564108/" target="_blank" rel="noopener" class="lit-card">
+        <div class="lit-journal">Equine Veterinary Journal · PubMed</div>
+        <div class="lit-title">Polyacrylamide hydrogel injection as treatment for equine osteoarthritis — clinical outcomes</div>
+        <div class="lit-authors">Tnibar A, Schougaard H, Camitz L et al. — Royal Veterinary College</div>
+        <span class="lit-year">Bekijk studie →</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ── PARTNERS ── -->
+<section class="partners-section">
+  <div class="container">
+    <div class="partners-label">Samenwerking met Europese universiteitsdierenklinieken</div>
+    <div class="partners-grid">
+      <div class="partner-item"><div><div class="partner-name">Utrecht University</div><div class="partner-sub">Diergeneeskunde NL</div></div></div>
+      <div class="partner-item"><div><div class="partner-name">LMU München</div><div class="partner-sub">Tierärztliche Fakultät DE</div></div></div>
+      <div class="partner-item"><div><div class="partner-name">Hannover TiHo</div><div class="partner-sub">Tierärztliche Hochschule DE</div></div></div>
+      <div class="partner-item"><div><div class="partner-name">Ghent University</div><div class="partner-sub">Diergeneeskunde BE</div></div></div>
+      <div class="partner-item"><div><div class="partner-name">Royal Vet College</div><div class="partner-sub">London UK</div></div></div>
     </div>
   </div>
 </section>

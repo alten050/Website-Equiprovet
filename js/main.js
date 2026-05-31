@@ -585,3 +585,224 @@ window.addEventListener('load', function() {
     });
   });
 });
+
+// ── PRODUCT-KEUZE-ASSISTENT ──
+(function(){
+  const isDE = location.pathname.startsWith('/de');
+  const T = isDE ? {
+    btn:'🔍 Welches Produkt?',
+    close:'Schließen',
+    back:'← Zurück',
+    steps:[
+      {title:'Was ist das primäre Problem?',sub:'Beschreiben Sie die Hauptklage des Patienten.',opts:[
+        {icon:'🦴',text:'Chronische Arthritis / Gelenkabnutzung',next:1},
+        {icon:'💉',text:'Sehnenschaden / Regenerationsbedarf',next:'alpha2eq'},
+        {icon:'🐾',text:'Hufrollensyndrom / Knochenproblem',next:'tildren'},
+        {icon:'💧',text:'Gelenkflüssigkeit / Prävention',next:'ha'},
+      ]},
+      {title:'Kortikosteroide — Reaktion?',sub:'Hat der Patient früher auf Kortikosteroide angesprochen?',opts:[
+        {icon:'📉',text:'Ja, Wirkung lässt nach',next:'alpha2eq'},
+        {icon:'🆕',text:'Nein / Erstbehandlung',next:2},
+      ]},
+      {title:'Welche Gelenke sind betroffen?',sub:'',opts:[
+        {icon:'🎯',text:'Ein spezifisches Gelenk',next:'ha-noltrex'},
+        {icon:'🔄',text:'Mehrere Gelenke / systemisch',next:'pentosan'},
+      ]},
+    ],
+    results:{
+      'alpha2eq':{prod:'Alpha2EQ',why:'Alpha2EQ konzentriert α2-Makroglobulin aus dem Eigenblut — hemmt alle 4 Proteaseklassen, die Knorpel abbauen. Ideal bei Kortikosteroid-Versagen und chronischer Arthritis.',url:'/de/wissenschaft.html#alpha2eq'},
+      'ha':{prod:'Stabilisierte HA',why:'Gestabiliseerde Hyaluronsäure bleibt 3–6 Monate im Gelenk aktiv — deutlich länger als lineare oder vernetzte HA. Mapatruto-Patent.',url:'/de/produkte.html'},
+      'noltrex':{prod:'Noltrex Vet',why:'Polyacrylamid 4% als dauerhafte Gelenkfüllung. Eine Behandlung — dauerhafter Effekt.',url:'/de/produkte.html'},
+      'ha-noltrex':{prod:'Stabilisierte HA oder Noltrex Vet',why:'Für ein einzelnes Gelenk: stabilisierte HA bei moderater Arthrose; Noltrex Vet bei schwerer Degeneration als dauerhafte Option.',url:'/de/produkte.html'},
+      'pentosan':{prod:'Pentosan Evolution',why:'Systemischer DMOAD-Effekt: Pentosanpolysulfat + Glucosamin + HA in einer Injektion. Ideal bei Mehrgelenk-Arthrose.',url:'/de/produkte.html'},
+      'tildren':{prod:'Tildren of Osphos',why:'Bisphosphonate hemmen die osteoklastische Knochenresorption. Tiludronsäure (Tildren) oder Clodronsäure (Osphos) — beide sofort lieferbar.',url:'/de/produkte.html'},
+    }
+  } : {
+    btn:'🔍 Welk product?',
+    close:'Sluiten',
+    back:'← Vorige',
+    steps:[
+      {title:'Wat is het primaire probleem?',sub:'Beschrijf de hoofdklacht van de patiënt.',opts:[
+        {icon:'🦴',text:'Chronische artritis / gewrichtsslijtage',next:1},
+        {icon:'💉',text:'Peesbeschadiging / regeneratiebehoefte',next:'alpha2eq'},
+        {icon:'🐾',text:'Naviculaire aandoening / botprobleem',next:'tildren'},
+        {icon:'💧',text:'Gewrichtsfluid / preventief onderhoud',next:'ha'},
+      ]},
+      {title:'Corticosteroïden — wat was de respons?',sub:'Heeft de patiënt eerder behandeling gehad?',opts:[
+        {icon:'📉',text:'Ja, werking neemt af',next:'alpha2eq'},
+        {icon:'🆕',text:'Nee / eerste behandeling',next:2},
+      ]},
+      {title:'Welke gewrichten zijn betrokken?',sub:'',opts:[
+        {icon:'🎯',text:'Één specifiek gewricht',next:'ha-noltrex'},
+        {icon:'🔄',text:'Meerdere gewrichten / systemisch',next:'pentosan'},
+      ]},
+    ],
+    results:{
+      'alpha2eq':{prod:'Alpha2EQ',why:'Alpha2EQ concentreert α2-Macroglobuline uit het eigen bloed — remt alle 4 proteaseklassen die kraakbeen afbreken. Ideaal bij corticosteroïd-falen en chronische artritis.',url:'/wetenschap.html'},
+      'ha':{prod:'Gestabiliseerd HA',why:'Blijft 3–6 maanden actief in het gewricht — aanzienlijk langer dan lineair of cross-linked HA. Mapatruto-patent, enige leverancier in Europa.',url:'/producten.html'},
+      'noltrex':{prod:'Noltrex Vet',why:'Polyacrylamide 4% als permanente gewrichtsvulling. Eenmalige behandeling — blijvend effect.',url:'/producten.html'},
+      'ha-noltrex':{prod:'Gestabiliseerd HA of Noltrex Vet',why:'Voor één gewricht: gestabiliseerd HA bij matige artrose; Noltrex Vet bij ernstige degeneratie als permanente optie.',url:'/producten.html'},
+      'pentosan':{prod:'Pentosan Evolution',why:'Systemisch DMOAD-effect: pentosan polysulfaat + glucosamine + HA in één injectie. Ideaal bij meerdere gewrichten.',url:'/producten.html'},
+      'tildren':{prod:'Tildren of Osphos',why:'Bisfosfonaten remmen osteoklastische botresorptie. Tiludronate (Tildren) of clodronate (Osphos) — beide direct op voorraad.',url:'/producten.html'},
+    }
+  };
+
+  const btn = document.createElement('button');
+  btn.id='quiz-trigger'; btn.textContent=T.btn;
+  document.body.appendChild(btn);
+
+  const modal = document.createElement('div');
+  modal.id='quiz-modal';
+  document.body.appendChild(modal);
+
+  let history=[], currentStep=0;
+
+  function render(stepOrResult){
+    const isResult = typeof stepOrResult === 'string';
+    let html = `<div class="quiz-inner">
+      <button onclick="document.getElementById('quiz-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer">${T.close}</button>`;
+
+    if(!isResult){
+      const s = T.steps[stepOrResult];
+      const prog = T.steps.map((_,i)=>`<div class="quiz-prog-dot${i<stepOrResult?' done':''}"></div>`).join('');
+      html += `<div class="quiz-progress">${prog}</div>
+        <div class="quiz-step active">
+          <div class="quiz-title">${s.title}</div>
+          ${s.sub?`<div class="quiz-sub">${s.sub}</div>`:''}
+          <div class="quiz-options">
+            ${s.opts.map(o=>`<button class="quiz-opt" onclick="quizGo('${o.next}')"><span class="quiz-opt-icon">${o.icon}</span>${o.text}</button>`).join('')}
+          </div>
+          ${history.length?`<button class="quiz-back" onclick="quizBack()">${T.back}</button>`:''}
+        </div>`;
+    } else {
+      const r = T.results[stepOrResult];
+      html += `<div class="quiz-step active quiz-result">
+        <div style="font-size:40px;margin-bottom:12px">✅</div>
+        <div class="quiz-title">Aanbevolen product</div>
+        <div class="quiz-result-product">${r.prod}</div>
+        <div class="quiz-result-why">${r.why}</div>
+        <a href="${r.url}" class="btn-primary" style="display:inline-flex;margin:0 auto;">Meer informatie →</a>
+        <br><button class="quiz-back" onclick="quizReset()" style="margin-top:12px">Opnieuw beginnen</button>
+      </div>`;
+    }
+    html+='</div>';
+    modal.innerHTML=html;
+    modal.style.display='flex';
+  }
+
+  window.quizGo=function(next){
+    history.push(currentStep);
+    if(typeof next==='number'){ currentStep=next; render(next); }
+    else render(next);
+  };
+  window.quizBack=function(){
+    if(!history.length) return;
+    currentStep=history.pop();
+    render(currentStep);
+  };
+  window.quizReset=function(){ history=[]; currentStep=0; render(0); };
+
+  btn.onclick=()=>render(0);
+  modal.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });
+})();
+
+// ── MOLECULAIRE CANVAS VISUALISATIE ──
+(function(){
+  const canvas=document.getElementById('mol-canvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const DPR=window.devicePixelRatio||1;
+  function resize(){
+    canvas.width=canvas.offsetWidth*DPR;
+    canvas.height=canvas.offsetHeight*DPR;
+    ctx.scale(DPR,DPR);
+  }
+  resize();
+  window.addEventListener('resize',()=>{ctx.setTransform(1,0,0,1,0,0);resize();});
+
+  // HA polymer chain: alternating rings + functional groups
+  const CHAIN=[
+    {dx:-240,dy:0,r:22,c:'#1560BD',label:'GlcUA'},
+    {dx:-160,dy:-30,r:16,c:'#2E7DD4',label:'OH'},
+    {dx:-80,dy:0,r:22,c:'#1A8BA0',label:'GlcNAc'},
+    {dx:0,dy:-30,r:16,c:'#2E7DD4',label:'NH'},
+    {dx:80,dy:0,r:22,c:'#1560BD',label:'GlcUA'},
+    {dx:160,dy:-30,r:16,c:'#0E5F6E',label:'OH'},
+    {dx:240,dy:0,r:22,c:'#1A8BA0',label:'GlcNAc'},
+    {dx:320,dy:-30,r:12,c:'#2E7DD4',label:''},
+    {dx:-320,dy:-30,r:12,c:'#2E7DD4',label:''},
+  ];
+
+  let angle=0, mouseX=0, mouseY=0;
+  canvas.addEventListener('mousemove',e=>{
+    const r=canvas.getBoundingClientRect();
+    mouseX=(e.clientX-r.left-canvas.offsetWidth/2)*0.02;
+    mouseY=(e.clientY-r.top-canvas.offsetHeight/2)*0.015;
+  });
+
+  function draw(){
+    const W=canvas.offsetWidth, H=canvas.offsetHeight;
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2, cy=H/2;
+
+    const cosA=Math.cos(angle+mouseX);
+    const sinA=Math.sin(angle+mouseX);
+    const cosB=Math.cos(mouseY*0.5);
+    const sinB=Math.sin(mouseY*0.5);
+
+    const pts=CHAIN.map(a=>{
+      const x3=a.dx*cosA - a.dy*sinA;
+      const y3=a.dx*sinA + a.dy*cosA;
+      const z=y3*0.3; // perspective
+      return {
+        x:cx+x3, y:cy+y3*cosB+z*sinB,
+        r:a.r*(1+z*0.001), c:a.c, label:a.label,
+        alpha:0.4+0.6*(1+z/100)*0.5
+      };
+    });
+
+    // Draw bonds
+    for(let i=0;i<pts.length-1;i++){
+      const a=pts[i], b=pts[i+1];
+      ctx.beginPath();
+      ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      const grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+      grad.addColorStop(0,a.c+'88'); grad.addColorStop(1,b.c+'88');
+      ctx.strokeStyle=grad; ctx.lineWidth=3;
+      ctx.stroke();
+    }
+
+    // Draw atoms
+    pts.forEach(p=>{
+      // Glow
+      const glow=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
+      glow.addColorStop(0,p.c+'22'); glow.addColorStop(1,'transparent');
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2);
+      ctx.fillStyle=glow; ctx.fill();
+
+      // Atom sphere
+      const sphere=ctx.createRadialGradient(p.x-p.r*.3,p.y-p.r*.3,0,p.x,p.y,p.r);
+      sphere.addColorStop(0,'rgba(255,255,255,.35)'); sphere.addColorStop(1,p.c);
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=sphere; ctx.fill();
+
+      // Label
+      if(p.label && p.r>14){
+        ctx.fillStyle='rgba(255,255,255,.9)';
+        ctx.font=`bold ${Math.floor(p.r*.6)}px DM Mono, monospace`;
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText(p.label,p.x,p.y);
+      }
+    });
+
+    // Rotation info label
+    ctx.fillStyle='rgba(255,255,255,.2)';
+    ctx.font='11px DM Sans, sans-serif';
+    ctx.textAlign='right'; ctx.textBaseline='bottom';
+    ctx.fillText('Hyaluronzuur polymer — interactief',W-16,H-12);
+
+    angle+=0.006;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();

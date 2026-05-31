@@ -381,10 +381,25 @@
   </div>
 </div>
 <script>
-document.getElementById('nav-hamburger')?.addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('nav-links')?.classList.toggle('open');
-});
+(function(){
+  const burger = document.getElementById('nav-hamburger');
+  const links  = document.getElementById('nav-links');
+  if (!burger || !links) return;
+  function toggleMenu(force) {
+    const open = force !== undefined ? force : !links.classList.contains('open');
+    burger.classList.toggle('open', open);
+    links.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => toggleMenu());
+  // Sluit menu bij klik op een link
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => toggleMenu(false));
+  });
+  // Sluit menu bij Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+})();
 </script>
 <!-- ── STICKY CTA ── -->
 <div id="sticky-cta">

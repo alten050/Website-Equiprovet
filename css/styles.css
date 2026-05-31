@@ -299,7 +299,7 @@
   }
 
   /* ── SCIENCE/HA SECTION ── */
-  .science-section { background:var(--ink); padding:100px 0; }
+  .science-section { background:var(--ink); padding:100px 0; position:relative; overflow:hidden; }
   .science-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
   .science-label { color:var(--gold); }
   .science-title {
@@ -391,7 +391,7 @@
   .partial { color:var(--gold); font-size:14px; font-weight:600; }
 
   /* ── CONTACT SECTION ── */
-  .contact-section { background:var(--teal); padding:100px 0; }
+  .contact-section { background:var(--teal); padding:100px 0; position:relative; overflow:hidden; }
   .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
   .contact-title {
     font-family:'Playfair Display', serif; font-size:clamp(36px,3.5vw,52px);
@@ -428,7 +428,7 @@
   .form-submit:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
 
   /* ── FOOTER ── */
-  footer { background:var(--ink); padding:60px 0 32px; }
+  footer { background:var(--ink); padding:60px 0 32px; position:relative; overflow:hidden; }
   .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
   .footer-brand-desc { font-size:14px; color:rgba(255,255,255,0.4); line-height:1.7; margin-top:16px; max-width:280px; }
   .footer-col-title { font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:20px; }
@@ -577,7 +577,7 @@
   }
 
   /* ── TESTIMONIALS ── */
-  .testimonials-section { background:var(--ink); padding:100px 0; }
+  .testimonials-section { background:var(--ink); padding:100px 0; position:relative; overflow:hidden; }
   .testimonials-header { text-align:center; margin-bottom:60px; }
   .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
   .testimonial-card {

@@ -223,10 +223,11 @@
   .hero-right {
     position:relative; z-index:2;
     display:flex; align-items:center; justify-content:center;
-    padding:120px 40px 80px;
+    padding:160px 56px 120px;
   }
   .hero-showcase {
-    position:relative; width:100%; max-width:420px;
+    position:relative; width:100%; max-width:400px;
+    margin: 56px 16px;
   }
   .showcase-card {
     background:rgba(255,255,255,0.04);
@@ -267,8 +268,8 @@
     border-radius:14px; padding:16px 20px; backdrop-filter:blur(16px);
     animation:float 4s ease-in-out infinite;
   }
-  .floating-card.card-1 { top:-24px; right:-32px; animation-delay:0s; }
-  .floating-card.card-2 { bottom:20px; left:-40px; animation-delay:2s; }
+  .floating-card.card-1 { top:-56px; right:-16px; animation-delay:0s; }
+  .floating-card.card-2 { bottom:-56px; left:-16px; animation-delay:2s; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
   .fc-label { font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px; }
   .fc-val { font-family:'Playfair Display', serif; font-size:22px; font-weight:900; color:#fff; }
@@ -2642,18 +2643,13 @@ document.querySelectorAll('.btn-primary, .nav-cta, .form-submit').forEach(btn =>
   });
 });
 
-// ── HERO MOUSE PARALLAX ──
+// ── HERO MOUSE PARALLAX (alleen hero-left, floating cards via CSS float animatie) ──
 (function() {
-  const heroLeft  = document.querySelector('.hero-left');
-  const floatCards = document.querySelectorAll('.floating-card');
+  const heroLeft = document.querySelector('.hero-left');
   document.querySelector('.hero')?.addEventListener('mousemove', e => {
-    const rx = (e.clientX / window.innerWidth  - 0.5) * 12;
-    const ry = (e.clientY / window.innerHeight - 0.5) * 12;
-    if (heroLeft) heroLeft.style.transform = 'translate(' + rx * 0.3 + 'px,' + ry * 0.3 + 'px)';
-    floatCards.forEach((fc, i) => {
-      const depth = i === 0 ? 0.6 : 1;
-      fc.style.transform = 'translate(' + rx * depth + 'px,' + (ry * depth - 8 * Math.sin(Date.now() / 2000 + i)) + 'px)';
-    });
+    const rx = (e.clientX / window.innerWidth  - 0.5) * 8;
+    const ry = (e.clientY / window.innerHeight - 0.5) * 8;
+    if (heroLeft) heroLeft.style.transform = 'translate(' + rx * 0.25 + 'px,' + ry * 0.25 + 'px)';
   });
 })();
 

@@ -334,3 +334,11 @@ function openPrivacy() {
 }
 function closePrivacy() {
   const modal = document.getElementById('privacy-modal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('click', e => {
+  const modal = document.getElementById('privacy-modal');
+  if (modal?.classList.contains('open') && e.target === modal) closePrivacy();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePrivacy(); });

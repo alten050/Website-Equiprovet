@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nieuws & beschikbaarheid | Equiprovet</title>
+  <meta name="description" content="Actuele berichten over productbeschikbaarheid en updates van Equiprovet.">
+  <meta name="theme-color" content="#1560BD">
+  <link rel="canonical" href="https://www.equiprovet.nl/nieuws.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+<!-- ── SCROLL PROGRESS ── -->
+<div id="scroll-progress"></div>
+<!-- ── CUSTOM CURSOR ── -->
+<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="Equiprovet" class="nav-logo-img">
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="/producten.html">Producten</a>
+    <a href="/wetenschap.html">Wetenschap</a>
+    <a href="/wetenschap.html#alpha2eq">Alpha2EQ</a>
+    <a href="/over-ons.html#ervaringen">Ervaringen</a>
+    <a href="/producten.html#catalogus">Catalogus</a>
+    <a href="/nieuws.html" class="nav-active">Nieuws</a>
+    <a href="/over-ons.html">Over ons</a>
+    <a href="/contact.html">Contact</a>
+    <span class="nav-tel">+31 (0)74 259 15 47</span>
+    <a href="/contact.html" class="nav-cta">Inloggen / Bestellen</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<section class="page-hero-section">
+  <div class="container">
+    <div class="page-hero-content reveal">
+      <div class="page-hero-breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Nieuws</span>
+      </div>
+      <div class="section-label">Actuele berichten</div>
+      <h1 class="page-hero-title">Nieuws &amp;<br><em>beschikbaarheid</em></h1>
+      <p class="page-hero-desc">Productbeschikbaarheid, updates en aanbiedingen direct van Equiprovet.</p>
+    </div>
+  </div>
+</section>
+<!-- ── NIEUWS ── -->
+<section class="news-section" id="nieuws">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Actuele berichten</div>
+      <h2 class="section-title">Nieuws &amp; <em>beschikbaarheid</em></h2>
+      <p class="section-desc">Actuele informatie over productbeschikbaarheid en updates van Equiprovet.</p>
+    </div>
+    <div class="news-grid reveal-group">
+      <div class="news-card">
+        <div class="news-date">25 augustus 2025</div>
+        <div class="news-title">Kenacort-A 5 ml tijdelijk niet leverbaar</div>
+        <div class="news-body">Kenacort 5 ml, 10 mg/ml is op dit moment niet beschikbaar. Neem contact op voor een alternatief of verwachte levertijd.</div>
+        <span class="news-tag unavail">Tijdelijk niet leverbaar</span>
+      </div>
+      <div class="news-card">
+        <div class="news-date">14 augustus 2025</div>
+        <div class="news-title">Anabolin forte en AMP injection langdurig niet leverbaar</div>
+        <div class="news-body">Anabolin forte en AMP injection zijn voor langere tijd niet beschikbaar. Onze adviseurs helpen u graag een passend alternatief te vinden.</div>
+        <span class="news-tag unavail">Langdurig niet leverbaar</span>
+      </div>
+      <div class="news-card">
+        <div class="news-date">Altijd</div>
+        <div class="news-title">Moeilijk verkrijgbaar product nodig?</div>
+        <div class="news-body">Kunt u een specifiek equine farmaceutisch product niet vinden? Equiprovet heeft jarenlange ervaring in het lokaliseren van moeilijk verkrijgbare veterinaire specialiteiten. Vraag het gewoon.</div>
+        <span class="news-tag info">Vraag een offerte aan</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid reveal-group">
+      <div>
+        <div style="margin-bottom:16px;">
+          <img src="/images/logo.png" alt="Equiprovet" style="height:52px;width:auto;opacity:0.9;">
+        </div>
+        <p class="footer-brand-desc">Veterinaire farmaceutische groothandel gespecialiseerd in equine orthopedische producten. Uitsluitend voor dierenartsen en veterinaire apotheken.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Producten</div>
+        <ul class="footer-links">
+          <li><a href="/wetenschap.html#alpha2eq">Alpha2EQ</a></li>
+          <li><a href="/wetenschap.html">Hyaluronzuur (HA)</a></li>
+          <li><a href="/producten.html">Noltrex Vet</a></li>
+          <li><a href="/producten.html">Bisfosfonaten</a></li>
+          <li><a href="/producten.html#catalogus">HA &amp; Orthopedie catalogus</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Informatie</div>
+        <ul class="footer-links">
+          <li><a href="/wetenschap.html">HA wetenschap</a></li>
+          <li><a href="/wetenschap.html#alpha2eq">Orthobiologics</a></li>
+          <li><a href="/nieuws.html">Nieuws &amp; beschikbaarheid</a></li>
+          <li><a href="/contact.html#faq">Veelgestelde vragen</a></li>
+          <li><a href="/contact.html">Protocollen &amp; advies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Bedrijf</div>
+        <ul class="footer-links">
+          <li><a href="/over-ons.html">Over ons</a></li>
+          <li><a href="/over-ons.html">Mapatruto R&amp;D</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/contact.html">Registratie</a></li>
+          <li><a href="#" onclick="openPrivacy(); return false;">Privacybeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom reveal">
+      <div class="footer-copyright">© 2026 Equiprovet B.V. — Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland</div>
+      <div class="footer-vet-only">🔒 Exclusief voor dierenartsen</div>
+    </div>
+  </div>
+</footer>
+<!-- ── PRIVACY MODAL ── -->
+<div id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacybeleid">
+  <div class="privacy-modal-inner">
+    <button class="privacy-modal-close" onclick="closePrivacy()" aria-label="Sluiten">✕</button>
+    <h2>Privacybeleid</h2>
+    <p class="privacy-date">Versie 1.0 — maart 2026</p>
+    <h3>1. Verwerkingsverantwoordelijke</h3>
+    <p>Equiprovet B.V., Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland. E-mail: info@equiprovet.com</p>
+    <h3>2. Welke gegevens verzamelen wij?</h3>
+    <p>Wij verwerken persoonsgegevens die u zelf invult via het registratieformulier: naam, praktijknaam, e-mailadres, land en veterinair registratienummer.</p>
+    <h3>3. Doel van verwerking</h3>
+    <p>Uw gegevens worden gebruikt voor verificatie van uw veterinaire registratie en het aanmaken van een klantaccount. Wij verkopen uw gegevens niet aan derden.</p>
+    <h3>4. Rechtsgrondslag</h3>
+    <p>Verwerking vindt plaats op basis van uw toestemming (art. 6 lid 1 sub a AVG) en uitvoering van een overeenkomst (art. 6 lid 1 sub b AVG).</p>
+    <h3>5. Uw rechten</h3>
+    <p>U heeft recht op inzage, rectificatie en gegevenswissing. Stuur een e-mail naar info@equiprovet.com.</p>
+    <h3>6. Cookies</h3>
+    <p>Equiprovet gebruikt functioneel noodzakelijke cookies en, na uw toestemming, analytische cookies.</p>
+  </div>
+</div>
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p class="cookie-text">Equiprovet gebruikt functionele en analytische cookies.
+    Lees ons <a onclick="openPrivacy()">privacybeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="handleCookie('declined')">Alleen noodzakelijk</button>
+    <button class="cookie-btn accept" onclick="handleCookie('accepted')">Akkoord</button>
+  </div>
+</div>
+<script>
+document.getElementById('nav-hamburger')?.addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('nav-links')?.classList.toggle('open');
+});
+</script>
+</body>
+</html>

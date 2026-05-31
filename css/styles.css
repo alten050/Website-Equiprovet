@@ -361,3 +361,135 @@ body.cursor-hover #cursor-ring { opacity: 1; transform: translate(-50%,-50%) sca
   body.menu-open #proof-toast,
   body.menu-open #sticky-cta { display: none !important; }
 }
+
+/* ══════════════════════════════════════
+   COMPLETE MOBILE RESPONSIVE FIX
+   ══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── HERO ── */
+  .hero { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .hero-left { padding: 110px 24px 40px !important; }
+  .hero-right { display: none !important; }
+  .hero-title { font-size: clamp(36px, 9vw, 52px) !important; }
+  .hero-stats { gap: 24px !important; flex-wrap: wrap !important; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar-inner { gap: 40px !important; }
+
+  /* ── PRODUCTEN ── */
+  .products-grid { grid-template-columns: 1fr !important; }
+  .section-header { margin-bottom: 36px !important; }
+
+  /* ── SCIENCE ── */
+  .science-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .science-title { font-size: clamp(28px, 8vw, 40px) !important; }
+  #mol-canvas { height: 240px !important; }
+
+  /* ── SPOTLIGHT / ALPHA2EQ ── */
+  .spotlight-inner { grid-template-columns: 1fr !important; gap: 32px !important; padding: 40px 24px !important; }
+
+  /* ── USP ── */
+  .usp-grid { grid-template-columns: 1fr !important; border-radius: 16px !important; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+
+  /* ── COMPARISON ── */
+  .comparison-table-wrap { font-size: 12px !important; }
+
+  /* ── CONTACT ── */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .contact-section { padding: 60px 0 !important; }
+
+  /* ── ABOUT ── */
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .about-image-grid { grid-template-columns: 1fr 1fr !important; }
+  .about-img.tall { grid-row: span 1 !important; height: 200px !important; }
+  .about-img { height: 160px !important; }
+
+  /* ── NEWS ── */
+  .news-grid { grid-template-columns: 1fr !important; }
+
+  /* ── CATALOG ── */
+  .catalog-table-wrap { font-size: 12px !important; }
+  .catalog-table td, .catalog-table th { padding: 10px 12px !important; }
+
+  /* ── CASES ── */
+  .cases-grid { grid-template-columns: 1fr !important; }
+
+  /* ── LITERATUUR ── */
+  .lit-grid { grid-template-columns: 1fr !important; }
+
+  /* ── PARTNERS ── */
+  .partners-grid { gap: 0 !important; }
+  .partner-item { padding: 12px 16px !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.08) !important; }
+
+  /* ── KINETIC STATS ── */
+  .kinetic-inner { grid-template-columns: 1fr 1fr !important; }
+  .kinetic-item { padding: 40px 24px !important; }
+  .kinetic-num { font-size: 48px !important; }
+
+  /* ── PAGE HERO ── */
+  .page-hero-section { padding: 110px 0 48px !important; }
+  .page-hero-title { font-size: clamp(28px, 8vw, 44px) !important; }
+
+  /* ══ FOOTER VOLLEDIG FIX ══ */
+  footer { padding: 48px 0 100px !important; }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-brand-desc { max-width: 100% !important; }
+  footer img[alt="Equiprovet"] { height: 44px !important; }
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+  }
+  .footer-links li { margin-bottom: 10px !important; }
+  .footer-links a { font-size: 15px !important; }
+  .footer-col-title { font-size: 11px !important; margin-bottom: 14px !important; }
+
+  /* ── STICKY CTA op mobiel ── */
+  #sticky-cta {
+    padding: 12px 16px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+  .sticky-cta-actions { width: 100% !important; justify-content: space-between !important; }
+  .sticky-cta-text { font-size: 13px !important; }
+  .sticky-cta-tel { font-size: 14px !important; }
+  .sticky-cta-btn { padding: 8px 16px !important; font-size: 13px !important; flex: 1 !important; text-align: center !important; }
+
+  /* ── SPOTLIGHT VS TABLE ── */
+  .spotlight-vs { font-size: 13px !important; }
+  .svh-a, .svh-b { font-size: 12px !important; }
+
+  /* ── CONTAINER PADDING ── */
+  .container { padding: 0 20px !important; }
+
+  /* ── SECTION PADDING ── */
+  .products-section, .science-section, .spotlight-section,
+  .testimonials-section, .comparison-section, .faq-section,
+  .catalog-section, .news-section, .about-section, .cases-section,
+  .lit-section { padding: 64px 0 !important; }
+
+  /* ── HORIZ SECTION ── */
+  .horiz-section { overflow: visible !important; }
+  .horiz-slide { padding: 80px 20px 60px !important; }
+  .hs-title { font-size: clamp(28px, 8vw, 44px) !important; }
+  .hs-bg-num { font-size: 100px !important; }
+  .hs-visual { flex-direction: column !important; gap: 12px !important; }
+  .hs-stat { min-width: auto !important; width: 100% !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column !important; }
+  .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; justify-content: center !important; }
+  .kinetic-inner { grid-template-columns: 1fr !important; }
+  .about-image-grid { grid-template-columns: 1fr !important; }
+}

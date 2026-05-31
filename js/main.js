@@ -450,3 +450,138 @@ if (!document.startViewTransition) {
     res.innerHTML = html;
   };
 })();
+
+// ════════════════════════════════════════
+// WOW FACTOR JS
+// ════════════════════════════════════════
+
+// ── Muis-reactieve aurora hero ──
+(function(){
+  const hero = document.querySelector('.hero');
+  if(!hero) return;
+  let tx=60, ty=40, cx=60, cy=40;
+  hero.addEventListener('mousemove', e=>{
+    tx = (e.clientX / window.innerWidth)  * 100;
+    ty = (e.clientY / window.innerHeight) * 100;
+  });
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  (function tick(){
+    cx = lerp(cx, tx, 0.06);
+    cy = lerp(cy, ty, 0.06);
+    hero.style.setProperty('--mx', cx.toFixed(2)+'%');
+    hero.style.setProperty('--my', cy.toFixed(2)+'%');
+    requestAnimationFrame(tick);
+  })();
+  // Override aurora met muis-reactieve versie
+  const bg = hero.querySelector('.hero-bg-pattern');
+  if(bg) {
+    (function animBg(){
+      bg.style.background = `
+        radial-gradient(ellipse 70% 55% at ${cx.toFixed(1)}% ${cy.toFixed(1)}%,rgba(21,96,189,0.28) 0%,transparent 65%),
+        radial-gradient(ellipse 45% 40% at ${(100-cx).toFixed(1)}% ${(100-cy).toFixed(1)}%,rgba(14,95,110,0.18) 0%,transparent 60%)
+      `;
+      requestAnimationFrame(animBg);
+    })();
+  }
+})();
+
+// ── Text scramble decoder op statistieken ──
+function scramble(el, finalText, delay=0){
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
+  const duration = 900;
+  let start = null;
+  setTimeout(()=>{
+    function step(ts){
+      if(!start) start=ts;
+      const prog = Math.min((ts-start)/duration, 1);
+      el.textContent = finalText.split('').map((ch,i)=>{
+        if(ch===' '||ch==='+') return ch;
+        if(prog > i/finalText.length) return ch;
+        return CHARS[Math.floor(Math.random()*CHARS.length)];
+      }).join('');
+      if(prog < 1) requestAnimationFrame(step);
+      else el.textContent = finalText;
+    }
+    requestAnimationFrame(step);
+  }, delay);
+}
+
+// ── GSAP Horizontale scroll ──
+window.addEventListener('load', function() {
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  // Horizontal scroll
+  const hSection = document.querySelector('.horiz-section');
+  const hTrack   = document.querySelector('.horiz-track');
+  const hDots    = document.querySelectorAll('.horiz-dot');
+  if(hSection && hTrack){
+    const slides = hTrack.querySelectorAll('.horiz-slide');
+    const n = slides.length;
+
+    ScrollTrigger.create({
+      trigger: hSection,
+      pin: true,
+      start: 'top top',
+      end: `+=${n * 100}%`,
+      scrub: 0.9,
+      onUpdate: self=>{
+        const idx = Math.round(self.progress * (n-1));
+        hDots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+        // Animate bar fills in slide
+        const activeSlide = slides[idx];
+        if(activeSlide){
+          activeSlide.querySelectorAll('.hs-bar-fill').forEach(b=> b.classList.add('animate'));
+        }
+      },
+    });
+
+    gsap.to(hTrack, {
+      xPercent: -(100 * (n-1)),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hSection,
+        start: 'top top',
+        end: `+=${n * 100}%`,
+        scrub: 0.9,
+      }
+    });
+
+    // Dot click navigatie
+    hDots.forEach((dot,i)=>{
+      dot.addEventListener('click', ()=>{
+        const st = ScrollTrigger.getById('horiz');
+        if(st) return;
+        const target = hSection.offsetTop + (i / (n-1)) * (n * window.innerHeight);
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // Kinetic stats met scramble
+  const kItems = document.querySelectorAll('.kinetic-num[data-target]');
+  kItems.forEach(el=>{
+    const target = el.dataset.target;
+    const suffix = el.querySelector('span')?.outerHTML || '';
+    ScrollTrigger.create({
+      trigger: el, start:'top 85%', once:true,
+      onEnter: ()=>scramble(el, target+suffix.replace(/<[^>]+>/g,''))
+    });
+  });
+
+  // Sectie-overgangen met clip-path
+  gsap.utils.toArray('.clip-reveal').forEach(el=>{
+    gsap.fromTo(el,
+      { clipPath:'inset(0 100% 0 0)' },
+      { clipPath:'inset(0 0% 0 0)', duration:1.1, ease:'power3.inOut',
+        scrollTrigger:{ trigger:el, start:'top 80%', once:true } }
+    );
+  });
+
+  // Parallax op kinetische achtergrondcijfers
+  gsap.utils.toArray('.kinetic-item').forEach((item,i)=>{
+    gsap.to(item.querySelector('.hs-bg-num, .kinetic-item::before'), {
+      y: -40, ease:'none',
+      scrollTrigger:{ trigger:item, start:'top bottom', end:'bottom top', scrub:true }
+    });
+  });
+});

@@ -1,6 +1,4 @@
 window.addEventListener('load', function() {
-
-// ── LENIS SMOOTH SCROLL ──
 let lenis;
 if (typeof Lenis !== 'undefined') {
   lenis = new Lenis({
@@ -17,8 +15,6 @@ if (typeof Lenis !== 'undefined') {
     gsap.ticker.lagSmoothing(0);
   }
 }
-
-// ── SCROLL PROGRESS BAR ──
 const progressBar = document.getElementById('scroll-progress');
 function updateProgress() {
   if (!progressBar) return;
@@ -27,8 +23,6 @@ function updateProgress() {
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 if (lenis) lenis.on('scroll', updateProgress);
-
-// ── CUSTOM CURSOR ──
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
@@ -47,8 +41,6 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 }
-
-// ── HERO CANVAS PARTICLES ──
 (function() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
@@ -98,12 +90,8 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
   }
   drawParticles();
 })();
-
-// ── GSAP SCROLL ANIMATIONS ──
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
-
-  // Scroll reveal for .reveal elements
   gsap.utils.toArray('.reveal').forEach(el => {
     const dx = el.classList.contains('reveal-left') ? -40 : el.classList.contains('reveal-right') ? 40 : 0;
     gsap.fromTo(el,
@@ -114,8 +102,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       }
     );
   });
-
-  // Staggered reveal for .reveal-group children
   gsap.utils.toArray('.reveal-group').forEach(group => {
     const children = group.children;
     gsap.fromTo(children,
@@ -126,27 +112,23 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       }
     );
   });
-
-  // DOM-safe word-by-word split: text nodes → split per word, HTML elements → wrap as unit
   function splitIntoWords(el) {
     if (el.querySelector('.word-wrap')) return;
     const parts = [];
     el.childNodes.forEach(node => {
-      if (node.nodeType === 3) { // text node
+      if (node.nodeType === 3) { 
         node.textContent.split(/(\s+)/).forEach(chunk => {
           if (/^\s+$/.test(chunk) || chunk === '') { parts.push(chunk); }
           else { parts.push('<span class="word-wrap"><span class="word">' + chunk + '</span></span>'); }
         });
-      } else if (node.nodeType === 1 && node.tagName !== 'BR') { // element node, skip <br>
+      } else if (node.nodeType === 1 && node.tagName !== 'BR') { 
         parts.push('<span class="word-wrap"><span class="word">' + node.outerHTML + '</span></span>');
       } else if (node.nodeType === 1) {
-        parts.push(node.outerHTML); // keep <br> as-is
+        parts.push(node.outerHTML); 
       }
     });
     el.innerHTML = parts.join('');
   }
-
-  // Word-by-word reveal on section titles
   document.querySelectorAll('.section-title, .science-title, .spotlight-title').forEach(el => {
     splitIntoWords(el);
     gsap.fromTo(el.querySelectorAll('.word'),
@@ -156,8 +138,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       }
     );
   });
-
-  // Hero title word reveal
   const heroTitle = document.querySelector('.hero-title');
   if (heroTitle) {
     splitIntoWords(heroTitle);
@@ -166,8 +146,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       { y: '0%', opacity: 1, duration: 0.75, ease: 'power3.out', stagger: 0.055, delay: 0.2 }
     );
   }
-
-  // HA comparison bars
   gsap.utils.toArray('.ha-comparison').forEach(el => {
     ScrollTrigger.create({
       trigger: el, start: 'top 80%', once: true,
@@ -176,8 +154,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       })
     });
   });
-
-  // Counter animations
   document.querySelectorAll('.stat-num[data-target]').forEach(el => {
     const target = parseInt(el.dataset.target, 10);
     if (isNaN(target)) return;
@@ -191,8 +167,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       onComplete: () => { el.innerHTML = target + suffix; }
     });
   });
-
-  // Parallax on hero elements
   const heroShowcase = document.querySelector('.hero-showcase');
   if (heroShowcase) {
     gsap.to(heroShowcase, {
@@ -207,17 +181,12 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
     });
   }
-
-  // Product section — count up on scroll
   ScrollTrigger.refresh();
-
 } else {
-  // Fallback: IntersectionObserver if GSAP not loaded
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal, .reveal-group').forEach(el => revealObs.observe(el));
-
   document.querySelectorAll('.ha-comparison').forEach(el => {
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting) el.querySelectorAll('.hac-bar-fill').forEach(b => {
@@ -226,8 +195,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     }, { threshold: 0.3 }).observe(el);
   });
 }
-
-// ── 3D CARD TILT ──
 document.querySelectorAll('.product-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
@@ -241,8 +208,6 @@ document.querySelectorAll('.product-card').forEach(card => {
     card.style.transform  = 'perspective(900px) rotateX(0) rotateY(0) translateY(0) scale(1)';
   });
 });
-
-// ── MAGNETIC BUTTONS ──
 document.querySelectorAll('.btn-primary, .nav-cta, .form-submit').forEach(btn => {
   btn.addEventListener('mousemove', e => {
     const r = btn.getBoundingClientRect();
@@ -256,8 +221,6 @@ document.querySelectorAll('.btn-primary, .nav-cta, .form-submit').forEach(btn =>
     btn.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1)';
   });
 });
-
-// ── HERO MOUSE PARALLAX ──
 (function() {
   const heroLeft  = document.querySelector('.hero-left');
   const floatCards = document.querySelectorAll('.floating-card');
@@ -271,8 +234,6 @@ document.querySelectorAll('.btn-primary, .nav-cta, .form-submit').forEach(btn =>
     });
   });
 })();
-
-// ── NAV ACTIVE HIGHLIGHT ──
 (function() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -288,8 +249,6 @@ document.querySelectorAll('.btn-primary, .nav-cta, .form-submit').forEach(btn =>
   window.addEventListener('scroll', onScroll, { passive: true });
   if (lenis) lenis.on('scroll', onScroll);
 })();
-
-// ── FAQ ACCORDION ──
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
     const item   = btn.closest('.faq-item');
@@ -307,21 +266,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     }
   });
 });
-
-// ── INTRO OVERLAY ──
 const overlay = document.getElementById('intro-overlay');
 if (overlay) setTimeout(() => { overlay.style.display = 'none'; }, 500);
-
-// ── COOKIE CONSENT ──
 (function() {
   const banner = document.getElementById('cookie-banner');
   if (!banner) return;
   try { if (!localStorage.getItem('cookie-consent')) setTimeout(() => banner.classList.add('visible'), 3200); }
   catch(e) { setTimeout(() => banner.classList.add('visible'), 3200); }
 })();
-
-}); // end window.load
-
+}); 
 function handleCookie(decision) {
   try { localStorage.setItem('cookie-consent', decision); } catch(e) {}
   const banner = document.getElementById('cookie-banner');

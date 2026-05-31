@@ -981,3 +981,92 @@ nav a.nav-active::after {
 .products-preview-cta {
   text-align: center; margin-top: 48px;
 }
+
+/* ══════════════════════════════
+   IMAGE INTEGRATION STYLES
+   ══════════════════════════════ */
+
+/* ── Product card met afbeelding ── */
+.product-card-top { position: relative; overflow: hidden; }
+.product-card-top.img-card {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.product-card-top.img-card::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(160deg, rgba(6,15,30,0.55) 0%, rgba(6,15,30,0.82) 100%);
+}
+.product-card-top.img-card > * { position: relative; z-index: 1; }
+
+/* ── Hero image accent ── */
+.hero-image-accent {
+  position: absolute;
+  right: 0; top: 0; bottom: 0; width: 52%;
+  background-size: cover; background-position: center 30%;
+  opacity: 0.18;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
+  mask-image: linear-gradient(to right, transparent 0%, black 40%);
+  pointer-events: none; z-index: 1;
+}
+
+/* ── USP sectie achtergrondafbeelding ── */
+.usp-section { position: relative; overflow: hidden; }
+.usp-bg-image {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center 40%;
+  opacity: 0.06; z-index: 0;
+}
+.usp-section .container { position: relative; z-index: 1; }
+
+/* ── Science page afbeeldingen ── */
+.science-image-block {
+  border-radius: 20px; overflow: hidden;
+  position: relative; margin-top: 40px;
+  height: 340px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.science-image-block img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.science-image-block::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(6,15,30,0.7) 100%);
+}
+
+/* ── About page afbeeldingen ── */
+.about-image-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 32px;
+}
+.about-img {
+  border-radius: 16px; overflow: hidden;
+  height: 260px; position: relative;
+}
+.about-img.tall { height: 340px; grid-row: span 2; }
+.about-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+}
+.about-img:hover img { transform: scale(1.04); }
+.about-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(6,15,30,0.45) 100%);
+}
+
+/* ── Page hero met achtergrondafbeelding ── */
+.page-hero-section.has-bg-image {
+  background-size: cover; background-position: center 35%;
+}
+.page-hero-section.has-bg-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(6,15,30,0.72); z-index: 0;
+}
+.page-hero-section.has-bg-image::before { z-index: 1; }
+.page-hero-section.has-bg-image .page-hero-content { z-index: 2; }

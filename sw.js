@@ -1,5 +1,5 @@
 // Equiprovet Service Worker — offline + cache strategie
-const CACHE = 'equiprovet-v5';
+const CACHE = 'equiprovet-v6';
 const STATIC = [
   '/', '/producten', '/wetenschap', '/over-ons', '/nieuws', '/contact',
   '/de/', '/de/produkte', '/de/wissenschaft', '/de/ueber-uns', '/de/neuigkeiten', '/de/kontakt',

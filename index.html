@@ -16,9 +16,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
   <script src="/js/main.js" defer></script>
   <link rel="preload" as="image" href="/images/hero-horse-leg.jpg" fetchpriority="high">
   <link rel="alternate" hreflang="nl" href="https://www.equiprovet.nl/">
@@ -44,18 +41,6 @@
   "logo": "https://www.equiprovet.nl/images/logo.png",
   "description": "Veterinaire groothandel gespecialiseerd in equine orthopaedische farmaceutica. Exclusief leverancier van gestabiliseerd hyaluronzuur (Mapatruto-patent) en Alpha2EQ regeneratieve therapie voor geregistreerde dierenartsen.",
   "medicalSpecialty": "Equine Orthopedics",
-  "availableService": [
-    {"@type": "MedicalTherapy", "name": "Alpha2EQ — Autologe Alpha-2 Macroglobuline therapie"},
-    {"@type": "MedicalTherapy", "name": "Gestabiliseerd Hyaluronzuur — Mapatruto-patent"},
-    {"@type": "MedicalTherapy", "name": "Noltrex Vet — Polyacrylamide gewrichtsgel"},
-    {"@type": "MedicalTherapy", "name": "Tildren & Osphos — Bisfosfonaten voor navicular"}
-  ],
-  "knowsAbout": [
-    "Equine osteoarthritis", "Intra-articular injection horses",
-    "Alpha-2 macroglobulin therapy", "Hyaluronic acid joint injection",
-    "Bisphosphonate therapy horses", "Navicular syndrome treatment",
-    "Joint disease horses", "Regenerative equine therapy"
-  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Jan Tinbergenstraat 138",
@@ -72,34 +57,15 @@
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
       "opens": "08:30", "closes": "17:30"}
   },
-  "parentOrganization": {
-    "@type": "Organization",
-    "name": "Mapatruto Holding B.V.",
-    "description": "Innovatieve oplossingen voor dierengezondheid, gespecialiseerd in equine gewrichts- en peesbehandeling en vruchtbaarheid."
-  },
-  "areaServed": {"@type": "GeoCircle", "geoMidpoint": {"@type":"GeoCoordinates","latitude":52.2666,"longitude":6.7942}, "geoRadius": "5000000"},
-  "hasCredential": "Veterinary pharmaceutical wholesaler license NL",
   "slogan": "Wij leveren wat je praktijk echt nodig heeft"
 }
 </script>
-  <!-- Analytics: vervang G-XXXXXXXXXX met uw GA4 Measurement ID -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
-  <!-- Microsoft Clarity: vervang XXXXXXXXXX met uw project ID -->
-  <!-- <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","XXXXXXXXXX");</script> -->
-  <!-- Crisp live chat: vervang XXXXXXXX-XXXX met uw Crisp website ID -->
-  <!-- <script>window.$crisp=[];window.CRISP_WEBSITE_ID="XXXXXXXX-XXXX";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s)})();</script> -->
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Ga naar inhoud</a>
-<div id="intro-overlay" aria-hidden="true">
-  <img src="/images/logo.png" alt="Equiprovet" class="intro-logo-img">
-  <div class="intro-tagline">The Equine Orthopaedic Specialist</div>
-</div>
+
 <!-- ── SCROLL PROGRESS ── -->
 <div id="scroll-progress"></div>
-<!-- ── CUSTOM CURSOR ── -->
-<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
 
 <!-- ── NAV ── -->
 <nav>
@@ -112,101 +78,83 @@
     <a href="/over-ons.html">Over ons</a>
     <a href="/nieuws.html">Nieuws</a>
     <a href="/contact.html">Contact</a>
-    <div class="lang-switcher"><a href="/" class="lang-active">NL</a><a href="/de/">DE</a></div>
+    <div class="lang-switcher">
+      <a href="/" class="lang-active">NL</a>
+      <a href="/de/">DE</a>
+    </div>
     <a href="/contact.html" class="nav-cta">Inloggen / Bestellen</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <!-- ── HERO ── -->
 <main id="main-content">
 <section class="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-grid-overlay"></div>
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-image-accent" style="background-image:url('/images/hero-horse-leg.jpg');opacity:0.07"></div>
-
-  <div class="hero-left">
-    <div class="hero-badge">
-      <span>Exclusief voor dierenartsen</span>
-    </div>
-    <h1 class="hero-title">
-      Therapeutische voorsprong<br>
-      in <em>equine orthopedie</em><br>
-      <span class="line-teal">Eigen onderzoek voor uw behandelsucces.</span>
-    </h1>
-    <p class="hero-sub">
-      Wij leveren innovatieve specialiteiten uit eigen ontwikkeling en waarborgen de medicijnenvoorziening van uw praktijk — ook als andere groothandels u weken laten wachten.
-    </p>
-    <div class="hero-actions">
-      <a href="/producten.html" class="btn-primary">Bekijk ons assortiment →</a>
-      <a href="/contact.html" class="btn-secondary">Registreer als dierenarts</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num" data-target="500">500<span>+</span></div>
-        <div class="stat-label">Unieke producten</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Exclusief voor dierenartsen</div>
+      <h1 class="hero-title">
+        Therapeutische voorsprong<br>
+        in <em>equine orthopedie</em>
+      </h1>
+      <p class="hero-sub">
+        Wij leveren innovatieve specialiteiten uit eigen ontwikkeling en waarborgen de medicijnenvoorziening van uw praktijk — ook als andere groothandels u weken laten wachten.
+      </p>
+      <div class="hero-actions">
+        <a href="/producten.html" class="btn-primary">Bekijk ons assortiment →</a>
+        <a href="/contact.html" class="btn-secondary">Registreer als dierenarts</a>
       </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="40">40<span>+</span></div>
-        <div class="stat-label">Jaar expertise</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">EU<span>+</span></div>
-        <div class="stat-label">Mondiale levering</div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">500<span>+</span></div>
+          <div class="stat-label">Unieke producten</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40<span>+</span></div>
+          <div class="stat-label">Jaar expertise</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">EU<span>+</span></div>
+          <div class="stat-label">Mondiale levering</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-right">
-    <div class="hero-showcase">
-      <!-- Floating card 1 -->
-      <div class="floating-card card-1">
-        <div class="fc-label">Patent Mapatruto</div>
-        <div class="fc-val">HA<span>³</span></div>
-        <div class="fc-sub">Gestabiliseerd · Uniek in wereld</div>
-      </div>
-
-      <!-- Main showcase card -->
-      <div class="showcase-card">
-        <div class="showcase-tag">⭐ Uitgelicht product</div>
-        <div class="showcase-product-name">Alpha2EQ</div>
-        <div class="showcase-product-sub">Autologe Alpha-2 Macroglobuline Therapie</div>
-        <div class="showcase-divider"></div>
-        <div class="showcase-detail-row">
-          <span class="showcase-detail-label">Werkzame stof</span>
-          <span class="showcase-detail-val">α2-Macroglobulin</span>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-tag">⭐ Uitgelicht product</div>
+        <div class="hero-card-name">Alpha2EQ</div>
+        <div class="hero-card-sub">Autologe Alpha-2 Macroglobuline Therapie</div>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-row">
+          <span class="hcr-label">Werkzame stof</span>
+          <span class="hcr-val">α2-Macroglobulin</span>
         </div>
-        <div class="showcase-detail-row">
-          <span class="showcase-detail-label">Werking</span>
-          <span class="showcase-detail-val">Remt alle 4 proteaseklassen</span>
+        <div class="hero-card-row">
+          <span class="hcr-label">Werking</span>
+          <span class="hcr-val">Remt alle 4 proteaseklassen</span>
         </div>
-        <div class="showcase-detail-row">
-          <span class="showcase-detail-label">Duur</span>
-          <span class="showcase-detail-val">6–12 maanden</span>
+        <div class="hero-card-row">
+          <span class="hcr-label">Duur</span>
+          <span class="hcr-val">6–12 maanden</span>
         </div>
-        <div class="showcase-detail-row">
-          <span class="showcase-detail-label">Invriesbaar</span>
-          <span class="showcase-detail-val">Tot 12 maanden</span>
+        <div class="hero-card-row">
+          <span class="hcr-label">Invriesbaar</span>
+          <span class="hcr-val">Tot 12 maanden</span>
         </div>
-        <div class="showcase-badge-row">
-          <span class="showcase-badge">Steroidvrij</span>
-          <span class="showcase-badge">FEI-veilig</span>
-          <span class="showcase-badge teal">Patented proces</span>
-          <span class="showcase-badge teal">Drachtige merries</span>
+        <div class="hero-card-badges">
+          <span class="hero-card-badge">Steroidvrij</span>
+          <span class="hero-card-badge">FEI-veilig</span>
+          <span class="hero-card-badge">Patented proces</span>
+          <span class="hero-card-badge">Drachtige merries</span>
         </div>
-      </div>
-
-      <!-- Floating card 2 -->
-      <div class="floating-card card-2">
-        <div class="fc-label">Beschikbaar via</div>
-        <div class="fc-val" style="font-size:16px;color:#fff;">Equiprovet</div>
-        <div class="fc-sub">EU distributeur</div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- ── TRUST BAR ── -->
 <div class="trust-bar">
   <div class="trust-bar-inner">
@@ -224,137 +172,75 @@
     <div class="trust-item"><span class="icon">🏆</span>40+ jaar equine expertise</div>
   </div>
 </div>
-<!-- ── HORIZONTALE SCROLL SHOWCASE ── -->
-<section class="horiz-section">
-  <div class="horiz-track">
 
-    <!-- Slide 1: Het probleem -->
-    <div class="horiz-slide">
-      <div class="hs-bg-num">01</div>
-      <div class="hs-label">Het probleem</div>
-      <h2 class="hs-title">Standaard HA verdwijnt<br>binnen <em>48 uur</em></h2>
-      <p class="hs-desc">Lineair hyaluronzuur wordt snel afgebroken door hyaluronidasen in het gewrichtsvocht. Het paard ervaart kortdurende verlichting — maar de dierenarts ziet de patiënt binnen weken terug.</p>
-      <div class="hs-bar">
-        <div class="hs-bar-row">
-          <span class="hs-bar-name">Lineair HA</span>
-          <div class="hs-bar-track"><div class="hs-bar-fill" style="width:28%;background:rgba(0,91,172,0.25)"></div></div>
-          <span class="hs-bar-val" style="color:rgba(255,255,255,.4)">~2 dgn</span>
-        </div>
-        <div class="hs-bar-row">
-          <span class="hs-bar-name">Cross-linked HA</span>
-          <div class="hs-bar-track"><div class="hs-bar-fill" style="width:52%;background:rgba(255,255,255,0.4)"></div></div>
-          <span class="hs-bar-val" style="color:rgba(255,255,255,.5)">~3 wk</span>
-        </div>
-        <div class="hs-bar-row">
-          <span class="hs-bar-name" style="color:var(--gold);">Gestabiliseerd HA ✦</span>
-          <div class="hs-bar-track"><div class="hs-bar-fill" style="width:92%;background:linear-gradient(90deg,var(--gold-light),var(--gold))"></div></div>
-          <span class="hs-bar-val" style="color:var(--gold)">3–6 mnd</span>
-        </div>
-      </div>
-      <div class="horiz-progress">
-        <div class="horiz-dot active"></div>
-        <div class="horiz-dot"></div>
-        <div class="horiz-dot"></div>
-      </div>
-    </div>
-
-    <!-- Slide 2: De oplossing -->
-    <div class="horiz-slide">
-      <div class="hs-bg-num">02</div>
-      <div class="hs-label">De oplossing</div>
-      <h2 class="hs-title">Mapatruto-patent:<br><em>gestabiliseerd</em> HA</h2>
-      <p class="hs-desc">Door de moleculaire structuur te stabiliseren — zonder agressieve vernettingschemicaliën — blijft het HA aanzienlijk langer actief in het gewricht. Hogere molecuulmassa, minder herhaalbehandelingen.</p>
-      <div class="hs-visual">
-        <div class="hs-stat">
-          <div class="hs-stat-num">3–6</div>
-          <div class="hs-stat-label">Maanden werkingsduur</div>
-        </div>
-        <div class="hs-stat">
-          <div class="hs-stat-num">92%</div>
-          <div class="hs-stat-label">Relatieve verblijftijd</div>
-        </div>
-        <div class="hs-stat">
-          <div class="hs-stat-num">EU</div>
-          <div class="hs-stat-label">Enige leverancier</div>
-        </div>
-      </div>
-      <div class="horiz-progress">
-        <div class="horiz-dot"></div>
-        <div class="horiz-dot active"></div>
-        <div class="horiz-dot"></div>
-      </div>
-    </div>
-
-    <!-- Slide 3: Alpha2EQ -->
-    <div class="horiz-slide">
-      <div class="hs-bg-num">03</div>
-      <div class="hs-label">Regeneratieve therapie</div>
-      <h2 class="hs-title">Alpha2EQ:<br>het bloed van het paard<br>als <em>medicijn</em></h2>
-      <p class="hs-desc">α2-Macroglobuline — geconcentreerd uit het eigen bloed via het AlphaActive-systeem — blokkeert de proteasen die het gewrichtskraakbeen afbreken. Steroidvrij, FEI-veilig, invriesbaar.</p>
-      <div class="hs-visual">
-        <div class="hs-stat">
-          <div class="hs-stat-num">6–12</div>
-          <div class="hs-stat-label">Maanden werkingsduur</div>
-        </div>
-        <div class="hs-stat">
-          <div class="hs-stat-num">4</div>
-          <div class="hs-stat-label">Proteaseklassen geblokkeerd</div>
-        </div>
-        <a href="/contact.html" class="btn-primary" style="margin-top:8px;">Bestel Alpha2EQ →</a>
-      </div>
-      <div class="horiz-progress">
-        <div class="horiz-dot"></div>
-        <div class="horiz-dot"></div>
-        <div class="horiz-dot active"></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── 3-STAPPEN-PROCES ── -->
-<section style="background:#fff;padding:80px 0;">
+<!-- ── HA VERGELIJKING ── -->
+<section class="ha-section">
   <div class="container">
-    <div class="section-header reveal" style="text-align:center;max-width:620px;margin:0 auto 56px;">
-      <div class="section-label" style="justify-content:center;">Uw instap</div>
-      <h2 class="section-title">In 3 stappen naar een<br><em>sluitende praktijkvoorziening</em></h2>
-    </div>
-    <div class="reveal-group" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
-      <div style="background:var(--cream);padding:40px 32px;border-radius:16px 0 0 16px;position:relative;">
-        <div style="font-family:'Inter',sans-serif;font-size:64px;font-weight:900;color:rgba(21,96,189,.08);line-height:1;margin-bottom:16px;">01</div>
-        <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin-bottom:12px;">Snel registreren</h3>
-        <p style="font-size:15px;color:var(--ink-soft);line-height:1.7;">Vul uw praktijkgegevens en veterinair registratienummer in ons korte formulier in.</p>
+    <div class="ha-grid">
+      <div class="reveal">
+        <div class="section-label">Het probleem</div>
+        <h2 class="section-title">Standaard HA verdwijnt<br>binnen <em>48 uur</em></h2>
+        <p class="ha-desc">Lineair hyaluronzuur wordt snel afgebroken door hyaluronidasen in het gewrichtsvocht. Het paard ervaart kortdurende verlichting — maar de dierenarts ziet de patiënt binnen weken terug.</p>
+        <div class="ha-bars">
+          <div class="ha-bar-row">
+            <span class="ha-bar-name">Lineair HA</span>
+            <div class="ha-bar-track"><div class="ha-bar-fill linear"></div></div>
+            <span class="ha-bar-val">~2 dgn</span>
+          </div>
+          <div class="ha-bar-row">
+            <span class="ha-bar-name">Cross-linked HA</span>
+            <div class="ha-bar-track"><div class="ha-bar-fill crosslink"></div></div>
+            <span class="ha-bar-val">~3 wk</span>
+          </div>
+          <div class="ha-bar-row">
+            <span class="ha-bar-name highlight">Gestabiliseerd HA ✦</span>
+            <div class="ha-bar-track"><div class="ha-bar-fill stabilised"></div></div>
+            <span class="ha-bar-val" style="color:var(--blue)">3–6 mnd</span>
+          </div>
+        </div>
       </div>
-      <div style="background:var(--cream-2);padding:40px 32px;position:relative;">
-        <div style="font-family:'Inter',sans-serif;font-size:64px;font-weight:900;color:rgba(21,96,189,.08);line-height:1;margin-bottom:16px;">02</div>
-        <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin-bottom:12px;">Vakgroep-activering</h3>
-        <p style="font-size:15px;color:var(--ink-soft);line-height:1.7;">Ons team verifieert uw gegevens binnen korte tijd en activeert uw exclusieve toegang tot prijzen en protocollen.</p>
+      <div class="reveal">
+        <div class="section-label">De oplossing</div>
+        <h2 class="section-title">Mapatruto-patent:<br><em>gestabiliseerd</em> HA</h2>
+        <p class="ha-desc">Door de moleculaire structuur te stabiliseren — zonder agressieve vernettingschemicaliën — blijft het HA aanzienlijk langer actief in het gewricht. Hogere molecuulmassa, minder herhaalbehandelingen.</p>
+        <div class="ha-stats">
+          <div class="ha-stat-card">
+            <div class="ha-stat-num">3–6</div>
+            <div class="ha-stat-label">Maanden werkingsduur</div>
+          </div>
+          <div class="ha-stat-card">
+            <div class="ha-stat-num">EU</div>
+            <div class="ha-stat-label">Enige leverancier Europa</div>
+          </div>
+          <div class="ha-stat-card">
+            <div class="ha-stat-num">92%</div>
+            <div class="ha-stat-label">Relatieve verblijftijd</div>
+          </div>
+          <div class="ha-stat-card">
+            <div class="ha-stat-num">↓95%</div>
+            <div class="ha-stat-label">Minder herbehandeling</div>
+          </div>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="/wetenschap.html" class="btn-outline">Lees de wetenschappelijke onderbouwing →</a>
+        </div>
       </div>
-      <div style="background:var(--ink);padding:40px 32px;border-radius:0 16px 16px 0;position:relative;">
-        <div style="font-family:'Inter',sans-serif;font-size:64px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;margin-bottom:16px;">03</div>
-        <h3 style="font-size:18px;font-weight:700;color:#fff;margin-bottom:12px;">Express-levering ontvangen</h3>
-        <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;">Bestel specialiteiten eenvoudig uit voorraad en zorg voor de ononderbroken behandeling van uw patiënten.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:40px;">
-      <a href="/contact.html" class="btn-primary">Registreer als dierenarts →</a>
     </div>
   </div>
 </section>
-<!-- ── PRODUCTS ── -->
+
+<!-- ── PRODUCTEN ── -->
 <section class="products-section" id="products">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-label">Ons assortiment</div>
       <h2 class="section-title">Drie klinische pijlers voor uw<br><em>orthopedische praktijk</em></h2>
       <p class="section-desc">Celvrije therapieën, langdurige gewrichtsbescherming en direct leverbare specialiteiten — uit eigen onderzoek, voor uw praktijk.</p>
     </div>
-
-    <div class="products-grid">
+    <div class="products-grid reveal-group">
       <div class="product-card">
-        <div class="product-card-top img-card teal-card" style="background-image:url('/images/alpha2eq-centrifuge.jpg')">
-          <div class="product-card-glow"></div>
-          <div class="pc-category teal-variant">Regeneratieve therapie</div>
+        <div class="product-card-top img-card" style="background-image:url('/images/alpha2eq-centrifuge.jpg')">
+          <div class="pc-category">Regeneratieve therapie</div>
           <div class="pc-name">Alpha2EQ</div>
           <div class="pc-molecule">Alpha-2 Macroglobulin (α2M)</div>
         </div>
@@ -373,8 +259,7 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-card-top img-card gold-card" style="background-image:url('/images/ha-injection.jpg')">
-          <div class="product-card-glow"></div>
+        <div class="product-card-top img-card" style="background-image:url('/images/ha-injection.jpg')">
           <div class="pc-category">Mapatruto Patent</div>
           <div class="pc-name">Gestabiliseerd HA</div>
           <div class="pc-molecule">DVS Cross-linked Sodium Hyaluronate</div>
@@ -382,7 +267,7 @@
         <div class="product-card-body">
           <p class="pc-indication">Biedt aantoonbaar langere verblijftijd in het gewricht dan lineair of cross-linked standaard-HA. Basis is het exclusieve Mapatruto-patent.</p>
           <div class="pc-tags">
-            <span class="pc-tag" style="background:#EBF2FD;color:#1560BD;">Mapatruto Patent</span>
+            <span class="pc-tag highlight">Mapatruto Patent</span>
             <span class="pc-tag">Lineair &amp; cross-linked</span>
             <span class="pc-tag">Intra-articulair</span>
           </div>
@@ -394,7 +279,6 @@
       </div>
       <div class="product-card">
         <div class="product-card-top img-card" style="background-image:url('/images/noltrex-joint.jpg')">
-          <div class="product-card-glow" style="opacity:0.15;"></div>
           <div class="pc-category">3D Gewrichtsgel</div>
           <div class="pc-name">Noltrex Vet</div>
           <div class="pc-molecule">Polyacrylamide 4% — 3-dimensional</div>
@@ -412,18 +296,77 @@
           </div>
         </div>
       </div>
-      <div class="products-preview-cta reveal">
+      <div class="products-preview-cta">
         <a href="/producten.html" class="btn-primary">Bekijk alle producten &amp; catalogus →</a>
       </div>
     </div>
   </div>
 </section>
-<!-- ── USP SECTION ── -->
-<section class="usp-section"><div class="usp-bg-image" style="background-image:url('/images/horse-dressage.jpg')"></div>
+
+<!-- ── 3 STAPPEN ── -->
+<section class="steps-section">
   <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:60px;">
+    <div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label" style="justify-content:center;">Uw instap</div>
+      <h2 class="section-title">In 3 stappen naar een<br><em>sluitende praktijkvoorziening</em></h2>
+    </div>
+    <div class="steps-grid reveal-group">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Snel registreren</h3>
+        <p class="step-desc">Vul uw praktijkgegevens en veterinair registratienummer in ons korte formulier in.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Vakgroep-activering</h3>
+        <p class="step-desc">Ons team verifieert uw gegevens binnen korte tijd en activeert uw exclusieve toegang tot prijzen en protocollen.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Express-levering ontvangen</h3>
+        <p class="step-desc">Bestel specialiteiten eenvoudig uit voorraad en zorg voor de ononderbroken behandeling van uw patiënten.</p>
+      </div>
+    </div>
+    <div class="steps-cta reveal">
+      <a href="/contact.html" class="btn-primary">Registreer als dierenarts →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid reveal-group">
+      <div class="stats-item">
+        <div class="stats-num">500<span>+</span></div>
+        <div class="stats-label">Equine specialiteiten</div>
+        <div class="stats-sub">Permanent op voorraad in Hengelo</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num">40<span>+</span></div>
+        <div class="stats-label">Jaar expertise</div>
+        <div class="stats-sub">Gecombineerde kennis van ons team</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num">95<span>%</span></div>
+        <div class="stats-label">Minder herbehandeling</div>
+        <div class="stats-sub">Met gestabiliseerd HA vs. lineair</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num">EU<span>+</span></div>
+        <div class="stats-label">Mondiaal levergebied</div>
+        <div class="stats-sub">Dierenartsen in heel Europa en daarbuiten</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── USP ── -->
+<section class="usp-section">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;max-width:580px;margin:0 auto 0;">
       <div class="section-label" style="justify-content:center;">Waarom Equiprovet</div>
-      <h2 class="section-title" style="text-align:center;">Drie dingen die<br>niemand anders heeft</h2>
+      <h2 class="section-title">Drie dingen die<br>niemand anders heeft</h2>
     </div>
     <div class="usp-grid reveal-group">
       <div class="usp-item">
@@ -441,87 +384,20 @@
       <div class="usp-item">
         <div class="usp-num">03</div>
         <span class="usp-icon">🏛️</span>
-        <div class="usp-title">Universitaire R&D-samenwerking</div>
+        <div class="usp-title">Universitaire R&amp;D-samenwerking</div>
         <p class="usp-desc">In continue samenwerking met toonaangevende Europese veterinaire universiteiten ontwikkeld. Individueel, deskundig en op gelijk niveau.</p>
       </div>
     </div>
   </div>
 </section>
-<!-- ── KINETISCHE STATS ── -->
-<section class="kinetic-section">
-  <div class="kinetic-inner">
-    <div class="kinetic-item" data-bg="500">
-      <div class="kinetic-num" data-target="500">500<span>+</span></div>
-      <div class="kinetic-label">Equine specialiteiten</div>
-      <div class="kinetic-sub">Permanent op voorraad in Hengelo</div>
-    </div>
-    <div class="kinetic-item" data-bg="40">
-      <div class="kinetic-num" data-target="40">40<span>+</span></div>
-      <div class="kinetic-label">Jaar expertise</div>
-      <div class="kinetic-sub">Gecombineerde kennis van ons team</div>
-    </div>
-    <div class="kinetic-item" data-bg="95">
-      <div class="kinetic-num" data-target="95">95<span>%</span></div>
-      <div class="kinetic-label">Minder herbehandeling</div>
-      <div class="kinetic-sub">Met gestabiliseerd HA vs. lineair</div>
-    </div>
-    <div class="kinetic-item" data-bg="EU">
-      <div class="kinetic-num">EU<span>+</span></div>
-      <div class="kinetic-label">Mondiaal levergebied</div>
-      <div class="kinetic-sub">Dierenartsen in heel Europa en daarbuiten</div>
-    </div>
-  </div>
-</section>
-<!-- ── EXPRESS-VERZENDBELOFTE ── -->
-<section style="background:var(--ink);padding:80px 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(21,96,189,.15) 0%,transparent 60%);pointer-events:none;"></div>
-  <div class="container reveal">
-    <div style="max-width:680px;">
-      <div class="section-label" style="color:var(--teal-light);">Leveringsgarantie</div>
-      <h2 class="section-title" style="color:#fff;">Als elk uur telt:<br><em>Onze express-verzendbelofte</em></h2>
-      <p style="font-size:17px;line-height:1.8;color:rgba(255,255,255,.65);margin-top:20px;">Een acuut patiëntgeval duldt geen uitstel. Alle bestellingen van voorradige producten die op werkdagen vóór <strong style="color:#fff;">14:00 uur</strong> binnenkomen, verlaten nog dezelfde dag ons centraal magazijn in Hengelo. Dank zij volledig temperatuurbewaakt express-transport treffen de preparaten zo snel mogelijk en gebruiksklaar in uw praktijk of kliniek aan.</p>
-      <a href="/contact.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:32px;color:var(--teal-light);font-weight:600;text-decoration:none;font-size:15px;">Nu registreren en bestellen →</a>
-    </div>
-  </div>
-</section>
-<!-- ── DESKUNDIGE BEGELEIDING ── -->
-<section style="background:var(--cream);padding:80px 0;">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="reveal-group">
-      <div>
-        <div class="section-label">Service-garantie</div>
-        <h2 class="section-title">Deskundige begeleiding<br><em>van specialisten</em></h2>
-        <p style="font-size:16px;line-height:1.8;color:var(--ink-soft);margin-top:16px;">Wij werken als partner samen met uw praktijk. Ons team beschikt over diepgaande kennis van equine orthopedie en adviseert u individueel bij de behandelplanning — niet als anonieme groothandel, maar op gelijkwaardig niveau.</p>
-        <a href="/contact.html" class="btn-primary" style="display:inline-flex;margin-top:28px;">Registreer als dierenarts →</a>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.07);">
-          <div style="font-size:28px;font-weight:900;font-family:'Inter',sans-serif;color:var(--gold);">500+</div>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Equine specialiteiten permanent op voorraad</div>
-        </div>
-        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.07);">
-          <div style="font-size:28px;font-weight:900;font-family:'Inter',sans-serif;color:var(--gold);">40+</div>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Jaar gecombineerde teamkennis</div>
-        </div>
-        <div style="background:var(--ink);border-radius:16px;padding:24px;">
-          <div style="font-size:28px;font-weight:900;font-family:'Inter',sans-serif;color:var(--teal-light);">EU+</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px;">Wereldwijde express-levering</div>
-        </div>
-        <div style="background:var(--ink);border-radius:16px;padding:24px;">
-          <div style="font-size:28px;font-weight:900;font-family:'Inter',sans-serif;color:var(--teal-light);">14h</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px;">Besteldeadline voor levering op dezelfde dag</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 <!-- ── TESTIMONIALS ── -->
-<section class="testimonials-section" id="ervaringen" id="ervaringen">
+<section class="testimonials-section" id="ervaringen">
   <div class="container">
     <div class="testimonials-header reveal">
-      <div class="section-label" style="justify-content:center;">Ervaringen</div>
-      <h2 class="section-title" style="color:#fff;text-align:center;">Wat dierenartsen<br><em style="color:var(--gold);">zeggen</em></h2>
-      <p style="font-size:15px;color:rgba(255,255,255,0.55);margin:16px auto 0;text-align:center;max-width:520px;">Equiprovet wordt vertrouwd door equine dierenartsen van Utrecht tot Warschau.</p>
+      <div class="section-label">Ervaringen</div>
+      <h2 class="section-title">Wat dierenartsen zeggen</h2>
+      <p class="section-desc" style="margin:0 auto;">Equiprovet wordt vertrouwd door equine dierenartsen van Utrecht tot Warschau.</p>
     </div>
     <div class="testimonials-grid reveal-group">
       <div class="testimonial-card">
@@ -546,7 +422,7 @@
       </div>
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-quote">Noltrex Vet was nergens te krijgen toen ik het voor het eerst nodig had. Equiprovet had het gewoon op voorraad. Als ik bel met een vraag over dosering of combinaties, krijg ik een concreet antwoord — geen verkooppraatje.</p>
+        <p class="testimonial-quote">Noltrex Vet was nergens te krijgen toen ik het voor het eerst nodig had. Equiprovet had het gewoon op voorraad. Als ik bel met een vraag over dosering, krijg ik een concreet antwoord — geen verkooppraatje.</p>
         <div class="testimonial-author">
           <div class="ta-name">Dr. Sophie Braun</div>
           <div class="ta-role">Equine practitioner, Pferdepraxis am Niederrhein</div>
@@ -557,14 +433,25 @@
     </div>
   </div>
 </section>
+
+<!-- ── LEVERINGSBELOFTE ── -->
+<section class="delivery-section">
+  <div class="container reveal">
+    <div class="delivery-inner">
+      <div class="section-label">Leveringsgarantie</div>
+      <h2 class="section-title">Als elk uur telt:<br><em>Onze express-verzendbelofte</em></h2>
+      <p class="delivery-text">Een acuut patiëntgeval duldt geen uitstel. Alle bestellingen van voorradige producten die op werkdagen vóór <strong>14:00 uur</strong> binnenkomen, verlaten nog dezelfde dag ons centraal magazijn in Hengelo. Dank zij volledig temperatuurbewaakt express-transport treffen de preparaten zo snel mogelijk en gebruiksklaar in uw praktijk of kliniek aan.</p>
+      <a href="/contact.html" class="delivery-cta">Nu registreren en bestellen →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="container">
-    <div class="footer-grid reveal-group">
+    <div class="footer-grid">
       <div>
-        <div style="margin-bottom:16px;">
-          <img src="/images/logo.png" alt="Equiprovet" style="height:52px;width:auto;opacity:0.9;">
-        </div>
+        <img src="/images/logo.png" alt="Equiprovet" style="height:48px;width:auto;opacity:0.85;">
         <p class="footer-brand-desc">Groothandel in equine geneesmiddelen. Wij leveren aan dierenartsen en veterinaire apotheken — niet aan particulieren.</p>
       </div>
       <div>
@@ -598,12 +485,13 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom reveal">
+    <div class="footer-bottom">
       <div class="footer-copyright">© 2026 Equiprovet B.V. — Jan Tinbergenstraat 138, 7559 SP Hengelo, Nederland</div>
       <div class="footer-vet-only">🔒 Exclusief voor dierenartsen</div>
     </div>
   </div>
 </footer>
+
 <!-- ── PRIVACY MODAL ── -->
 <div id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacybeleid">
   <div class="privacy-modal-inner">
@@ -624,6 +512,7 @@
     <p>Equiprovet gebruikt functioneel noodzakelijke cookies en, na uw toestemming, analytische cookies.</p>
   </div>
 </div>
+
 <!-- ── COOKIE BANNER ── -->
 <div id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-live="polite">
   <p class="cookie-text">Equiprovet gebruikt functionele en analytische cookies.
@@ -633,6 +522,7 @@
     <button class="cookie-btn accept" onclick="handleCookie('accepted')">Akkoord</button>
   </div>
 </div>
+
 <script>
 (function(){
   const burger = document.getElementById('nav-hamburger');
@@ -642,18 +532,14 @@
     const open = force !== undefined ? force : !links.classList.contains('open');
     burger.classList.toggle('open', open);
     links.classList.toggle('open', open);
-    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
   burger.addEventListener('click', () => toggleMenu());
-  // Sluit menu bij klik op een link
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => toggleMenu(false));
-  });
-  // Sluit menu bij Escape
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
 })();
 </script>
+
 <!-- ── STICKY CTA ── -->
 <div id="sticky-cta">
   <div class="sticky-cta-text">

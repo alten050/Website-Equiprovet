@@ -16,9 +16,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
   <script src="/js/main.js" defer></script>
   <link rel="preload" as="image" href="/images/vet-examination.jpg" fetchpriority="high">
   <link rel="alternate" hreflang="de" href="https://www.equiprovet.nl/de/ueber-uns">
@@ -79,11 +76,9 @@
   <!-- <script>window.$crisp=[];window.CRISP_WEBSITE_ID="XXXXXXXX-XXXX";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s)})();</script> -->
 </head>
 <body>
-<a href="#main-content" class="skip-nav">Ga naar inhoud</a>
+<a href="#main-content" class="skip-nav">Zum Inhalt</a>
 <!-- ── SCROLL PROGRESS ── -->
 <div id="scroll-progress"></div>
-<!-- ── CUSTOM CURSOR ── -->
-<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
 <!-- ── NAV ── -->
 <nav>
   <a href="/de/" class="nav-logo">
@@ -164,8 +159,8 @@
 <section class="testimonials-section" id="erfahrungen">
   <div class="container">
     <div class="testimonials-header reveal">
-      <div class="section-label" style="color:var(--teal-light);justify-content:center;">Erfahrungen</div>
-      <h2 class="section-title" style="color:#fff;text-align:center;">Was Tierärzte<br><em>über uns sagen</em></h2>
+      <div class="section-label" style="justify-content:center;">Erfahrungen</div>
+      <h2 class="section-title" style="text-align:center;">Was Tierärzte<br><em>über uns sagen</em></h2>
     </div>
     <div class="testimonials-grid reveal-group">
       <div class="testimonial-card">
@@ -197,11 +192,9 @@
 <!-- ── FOOTER ── -->
 <footer>
   <div class="container">
-    <div class="footer-grid reveal-group">
+    <div class="footer-grid">
       <div>
-        <div style="margin-bottom:16px;">
-          <img src="/images/logo.png" alt="Equiprovet" style="height:52px;width:auto;opacity:0.9;">
-        </div>
+        <img src="/images/logo.png" alt="Equiprovet" style="height:48px;width:auto;opacity:0.85;margin-bottom:16px;">
         <p class="footer-brand-desc">Großhandel für equine Tierarzneimittel. Wir beliefern Tierärzte und Tierarztpraxen — nicht Privatpersonen.</p>
       </div>
       <div>
@@ -235,7 +228,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom reveal">
+    <div class="footer-bottom">
       <div class="footer-copyright">© 2026 Equiprovet B.V. — Jan Tinbergenstraat 138, 7559 SP Hengelo, Niederlande</div>
       <div class="footer-vet-only">🔒 Nur für Tierärzte</div>
     </div>
@@ -277,15 +270,10 @@
     const open = force !== undefined ? force : !links.classList.contains('open');
     burger.classList.toggle('open', open);
     links.classList.toggle('open', open);
-    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
   burger.addEventListener('click', () => toggleMenu());
-  // Sluit menu bij klik op een link
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => toggleMenu(false));
-  });
-  // Sluit menu bij Escape
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
 })();
 </script>

@@ -41,7 +41,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background: var(--white);
   color: var(--text);
   overflow-x: hidden;
@@ -62,7 +62,7 @@ body {
 .container { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
 
 /* ── Typography ── */
-h1, h2, h3 { font-family: 'Inter', 'DM Sans', sans-serif; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; }
+h1, h2, h3 { font-family: 'Open Sans', sans-serif; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em; }
 
 /* ── Buttons ── */
 .btn-primary {
@@ -113,11 +113,40 @@ h1, h2, h3 { font-family: 'Inter', 'DM Sans', sans-serif; line-height: 1.12; fon
 .btn-outline:hover { background: var(--blue-pale); }
 
 /* ══════════════════════════════
+   TOPBAR
+══════════════════════════════ */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
+  background: var(--navy);
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+.topbar-inner span,
+.topbar-inner a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.topbar-inner a:hover { color: #fff; }
+.topbar-inner span { color: rgba(255,255,255,0.5); }
+
+/* ══════════════════════════════
    NAVIGATION
 ══════════════════════════════ */
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 32px; left: 0; right: 0;
   z-index: 100;
   background: #fff;
   border-bottom: 1px solid var(--gray-200);
@@ -131,7 +160,7 @@ nav {
 
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .nav-logo-img { height: 40px; width: auto; }
-.nav-brand { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; font-family: 'Inter', sans-serif; }
+.nav-brand { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; font-family: 'Open Sans', sans-serif; }
 
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a {
@@ -804,6 +833,11 @@ footer { background: #071530; padding: 52px 0 28px; }
 /* ══════════════════════════════
    MOBILE
 ══════════════════════════════ */
+@media (max-width: 900px) {
+  .topbar { display: none; }
+  nav { top: 0; }
+}
+
 @media (max-width: 1000px) {
   nav { padding: 0 20px; }
 

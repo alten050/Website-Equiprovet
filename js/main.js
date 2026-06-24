@@ -58,6 +58,9 @@ function handleCookie(decision) {
   try { localStorage.setItem('cookie-consent', decision); } catch(e) {}
   const banner = document.getElementById('cookie-banner');
   if (banner) banner.classList.remove('visible');
+  if (decision === 'accepted' && typeof gtag === 'function') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
 }
 
 // ── Privacy modal ──

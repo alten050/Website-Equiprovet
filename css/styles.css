@@ -864,6 +864,17 @@ footer { background: #071530; padding: 52px 0 28px; }
   .ha-stat-card { padding: 16px; }
 
   .about-image-grid { display: none; }
+
+  /* Page hero inner pages */
+  .page-hero-section { padding: 100px 0 52px; }
+
+  /* Footer bottom wrapping */
+  .footer-bottom { flex-wrap: wrap; gap: 10px; }
+  .footer-copyright { text-align: center; width: 100%; order: 2; }
+  .footer-vet-only { order: 1; }
+
+  /* HA bar label smaller */
+  .ha-bar-name { width: 120px; font-size: 12px; }
 }
 
 @media (max-width: 640px) {
@@ -1318,18 +1329,6 @@ footer { background: #071530; padding: 52px 0 28px; }
 }
 .nav-phone:hover { color: var(--blue); }
 
-/* ── Hero trust checklist ── */
-.hero-trust {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
-.ht-item {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.7);
-}
 
 /* ══════════════════════════════
    PERSOONLIJK CONTACT SECTIE
@@ -1457,19 +1456,45 @@ footer { background: #071530; padding: 52px 0 28px; }
 @media (max-width: 900px) {
   .pcc-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   .personal-grid { grid-template-columns: 1fr; gap: 40px; }
+  .personal-image img { height: 320px; }
   .cta-inner { flex-direction: column; text-align: center; }
   .cta-actions { justify-content: center; }
   .hero-trust { gap: 8px; font-size: 11px; }
   .nav-phone { display: none; }
+  .hero-name { font-size: clamp(44px, 12vw, 72px); }
 }
 @media (max-width: 640px) {
   .pcc-grid { grid-template-columns: 1fr; }
   .pcc-image { height: 180px; }
-  .personal-image img { height: 280px; }
+  .personal-image img { height: 260px; }
   .products-grid { grid-template-columns: 1fr; }
   .news-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .about-cards { grid-template-columns: 1fr; }
   .lit-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Hero op kleine schermen */
+  .hero-name { font-size: clamp(38px, 11vw, 56px); letter-spacing: -0.02em; }
+  .hero-tagline { font-size: 15px; margin-bottom: 32px; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; margin-bottom: 36px; }
+  .btn-hero-primary, .btn-hero-secondary { text-align: center; padding: 14px 20px; }
+
+  /* Testimonials op klein scherm */
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* Footer bottom volledig stacked */
+  .footer-bottom { justify-content: center; }
+
+  /* Page hero kleiner */
+  .page-hero-section { padding: 90px 0 44px; }
+  .page-hero-title { font-size: clamp(28px, 8vw, 40px); }
+  .page-hero-desc { font-size: 15px; }
+
+  /* Cookie banner op klein scherm */
+  #cookie-banner { flex-direction: column; align-items: flex-start; }
+  .cookie-actions { width: 100%; justify-content: flex-end; }
+
+  /* Form submit op klein scherm */
+  .ha-bar-name { width: 100px; }
 }

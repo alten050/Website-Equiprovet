@@ -212,16 +212,6 @@ nav {
   max-width: 800px;
 }
 
-.hero-logo {
-  height: 72px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  margin-bottom: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .hero-name {
   font-size: clamp(52px, 9vw, 108px);
   font-weight: 900;

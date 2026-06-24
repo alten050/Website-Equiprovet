@@ -129,8 +129,9 @@ nav {
   box-shadow: var(--shadow-sm);
 }
 
-.nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo-img { height: 44px; width: auto; filter: brightness(0); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-img { height: 40px; width: auto; }
+.nav-brand { font-size: 18px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; font-family: 'Inter', sans-serif; }
 
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a {

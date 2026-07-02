@@ -1,10 +1,10 @@
 // Equiprovet Service Worker — offline + cache strategie
-const CACHE = 'equiprovet-v8';
+const CACHE = 'equiprovet-v9';
 const STATIC = [
   '/', '/producten', '/wetenschap', '/over-ons', '/nieuws', '/contact',
   '/de/', '/de/produkte', '/de/wissenschaft', '/de/ueber-uns', '/de/neuigkeiten', '/de/kontakt',
   '/css/styles.css', '/js/main.js',
-  '/images/logo.png', '/images/hero-horse-leg-v2.webp', '/images/alpha2eq-centrifuge.webp',
+  '/images/logo.png', '/images/hero-horse-leg-v3.webp', '/images/alpha2eq-centrifuge.webp',
   '/images/ha-injection.webp', '/images/noltrex-joint.webp', '/images/bisphosphonate-horse.webp',
 ];
 

@@ -4,6 +4,8 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+.icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; stroke: currentColor; flex-shrink: 0; }
+
 :root {
   --blue:       #1560BD;
   --blue-dark:  #0D4A94;
